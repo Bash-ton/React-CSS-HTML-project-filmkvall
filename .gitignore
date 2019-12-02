@@ -6,6 +6,7 @@
 .pnp.js
 
 # api
+/src/data/apiConfig.js
 
 # testing
 /coverage
