@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import {ENDPOINT} from "../Data/apiConfig";
 import model from "../Data/apifetch";
 
 class Home extends Component {
@@ -11,7 +12,7 @@ class Home extends Component {
         };
     }
     componentDidMount() {
-        this.getpic();
+        this.getPicture();
     }
 
     getpic(){
@@ -30,7 +31,25 @@ class Home extends Component {
             });
     }
 
+    getPicture(){
+        model.getMovieByTitle("Pulp Fiction").then(obj => {
+            this.setState(
+                {
+                    status:"loaded",
+                    trending: obj
+                }
+            )
+        })
+            .catch(() => {
+                this.setState(
+                    {status:"error"}
+                )
+            });
+    debugger
+    }
+
     render() {
+        debugger
         let trendingList = null;
         switch (this.state.status) {
             case "loading":
@@ -40,7 +59,7 @@ class Home extends Component {
                 debugger;
                 trendingList = this.state.trending.results.map(movie =>(
                     <li>
-                        {movie.title}
+                        <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}/>
                     </li>
                     )
                 )
