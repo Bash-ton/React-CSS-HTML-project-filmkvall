@@ -49,6 +49,7 @@ class Home extends Component {
             <div className="Welcome">
                 <p>Welcome to the dinner planner React Startup code!</p>
                 <div>{trendingList}</div>
+                <div>{trendingList}</div>
                 <Link to="/search">
                     <button className= "standard-btn" >Start planning</button>
                 </Link>
