@@ -3,17 +3,20 @@ import {ENDPOINT} from "./apiConfig";
 const BASE_URL = ENDPOINT;
 
 class apifetch {
-    constructor() {
-    }
 
-    getMovieByTitle(title){
-        let url = `${BASE_URL}3/search/movie/?language=en-US&page=1&include_adult=false&api_key=${API_KEY}&query=${title}`
+    getMovieByTitle(){
+        let url = `${BASE_URL}3/movie/398978?api_key=${API_KEY}&language=en-US`
         return fetch(url).then((this.processResponse))
     }
 
-    getTrending(){
-    let url = `${BASE_URL}3/trending/movie/day?api_key=${API_KEY}`;
-    return fetch(url).then(this.processResponse);
+    getTrendingMovie(){
+        let url = `${BASE_URL}3/trending/movie/day?api_key=${API_KEY}`;
+        return fetch(url).then(this.processResponse);
+    }
+
+    getTrendingSeries(){
+        let url = `${BASE_URL}3/trending/tv/day?api_key=${API_KEY}`;
+        return fetch(url).then(this.processResponse);
     }
 
     processResponse(response) {

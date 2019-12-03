@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import {ENDPOINT} from "../Data/apiConfig";
 import model from "../Data/apifetch";
 
 class Home extends Component {
@@ -12,15 +11,31 @@ class Home extends Component {
         };
     }
     componentDidMount() {
-        this.getPicture();
+        this.getMov();
+        this.getSer();
     }
 
-    getpic(){
-        model.getTrending().then(obj => {
+    getMov(){
+        model.getTrendingMovie().then(obj => {
             this.setState(
                 {
-                    status:"loaded",
-                    trending: obj
+                    trendingMovie: obj
+                }
+            )
+        })
+            .catch(() => {
+                this.setState(
+                    {status:"error"}
+                )
+            })
+    }
+
+    getSer(){
+        model.getTrendingSeries().then(obj => {
+            this.setState(
+                {
+                    trendingSerie: obj,
+                    status: "Loaded"
                 }
             )
         })
@@ -31,47 +46,36 @@ class Home extends Component {
             });
     }
 
-    getPicture(){
-        model.getMovieByTitle("Pulp Fiction").then(obj => {
-            this.setState(
-                {
-                    status:"loaded",
-                    trending: obj
-                }
-            )
-        })
-            .catch(() => {
-                this.setState(
-                    {status:"error"}
-                )
-            });
-    debugger
-    }
 
     render() {
-        debugger
-        let trendingList = null;
+        let trendingListMovie = null;
+        let trendingListSerie = null;
         switch (this.state.status) {
-            case "loading":
-                trendingList = <em>Loading...</em>;
+            case "Loading":
+                trendingListMovie = <em>Loading...</em>;
+                trendingListSerie = <em>Loading...</em>;
                 break;
-            case "loaded":
-                debugger;
-                trendingList = this.state.trending.results.map(movie =>(
-                    <li>
-                        <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}/>
-                    </li>
+            case "Loaded":
+                trendingListMovie = this.state.trendingMovie.results.splice(0,4).map(movie =>(
+                    <Link to="/Details">
+                        <img className="image" src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} value = {movie}/>
+                    </Link>
+                    )
+                )
+                trendingListSerie = this.state.trendingSerie.results.splice(0,4).map(serie =>(
+                        <Link to ="/Details">
+                            <img className="image" src={"https://image.tmdb.org/t/p/w500" + serie.poster_path}/>
+                        </Link>
                     )
                 )
         }
         return (
-            <div className="Welcome">
+            <div>
                 <p>Welcome to the dinner planner React Startup code!</p>
-                <div>{trendingList}</div>
-                <div>{trendingList}</div>
-                <Link to="/search">
-                    <button className= "standard-btn" >Start planning</button>
-                </Link>
+                <div className="gridcontainer">
+                <div className="gridcontainer1">{trendingListMovie}</div>
+                <div className="gridcontainer1">{trendingListSerie}</div>
+                </div>
             </div>
         );
     }

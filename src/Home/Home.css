@@ -1,0 +1,19 @@
+.gridcontainer{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-row-gap: 0;
+}
+.gridcontainer1{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-row-gap: 0;
+}
+.griditem{
+}
+.image{
+    width: 100%;
+    height: 100%;
+}
+.gridcontainer1 img:hover{
+    transform: scale(1.02);
+}
