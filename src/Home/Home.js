@@ -66,6 +66,7 @@ class Home extends Component {
                         <Link to ="/Details">
                             <img className="image" src={"https://image.tmdb.org/t/p/w500" + serie.poster_path}/>
                         </Link>
+
                     )
                 )
         }
@@ -76,6 +77,10 @@ class Home extends Component {
                 <div className="gridcontainer1">{trendingListMovie}</div>
                 <div className="gridcontainer1">{trendingListSerie}</div>
                 </div>
+                <Link to="/search">
+                    <button className= "standard-btn" >Start planning</button>
+                </Link>
+
             </div>
         );
     }

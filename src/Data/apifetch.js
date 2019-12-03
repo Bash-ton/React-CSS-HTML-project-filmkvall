@@ -4,8 +4,13 @@ const BASE_URL = ENDPOINT;
 
 class apifetch {
 
+
     getMovieByTitle(){
         let url = `${BASE_URL}3/movie/398978?api_key=${API_KEY}&language=en-US`
+        return fetch(url).then((this.processResponse))
+    }
+    getInfoByTitle(title,type){
+        let url = `${BASE_URL}3/search/${type}?language=en-US&page=1&include_adult=false&api_key=${API_KEY}&query=${title}&limit=5`
         return fetch(url).then((this.processResponse))
     }
 
@@ -25,6 +30,7 @@ class apifetch {
         }
         throw response;
     }
+    getMo
 }
 const model = new apifetch();
 export default model;

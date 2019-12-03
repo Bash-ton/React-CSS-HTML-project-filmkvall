@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28891bac-c9fb-4ded-9037-ab7eccb6c3ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Details/Details.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Details/Details.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SearchResult/SearchResult.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SearchResult/SearchResult.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Searchbar/Searchbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Searchbar/Searchbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/apifetch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/apifetch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

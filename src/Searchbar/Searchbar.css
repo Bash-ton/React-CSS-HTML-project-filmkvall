@@ -1,0 +1,13 @@
+.search-input {
+    border-radius: 25px;
+    background: #464843;
+    max-width: 400px;
+    max-height: 20px;
+    min-width: 400px;
+    min-height: 20px;
+    color: red;
+    border: none;
+
+}
+.search-field{
+}
