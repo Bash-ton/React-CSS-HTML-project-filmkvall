@@ -1,0 +1,19 @@
+.search-result {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.search-title{
+    flex-direction: column;
+}.search-title > p{
+     font-size: 0.6em;
+     color: #464843;
+ }
+.search-result > img{
+    max-height: 100px;
+    max-width: 100px;
+    min-width: 100px;
+    min-height: 100px
+}

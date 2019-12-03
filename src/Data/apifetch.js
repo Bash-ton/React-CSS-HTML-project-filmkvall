@@ -6,8 +6,8 @@ class apifetch {
     constructor() {
     }
 
-    getMovieByTitle(title){
-        let url = `${BASE_URL}3/search/movie/?language=en-US&page=1&include_adult=false&api_key=${API_KEY}&query=${title}`
+    getInfoByTitle(title,type){
+        let url = `${BASE_URL}3/search/${type}?language=en-US&page=1&include_adult=false&api_key=${API_KEY}&query=${title}&limit=5`
         return fetch(url).then((this.processResponse))
     }
 
@@ -22,6 +22,7 @@ class apifetch {
         }
         throw response;
     }
+    getMo
 }
 const model = new apifetch();
 export default model;
