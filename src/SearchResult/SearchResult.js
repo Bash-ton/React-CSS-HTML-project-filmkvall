@@ -90,7 +90,7 @@ class SearchResult extends Component {
         }
 
         return(
-            <div>
+            <div className={"search-result-body"}>
                 {searchResults}
             </div>);
     }

@@ -11,11 +11,11 @@ class App extends Component {
     return (
         <div className="App">
           <header className="App-header">
-              <h1>
                   <Searchbar/>
-              </h1>
+          </header>
+            <switch>
             <Route
-                path="/Home"
+                exact path="/"
                 render={() => <Home/>}
             />
             <Route
@@ -26,7 +26,7 @@ class App extends Component {
                 path={"/Discover"}
                 render={() => <Discover/>}
             />
-          </header>
+            </switch>
         </div>
     );
   }

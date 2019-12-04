@@ -11,3 +11,10 @@
 }
 .search-field{
 }
+.search-body{
+    display: grid;
+    grid-template-columns: 75% auto;
+}
+.login{
+    justify-self: right;
+}
