@@ -1,6 +1,6 @@
 .search-result {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 20% 80%;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
@@ -9,11 +9,24 @@
     flex-direction: column;
 }.search-title > p{
      font-size: 0.6em;
-     color: #464843;
+     color: #b5b4b8;
  }
 .search-result > img{
     max-height: 100px;
     max-width: 100px;
     min-width: 100px;
     min-height: 100px
+}
+.search-result > p{
+
+}
+.search-body{
+    display: flex;
+}
+
+.search-result-body{
+    position: absolute;
+    background: #403e3f;
+    width: 60%;
+    z-index: 1;
 }

@@ -36,7 +36,7 @@ class Searchbar extends Component {
                         <input className={"search-input"} placeholder={"Search Movie"} onChange={evt => this.updateTitle(evt)}/>
                         <SearchResult title={this.state.title} type={this.state.type}/>
                     </div>
-                    <div>
+                    <div className={"login"}>
                         <button>LogIn</button>
                         <button>SignIn</button>
                     </div>

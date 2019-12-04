@@ -10,18 +10,18 @@ class App extends Component {
     return (
         <div className="App">
           <header className="App-header">
-              <h1>
                   <Searchbar/>
-              </h1>
+          </header>
+            <switch>
             <Route
-                path="/Home"
+                exact path="/"
                 render={() => <Home/>}
             />
             <Route
                 path="/Details"
                 render={() => <Details/>}
             />
-          </header>
+            </switch>
         </div>
     );
   }

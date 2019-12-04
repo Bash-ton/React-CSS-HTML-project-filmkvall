@@ -7,8 +7,14 @@ class Details extends Component {
 
     constructor(props) {
         super(props);
+        let searchId = window.location.href;
+        let urlSplit = searchId.split("?");
+        let typeAndId = urlSplit[1].split("&");
+        console.log(typeAndId);
         this.state= {
-            status: "Loading"
+            status: "Loading",
+            type: typeAndId[0],
+            id: typeAndId[1]
         }
 
     }
@@ -17,7 +23,7 @@ class Details extends Component {
     }
 
     getMovie(){
-        model.getMovieByTitle().then(obj =>{
+        model.getDetailsById(this.state.type,this.state.id).then(obj =>{
             this.setState(
                 {
                     movie: obj,
@@ -32,17 +38,23 @@ class Details extends Component {
 })
 }
 
-
+//todo inforamtion to add: cast, title,poster,synopsis,release_date,rating,similar_movies,original_lang,Budget,runtime,tagline
     render(){
+        let name = null;
         let movie = null;
         switch (this.state.status) {
             case("Loading"):
                 movie = <em>Loading...</em>;
             break;
             case("Loaded"):
-                debugger
+                if (this.state.type === "tv")
+                    name = this.state.movie.name;
+                else
+                    name = this.state.movie.title;
                 movie = <div><img src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
-                <h1>{this.state.movie.title}</h1></div>;
+                <h1>{name}</h1>
+                <p>{this.state.movie.overview}</p>
+                </div>;
                 break;
         }
 

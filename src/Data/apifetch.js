@@ -5,8 +5,8 @@ const BASE_URL = ENDPOINT;
 class apifetch {
 
 
-    getMovieByTitle(){
-        let url = `${BASE_URL}3/movie/398978?api_key=${API_KEY}&language=en-US`
+    getDetailsById(type,id){
+        let url = `${BASE_URL}3/${type}/${id}?api_key=${API_KEY}&language=en-US`
         return fetch(url).then((this.processResponse))
     }
     getInfoByTitle(title,type){

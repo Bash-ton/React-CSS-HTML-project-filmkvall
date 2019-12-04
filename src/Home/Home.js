@@ -57,13 +57,13 @@ class Home extends Component {
                 break;
             case "Loaded":
                 trendingListMovie = this.state.trendingMovie.results.splice(0,4).map(movie =>(
-                    <Link to="/Details">
-                        <img className="image" src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} value = {movie}/>
+                    <Link to={"/Details/?movie&" + movie.id}>
+                        <img className="image" src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}/>
                     </Link>
                     )
                 )
                 trendingListSerie = this.state.trendingSerie.results.splice(0,4).map(serie =>(
-                        <Link to ="/Details">
+                        <Link to ={"/Details/?tv&" + serie.id}>
                             <img className="image" src={"https://image.tmdb.org/t/p/w500" + serie.poster_path}/>
                         </Link>
 
@@ -76,10 +76,6 @@ class Home extends Component {
                 <div className="gridcontainer1">{trendingListMovie}</div>
                 <div className="gridcontainer1">{trendingListSerie}</div>
                 </div>
-                <Link to="/search">
-                    <button className= "standard-btn" >Start planning</button>
-                </Link>
-
             </div>
         );
     }
