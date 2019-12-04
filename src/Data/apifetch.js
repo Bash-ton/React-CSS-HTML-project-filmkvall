@@ -30,7 +30,6 @@ class apifetch {
         }
         throw response;
     }
-    getMo
 }
 const model = new apifetch();
 export default model;

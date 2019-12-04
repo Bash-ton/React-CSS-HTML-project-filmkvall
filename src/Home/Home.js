@@ -72,7 +72,6 @@ class Home extends Component {
         }
         return (
             <div>
-                <p>Welcome to the dinner planner React Startup code!</p>
                 <div className="gridcontainer">
                 <div className="gridcontainer1">{trendingListMovie}</div>
                 <div className="gridcontainer1">{trendingListSerie}</div>
