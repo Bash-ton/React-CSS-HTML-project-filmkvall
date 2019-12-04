@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import Home from "./Home/Home";
 import Details from "./Details/Details";
+import Discover from "./Discover/Discover";
 import "./App.css";
 import Searchbar from "./Searchbar/Searchbar";
 
@@ -20,6 +21,10 @@ class App extends Component {
             <Route
                 path="/Details"
                 render={() => <Details/>}
+            />
+            <Route
+                path={"/Discover"}
+                render={() => <Discover/>}
             />
           </header>
         </div>

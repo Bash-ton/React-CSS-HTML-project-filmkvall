@@ -26,22 +26,31 @@ class SearchResult extends Component {
     }
 
     getPicture(){
-        let debounceCall = _.debounce(() => {
-            model.getInfoByTitle(this.props.title,this.props.type).then(mov => {
-                this.setState(
-                    {
-                        status: "loaded",
-                        movie: mov
-                    }
-                )
-            })
-                .catch(() => {
+        if(this.props.title !== ""){
+            let debounceCall = _.debounce(() => {
+                model.getInfoByTitle(this.props.title,this.props.type).then(mov => {
                     this.setState(
-                        {status: "error"}
+                        {
+                            status: "loaded",
+                            movie: mov
+                        }
                     )
-                });
-        },1000);
-        debounceCall();
+                })
+                    .catch(() => {
+                        this.setState(
+                            {status: "error"}
+                        )
+                    });
+            },1000);
+            debounceCall();
+        }
+        else {
+            this.setState(
+                {
+                    status: "no search",
+                }
+            )
+        }
     }
 
     render() {
@@ -49,6 +58,9 @@ class SearchResult extends Component {
         switch (this.state.status) {
             case "loading":
                 searchResults = <em>Loading...</em>;
+                break;
+            case "no search":
+                searchResults = <div></div>;
                 break;
             case "loaded":
                 switch (this.props.type) {
