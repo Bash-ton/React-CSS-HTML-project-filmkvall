@@ -14,6 +14,8 @@ class apifetch {
         return fetch(url).then((this.processResponse))
     }
 
+
+    // TODO: Write into one function that takes type as param. 
     getTrendingMovie(){
         let url = `${BASE_URL}3/trending/movie/day?api_key=${API_KEY}`;
         return fetch(url).then(this.processResponse);
