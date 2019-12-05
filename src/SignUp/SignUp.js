@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import * as firebase from "firebase";
+import firebase from "./../Firebase";
 
 class SignUp extends Component {
     constructor(props) {
@@ -19,10 +19,22 @@ class SignUp extends Component {
         });
     }
 
+    updateEmail (evt){
+        this.setState({
+            email: evt.target.value
+        });
+    }
+    updatePass (evt){
+        this.setState({
+            pass: evt.target.value
+        });
+    }
     render(){
         return(
             <div>
-                Hello
+                <input className={"releaseYear"} onChange={evt => this.updateEmail(evt)} />
+                <input className={"releaseYear"} onChange={evt => this.updatePass(evt)}/>
+                <button onClick={() => this.registerUser(this.state.email,this.state.pass)}> Submit</button>
             </div>);
 
     }

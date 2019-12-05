@@ -22,7 +22,6 @@ class App extends Component {
             <Route
                 path={"/SignUp"}
                 render={()=> <SignUp/>}
-
             />
             <Route
                 path="/Details"

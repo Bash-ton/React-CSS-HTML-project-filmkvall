@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import SearchResult from "../SearchResult/SearchResult";
 import "./Searchbar.css";
+import { Link } from "react-router-dom";
+
 
 class Searchbar extends Component {
     constructor(props) {
@@ -39,7 +41,9 @@ class Searchbar extends Component {
                     </div>
                     <div className={"login"}>
                         <button>LogIn</button>
+                        <Link to={"/SignUp"}>
                         <button>SignIn</button>
+                        </Link>
                     </div>
 
                 </div>
