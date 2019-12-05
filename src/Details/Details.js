@@ -10,7 +10,6 @@ class Details extends Component {
         let searchId = window.location.href;
         let urlSplit = searchId.split("?");
         let typeAndId = urlSplit[1].split("&");
-        console.log(typeAndId);
         this.state= {
             status: "Loading",
             type: typeAndId[0],
@@ -20,6 +19,22 @@ class Details extends Component {
     }
     componentDidMount() {
         this.getMovie();
+        this.getCredits();
+    }
+    getCredits(){
+        model.getCreditsById(this.state.type,this.state.id).then(obj =>{
+            console.log(obj);
+            this.setState(
+                {
+                    cast: obj
+                }
+            )
+        })
+    .catch(() => {
+    this.setState(
+        {status:"error"}
+    )}
+    )
     }
 
     getMovie(){
@@ -54,6 +69,7 @@ class Details extends Component {
                 movie = <div><img src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
                 <h1>{name}</h1>
                 <p>{this.state.movie.overview}</p>
+                <p> </p>
                 </div>;
                 break;
         }

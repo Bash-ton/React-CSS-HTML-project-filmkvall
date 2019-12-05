@@ -20,9 +20,6 @@
 .search-result > p{
 
 }
-.search-body{
-    display: flex;
-}
 
 .search-result-body{
     position: absolute;
