@@ -10,12 +10,15 @@ class apifetch {
         return fetch(url).then((this.processResponse))
     }
     getInfoByTitle(title,type){
-        let url = `${BASE_URL}3/search/${type}?language=en-US&page=1&include_adult=false&api_key=${API_KEY}&query=${title}&limit=5`
+        let url = `${BASE_URL}3/search/${type}?language=en-US&page=1&include_adult=false&api_key=${API_KEY}&query=${title}`
+        return fetch(url).then((this.processResponse))
+    }
+    getActorByName(Name){
+        let url =`${BASE_URL}3/search/person?language=en-US&page=1&include_adult=false&api_key=${API_KEY}&query=${Name}`
         return fetch(url).then((this.processResponse))
     }
 
-
-    // TODO: Write into one function that takes type as param. 
+    // TODO: Write into one function that takes type as param.
     getTrendingMovie(){
         let url = `${BASE_URL}3/trending/movie/day?api_key=${API_KEY}`;
         return fetch(url).then(this.processResponse);
