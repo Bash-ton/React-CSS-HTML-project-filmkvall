@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28891bac-c9fb-4ded-9037-ab7eccb6c3ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/Logo_Filmkvall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/apifetch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/apifetch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Details/Details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Details/Details.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SearchResult/SearchResult.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/SearchResult/SearchResult.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Searchbar/Searchbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Searchbar/Searchbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Searchbar/Searchbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Searchbar/Searchbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
