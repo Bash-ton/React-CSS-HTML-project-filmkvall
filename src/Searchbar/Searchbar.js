@@ -28,6 +28,7 @@ class Searchbar extends Component {
     render() {
 
         return (<div className={"search-body"}>
+                <img src={"../Logo_Filmkvall.png"}/>
                     <div className={"search-field"}>
                         <select id={"search-select-type"} onChange={evt => this.updateType(evt)}>
                             <option value={"movie"}>Movie</option>

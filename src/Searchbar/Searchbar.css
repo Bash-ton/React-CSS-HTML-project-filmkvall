@@ -13,8 +13,12 @@
 }
 .search-body{
     display: grid;
-    grid-template-columns: 75% auto;
+    grid-template-columns: 12.5% 75% 12.5%;
 }
 .login{
     justify-self: right;
+}
+
+.search-body > img{
+    width: inherit;
 }
