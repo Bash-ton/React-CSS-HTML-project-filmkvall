@@ -6,6 +6,7 @@ import Discover from "./Discover/Discover";
 import "./App.css";
 import Searchbar from "./Searchbar/Searchbar";
 import SignUp from "./SignUp/SignUp";
+import SignIn from "./SingIn/SignIn";
 
 class App extends Component {
   render() {
@@ -22,6 +23,10 @@ class App extends Component {
             <Route
                 path={"/SignUp"}
                 render={()=> <SignUp/>}
+            />
+            <Route
+                path={"/SignIn"}
+                render={()=> <SignIn/>}
             />
             <Route
                 path="/Details"
