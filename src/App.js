@@ -5,6 +5,7 @@ import Details from "./Details/Details";
 import Discover from "./Discover/Discover";
 import "./App.css";
 import Searchbar from "./Searchbar/Searchbar";
+import SignUp from "./SignUp/SignUp";
 
 class App extends Component {
   render() {
@@ -17,6 +18,11 @@ class App extends Component {
             <Route
                 exact path="/"
                 render={() => <Home/>}
+            />
+            <Route
+                path={"/SignUp"}
+                render={()=> <SignUp/>}
+
             />
             <Route
                 path="/Details"
