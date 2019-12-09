@@ -1,23 +1,28 @@
 import React from "react";
 import { Component } from "react";
-import * as firebase from "firebase";
 
 class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            user: this.props.user.getUser()
         };
     }
 
-    checkCredentials(email, password){
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            let errorCode = error.code;
-            let errorMessage = error.message;
-            console.log(errorMessage);
-            // ...
-        });
+    componentDidMount() {
+        this.props.user.addObserver(this);
     }
+
+    componentWillUnmount() {
+        this.props.user.removeObserver(this);
+    }
+
+    update(){
+        this.setState({
+            user: this.props.user
+        })
+    }
+
     updateEmail (evt){
         this.setState({
             email: evt.target.value
@@ -28,37 +33,25 @@ class SignIn extends Component {
             pass: evt.target.value
         });
     }
-    userIsAuthed(){
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                // User is signed in.
-                var displayName = user.displayName;
-                var email = user.email;
-                var emailVerified = user.emailVerified;
-                var photoURL = user.photoURL;
-                var isAnonymous = user.isAnonymous;
-                var uid = user.uid;
-                var providerData = user.providerData;
-                console.log(displayName);
-                // ...
-            } else {
-                // User is signed out.
-                // ...
-            }
-        });
-    }
 
     render(){
-        let user = firebase.auth().currentUser;
-        if(user !== null){
-            console.log(user.email)
+        let sessionState = "";
+        if(this.state.user === 0){
+            sessionState =
+               (<div>
+                    <input className={"releaseYear"} onChange={evt => this.updateEmail(evt)} />
+                    <input className={"releaseYear"} onChange={evt => this.updatePass(evt)}/>
+                    <button onClick={() => this.props.user.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass)}> Login</button>
+                </div>);
         }
-        return(
-            <div>
-                <input className={"releaseYear"} onChange={evt => this.updateEmail(evt)} />
-                <input className={"releaseYear"} onChange={evt => this.updatePass(evt)}/>
-                <button onClick={() => this.checkCredentials(this.state.email,this.state.pass)}> Login</button>
-            </div>);
+        else{
+            sessionState = (<p>You are logged in</p>)
+            console.log(this.state.user.getUser());
+        }
+        return(<div>
+                    {sessionState}
+               </div>)
+
 
     }
 }

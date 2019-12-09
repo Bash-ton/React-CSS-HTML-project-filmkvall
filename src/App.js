@@ -7,26 +7,34 @@ import "./App.css";
 import Searchbar from "./Searchbar/Searchbar";
 import SignUp from "./SignUp/SignUp";
 import SignIn from "./SingIn/SignIn";
+import userInstance from "./Data/User"
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+    }
+
+
+
   render() {
     return (
         <div className="App">
           <header className="App-header">
                   <Searchbar/>
           </header>
-            <switch>
             <Route
                 exact path="/"
                 render={() => <Home/>}
             />
             <Route
                 path={"/SignUp"}
-                render={()=> <SignUp/>}
+                render={()=> <SignUp user={userInstance}/>}
             />
             <Route
                 path={"/SignIn"}
-                render={()=> <SignIn/>}
+                render={()=> <SignIn user={userInstance}/>}
             />
             <Route
                 path="/Details"
@@ -36,7 +44,6 @@ class App extends Component {
                 path={"/Discover"}
                 render={() => <Discover/>}
             />
-            </switch>
         </div>
     );
   }

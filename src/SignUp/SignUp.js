@@ -1,6 +1,5 @@
 import React from "react";
 import { Component } from "react";
-import firebase from "./../Firebase";
 
 class SignUp extends Component {
     constructor(props) {
@@ -10,16 +9,6 @@ class SignUp extends Component {
     }
 
 
-    registerUser(email,password){
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            console.log(errorCode);
-            var errorMessage = error.message;
-            console.log(errorMessage);
-            // ...
-        });
-    }
 
     updateEmail (evt){
         this.setState({
@@ -36,7 +25,7 @@ class SignUp extends Component {
             <div>
                 <input className={"releaseYear"} onChange={evt => this.updateEmail(evt)} />
                 <input className={"releaseYear"} onChange={evt => this.updatePass(evt)}/>
-                <button onClick={() => this.registerUser(this.state.email,this.state.pass)}> Submit</button>
+                <button onClick={() => console.log(this.props.user.doCreateUserWithEmailAndPassword(this.state.email,this.state.pass))}> Submit</button>
             </div>);
 
     }
