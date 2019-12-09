@@ -8,23 +8,22 @@ class User extends Observable {
         firebase.initializeApp(fireconf);
         firebase.analytics();
         firebase.auth();
-        this.user = 0;
+        this.user = null;
     }
 
 
     getUser(){
-        return firebase.auth().currentUser;
+
+        let user = firebase.auth().currentUser;
+        return user;
     }
 
     authListener() {
-       firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                console.log('user changed..', user);
-                this.user = user;
+       firebase.auth().onAuthStateChanged((hello) => {
+            if (hello) {
+                this.user = firebase.auth().currentUser;
 
             } else {
-                // No user is signed in.
-                console.log("NoUser");
                 this.user = null;
             }
         });
@@ -36,8 +35,8 @@ class User extends Observable {
             console.log('Signed Out');
         }, function(error) {
             console.error('Sign Out Error', error);
-
         });
+        this.authListener();
     }
 
     doSignInUserWithEmailAndPassword(email, password) {

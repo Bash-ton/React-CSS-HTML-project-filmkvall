@@ -19,7 +19,7 @@ class SignIn extends Component {
 
     update(){
         this.setState({
-            user: this.props.user
+            user: this.props.user.getUser()
         })
     }
 
@@ -36,17 +36,18 @@ class SignIn extends Component {
 
     render(){
         let sessionState = "";
-        if(this.state.user === 0){
-            sessionState =
-               (<div>
-                    <input className={"releaseYear"} onChange={evt => this.updateEmail(evt)} />
-                    <input className={"releaseYear"} onChange={evt => this.updatePass(evt)}/>
-                    <button onClick={() => this.props.user.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass)}> Login</button>
-                </div>);
+        if(this.state.user === null){
+                sessionState =
+                    (<div>
+                        <input className={"releaseYear"} onChange={evt => this.updateEmail(evt)} />
+                        <input className={"releaseYear"} onChange={evt => this.updatePass(evt)}/>
+                        <button onClick={() => this.props.user.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass)}> Login</button>
+                    </div>);
         }
         else{
+            debugger
             sessionState = (<p>You are logged in</p>)
-            console.log(this.state.user.getUser());
+            console.log(this.state.user);
         }
         return(<div>
                     {sessionState}
