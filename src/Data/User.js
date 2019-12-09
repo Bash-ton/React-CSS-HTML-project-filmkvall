@@ -8,23 +8,23 @@ class User extends Observable {
         firebase.initializeApp(fireconf);
         firebase.analytics();
         firebase.auth();
-        this.user = null;
+        this.user = this.getUser();
     }
 
 
     getUser(){
 
-        let user = firebase.auth().currentUser;
-        return user;
+        this.user = firebase.auth().currentUser;
+        return this.user;
     }
 
     authListener() {
-       firebase.auth().onAuthStateChanged((hello) => {
-            if (hello) {
+       firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
                 this.user = firebase.auth().currentUser;
 
             } else {
-                this.user = null;
+                console.log(user)
             }
         });
         this.notifyObservers();
