@@ -11,7 +11,7 @@ class Searchbar extends Component {
         // e.g. API data loading or error
         this.state = {
             title: "",
-            user: this.props.user.getUser(),
+            user: this.props.userModel.getUser(),
             type: "movie"
         }
     }
@@ -30,21 +30,22 @@ class Searchbar extends Component {
 
 
     componentDidMount() {
-        this.props.user.addObserver(this);
+        this.props.userModel.addObserver(this);
     }
 
     componentWillUnmount() {
-        this.props.user.removeObserver(this);
+        this.props.userModel.removeObserver(this);
     }
 
     update(){
         this.setState({
-            user: this.props.user.getUser()
+            user: this.props.userModel.getUser()
         })
     }
 
     render() {
         let userState = null;
+        debugger
         if(this.state.user === null){
             userState = (
                 <div className={"user-authentication"}>
@@ -60,9 +61,8 @@ class Searchbar extends Component {
         else{
             userState = (
                 <div className={"user-authentication"}>
-                    <button>SignOut</button>
+                    <button onClick={() => this.props.userModel.doSignOutUser()}>SignOut</button>
                 </div>
-
                 )
             }
 
