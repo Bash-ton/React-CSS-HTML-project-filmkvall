@@ -1,31 +1,60 @@
 import React from "react";
 import { Component } from "react";
-import * as firebase from "firebase";
 
-class SignUp extends Component {
+class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            user: this.props.user.getUser()
         };
     }
 
-    checkCredentials(email, password){
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            let errorCode = error.code;
-            let errorMessage = error.message;
-            // ...
+    componentDidMount() {
+        this.props.user.addObserver(this);
+    }
+
+    componentWillUnmount() {
+        this.props.user.removeObserver(this);
+    }
+
+    update(){
+        this.setState({
+            user: this.props.user.getUser()
+        })
+    }
+
+    updateEmail (evt){
+        this.setState({
+            email: evt.target.value
+        });
+    }
+    updatePass (evt){
+        this.setState({
+            pass: evt.target.value
         });
     }
 
-
     render(){
-        return(
-            <div>
-                Hello
-            </div>);
+        let sessionState = "";
+        if(this.state.user === null){
+                sessionState =
+                    (<div>
+                        <input className={"releaseYear"} onChange={evt => this.updateEmail(evt)} />
+                        <input className={"releaseYear"} onChange={evt => this.updatePass(evt)}/>
+                        <button onClick={() => this.props.user.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass)}> Login</button>
+                    </div>);
+        }
+        else{
+            debugger
+            sessionState = (<p>You are logged in</p>);
+            console.log(this.state.user);
+        }
+        return(<div>
+                    {sessionState}
+               </div>)
+
 
     }
 }
 
-export default SignUp;
+export default SignIn;

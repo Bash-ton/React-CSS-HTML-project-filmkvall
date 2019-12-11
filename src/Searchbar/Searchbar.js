@@ -11,6 +11,7 @@ class Searchbar extends Component {
         // e.g. API data loading or error
         this.state = {
             title: "",
+            user: this.props.user.getUser(),
             type: "movie"
         }
     }
@@ -27,7 +28,43 @@ class Searchbar extends Component {
         });
     }
 
+
+    componentDidMount() {
+        this.props.user.addObserver(this);
+    }
+
+    componentWillUnmount() {
+        this.props.user.removeObserver(this);
+    }
+
+    update(){
+        this.setState({
+            user: this.props.user.getUser()
+        })
+    }
+
     render() {
+        let userState = null;
+        if(this.state.user === null){
+            userState = (
+                <div className={"user-authentication"}>
+                    <Link to={"/SignIn"}>
+                        <button>SignIn</button>
+                    </Link>
+                    <Link to={"/SignUp"}>
+                        <button>SignUp</button>
+                    </Link>
+                </div>
+            )
+        }
+        else{
+            userState = (
+                <div className={"user-authentication"}>
+                    <button>SignOut</button>
+                </div>
+
+                )
+            }
 
         return (<div className={"search-body"}>
                 <img src={"../Logo_Filmkvall.png"}/>
@@ -39,13 +76,7 @@ class Searchbar extends Component {
                         <input className={"search-input"} placeholder={"Search Movie"} onChange={evt => this.updateTitle(evt)}/>
                         <SearchResult title={this.state.title} type={this.state.type}/>
                     </div>
-                    <div className={"login"}>
-                        <button>LogIn</button>
-                        <Link to={"/SignUp"}>
-                        <button>SignIn</button>
-                        </Link>
-                    </div>
-
+                    {userState}
                 </div>
                 );
 }
