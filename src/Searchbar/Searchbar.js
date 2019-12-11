@@ -28,7 +28,6 @@ class Searchbar extends Component {
         });
     }
 
-
     componentDidMount() {
         this.props.userModel.addObserver(this);
     }

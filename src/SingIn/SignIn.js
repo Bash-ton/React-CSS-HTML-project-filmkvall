@@ -35,6 +35,7 @@ class SignIn extends Component {
     }
 
     render(){
+        debugger
         let sessionState = "";
         if(this.state.user === null){
                 sessionState =
