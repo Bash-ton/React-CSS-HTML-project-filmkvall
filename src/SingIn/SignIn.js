@@ -5,7 +5,7 @@ class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.userModel.getUser()
+            user: this.props.userModel.getUser(),
         };
     }
 
@@ -35,7 +35,6 @@ class SignIn extends Component {
     }
 
     render(){
-        debugger
         let sessionState = "";
         if(this.state.user === null){
                 sessionState =

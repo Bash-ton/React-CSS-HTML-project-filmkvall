@@ -43,7 +43,6 @@ class Searchbar extends Component {
     }
 
     render() {
-        debugger
         let userState = null;
         if(this.state.user === null){
             userState = (
