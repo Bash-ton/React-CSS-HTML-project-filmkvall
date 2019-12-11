@@ -8,13 +8,17 @@ class UserModel extends Observable {
         firebase.initializeApp(fireconf);
         firebase.analytics();
         firebase.auth();
-        this.user = firebase.auth().currentUser;
+        this.user = this.setUser();
     }
 
+    setUser(){
+        this.user = firebase.auth().currentUser;
+        this.notifyObservers()
+    }
 
     getUser(){
-        this.user = firebase.auth().currentUser
         return this.user;
+
     }
 
     authListener() {
@@ -23,6 +27,7 @@ class UserModel extends Observable {
                 this.user = firebase.auth().currentUser;
                 this.notifyObservers();
             } else {
+                this.user = null;
                 this.notifyObservers();
             }
         });

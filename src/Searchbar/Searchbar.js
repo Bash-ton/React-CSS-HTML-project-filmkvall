@@ -28,7 +28,6 @@ class Searchbar extends Component {
         });
     }
 
-
     componentDidMount() {
         this.props.userModel.addObserver(this);
     }
@@ -44,8 +43,8 @@ class Searchbar extends Component {
     }
 
     render() {
-        let userState = null;
         debugger
+        let userState = null;
         if(this.state.user === null){
             userState = (
                 <div className={"user-authentication"}>
