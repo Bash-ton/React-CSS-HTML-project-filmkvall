@@ -8,7 +8,7 @@ import Searchbar from "./Searchbar/Searchbar";
 import SignUp from "./SignUp/SignUp";
 import SignIn from "./SingIn/SignIn";
 import MyPage from "./MyPage/MyPage";
-import userInstance from "./Data/User"
+import userInstance from "./Data/userModel"
 
 class App extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class App extends Component {
     return (
         <div className="App">
           <header className="App-header">
-                  <Searchbar user={userInstance}/>
+                  <Searchbar userModel={userInstance}/>
           </header>
             <Route
                 exact path="/"
@@ -31,11 +31,11 @@ class App extends Component {
             />
             <Route
                 path={"/SignUp"}
-                render={()=> <SignUp user={userInstance}/>}
+                render={()=> <SignUp userModel={userInstance}/>}
             />
             <Route
                 path={"/SignIn"}
-                render={()=> <SignIn user={userInstance}/>}
+                render={()=> <SignIn userModel={userInstance}/>}
             />
             <Route
                 path="/Details"

@@ -5,10 +5,24 @@ class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            user: this.props.userModel.getUser()
         };
     }
 
 
+    componentDidMount() {
+        this.props.userModel.addObserver(this);
+    }
+
+    componentWillUnmount() {
+        this.props.userModel.removeObserver(this);
+    }
+
+    update(){
+        this.setState({
+            user: this.props.userModel.getUser()
+        })
+    }
 
     updateEmail (evt){
         this.setState({
@@ -21,12 +35,27 @@ class SignUp extends Component {
         });
     }
     render(){
+        let session = null;
+        if(this.state.user === null){
+            session =
+                (<div>
+                    <input className={"releaseYear"} onChange={evt => this.updateEmail(evt)} />
+                    <input className={"releaseYear"} onChange={evt => this.updatePass(evt)}/>
+                    <button onClick={() => this.props.userModel.doCreateUserWithEmailAndPassword(this.state.email,this.state.pass)}> Submit</button>
+                </div>)
+        }
+        else{
+            session =
+                (<div>
+                    <p>You are already logged in</p>
+                </div>)
+        }
         return(
             <div>
-                <input className={"releaseYear"} onChange={evt => this.updateEmail(evt)} />
-                <input className={"releaseYear"} onChange={evt => this.updatePass(evt)}/>
-                <button onClick={() => console.log(this.props.user.doCreateUserWithEmailAndPassword(this.state.email,this.state.pass))}> Submit</button>
-            </div>);
+                {session}
+            </div>
+
+            );
 
     }
 }

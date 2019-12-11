@@ -5,21 +5,21 @@ class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user.getUser()
+            user: this.props.userModel.getUser()
         };
     }
 
     componentDidMount() {
-        this.props.user.addObserver(this);
+        this.props.userModel.addObserver(this);
     }
 
     componentWillUnmount() {
-        this.props.user.removeObserver(this);
+        this.props.userModel.removeObserver(this);
     }
 
     update(){
         this.setState({
-            user: this.props.user.getUser()
+            user: this.props.userModel.getUser()
         })
     }
 
@@ -41,7 +41,7 @@ class SignIn extends Component {
                     (<div>
                         <input className={"releaseYear"} onChange={evt => this.updateEmail(evt)} />
                         <input className={"releaseYear"} onChange={evt => this.updatePass(evt)}/>
-                        <button onClick={() => this.props.user.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass)}> Login</button>
+                        <button onClick={() => this.props.userModel.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass)}> Login</button>
                     </div>);
         }
         else{
