@@ -28,3 +28,7 @@ yarn-error.log*
 firebase-debug.log
 .idea/workspace.xml
 .firebase
+.idea/workspace.xml
+*.cache
+*.xml
+.idea/workspace.xml
