@@ -40,11 +40,13 @@ class Searchbar extends Component {
     update(){
         this.setState({
             user: this.props.user.getUser()
-        })
+        });
+        console.log(this.state.user)
     }
 
     render() {
         let userState = null;
+        console.log(this.state.user);
         if(this.state.user === null){
             userState = (
                 <div className={"user-authentication"}>
@@ -60,27 +62,34 @@ class Searchbar extends Component {
         else{
             userState = (
                 <div className={"user-authentication"}>
-                    <button>SignOut</button>
+                    <Link to={"/MyPage"}>
+                        <button>MyPage</button>
+                    </Link>
+                    <button onClick={this.props.user.doSignOutUser()}>SignOut</button>
+
                 </div>
 
                 )
             }
 
-        return (<div className={"search-body"}>
+        return (
+            <div className={"search-body"}>
                 <Link to={"/"}>
                     <img src={"../Logo_2.png"}/>
                 </Link>
-                    <div className={"search-field"}>
-                        <select id={"search-select-type"} onChange={evt => this.updateType(evt)}>
-                            <option value={"movie"}>Movie</option>
-                            <option value={"tv"}>Tv-Series</option>
-                        </select>
-                        <input className={"search-input"} placeholder={"Search Movie"} onChange={evt => this.updateTitle(evt)}/>
-                        <SearchResult title={this.state.title} type={this.state.type}/>
-                    </div>
+                <div className={"search-field"}>
+                    <select id={"search-select-type"} onChange={evt => this.updateType(evt)}>
+                        <option value={"movie"}>Movie</option>
+                        <option value={"tv"}>Tv-Series</option>
+                    </select>
+                    <input className={"search-input"} placeholder={"Search Movie"} onChange={evt => this.updateTitle(evt)}/>
+                    <SearchResult title={this.state.title} type={this.state.type}/>
+                </div>
+                <div>
                     {userState}
                 </div>
-                );
+            </div>
+        );
 }
 }
 

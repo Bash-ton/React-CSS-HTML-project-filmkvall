@@ -7,6 +7,7 @@ import "./App.css";
 import Searchbar from "./Searchbar/Searchbar";
 import SignUp from "./SignUp/SignUp";
 import SignIn from "./SingIn/SignIn";
+import MyPage from "./MyPage/MyPage";
 import userInstance from "./Data/User"
 
 class App extends Component {
@@ -43,6 +44,10 @@ class App extends Component {
             <Route
                 path={"/Discover"}
                 render={() => <Discover/>}
+            />
+            <Route
+                path={"/MyPage"}
+                render={() => <MyPage user={userInstance}/>}
             />
         </div>
     );

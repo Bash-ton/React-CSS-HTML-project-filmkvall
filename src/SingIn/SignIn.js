@@ -45,7 +45,6 @@ class SignIn extends Component {
                     </div>);
         }
         else{
-            debugger
             sessionState = (<p>You are logged in</p>);
             console.log(this.state.user);
         }
