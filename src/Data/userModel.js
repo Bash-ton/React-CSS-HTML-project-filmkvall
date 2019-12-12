@@ -12,13 +12,11 @@ class UserModel extends Observable {
     }
 
     setUser(){
-        this.user = firebase.auth().currentUser;
-        this.notifyObservers()
+        this.authListener();
     }
 
     getUser(){
         return this.user;
-
     }
 
     authListener() {
