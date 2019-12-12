@@ -22,8 +22,20 @@ class UserModel extends Observable {
     authListener() {
        firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                this.user = firebase.auth().currentUser;
-                this.notifyObservers();
+                if(user.emailVerified){
+                    this.user = firebase.auth().currentUser;
+                    this.notifyObservers();
+                }
+                else{
+                    console.log(user.email);
+                    alert("Email is not verified");
+                    user.sendEmailVerification().then(function() {
+                        // Email sent.
+                        console.log("Email Sent")
+                    }).catch(function(error) {
+                        // An error happened.
+                    });
+                }
             } else {
                 this.user = null;
                 this.notifyObservers();
@@ -43,40 +55,31 @@ class UserModel extends Observable {
     doSignInUserWithEmailAndPassword(email, password) {
         firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
             // ...
         });
 
         this.authListener();
     }
-    doSendAuthenticationToEmail(){
-        this.user.sendEmailVerification().then(function() {
-            // Email sent.
-        }).catch(function(error) {
-            // An error happened.
-        });
-    }
 
     doCreateUserWithEmailAndPassword(email, password){
         firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            if (errorCode == 'auth/weak-password') {
+            let errorCode = error.code;
+            if (errorCode === 'auth/weak-password') {
                 alert('The password is too weak.');
-            } else if(errorCode == 'auth/invalid-email') {
+            } else if(errorCode === 'auth/invalid-email') {
                 alert("Invalid email");
             }
-            else if(errorCode == 'auth/operation-not-allowed') {
+            else if(errorCode === 'auth/operation-not-allowed') {
                 alert("The service is not available, please try again later");
             }
-            else if(errorCode == 'auth/email-already-in-use') {
+            else if(errorCode === 'auth/email-already-in-use') {
                 alert("The email is already in use \n If you have forgotten your password you can reset it please check the link below");
             }
             // ...
-        });
+        })
     }
+
 
 
 }
