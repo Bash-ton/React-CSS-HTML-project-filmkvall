@@ -24,6 +24,6 @@
 .search-result-body{
     position: absolute;
     background: #403e3f;
-    width: 60%;
+    width: 50%;
     z-index: 1;
 }
