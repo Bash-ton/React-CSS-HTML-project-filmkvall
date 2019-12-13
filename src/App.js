@@ -8,6 +8,7 @@ import Searchbar from "./Searchbar/Searchbar";
 import SignUp from "./SignUp/SignUp";
 import SignIn from "./SignIn/SignIn";
 import MyPage from "./MyPage/MyPage";
+import ResetPassword from "./ResetPassword/ResetPassword";
 import userInstance from "./Data/userModel"
 
 class App extends Component {
@@ -36,6 +37,10 @@ class App extends Component {
             <Route
                 path={"/SignIn"}
                 render={()=> <SignIn userModel={userInstance}/>}
+            />
+            <Route
+                path={"/ResetPassword"}
+                render={()=> <ResetPassword userModel={userInstance}/>}
             />
             <Route
                 path="/Details"

@@ -66,29 +66,28 @@ class SearchResult extends Component {
                 switch (this.props.type) {
                     case "movie":
                         searchResults = this.state.movie.results.slice(0,3).map(movie =>(
-                            <Link to={"/Details/?movie&"+movie.id}>
-                                <div className={"search-result"}>
-                                    <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}/>
-                                    <div className={"search-title"}>
-                                        <p>{movie.title}</p>
-                                        <p>{movie.release_date}</p>
-                                    </div>
+                            <Link className={"search-result-link"} to={"/Details/?movie&" + movie.id}>
+                            <div className={"search-result"}>
+                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}/>
+                                <div className={"search-title"}>
+                                    <p>{movie.title}</p>
+                                    <p>{movie.release_date}</p>
                                 </div>
+                            </div>
                             </Link>)
                         );
                     break;
                     case "tv":
                         searchResults = this.state.movie.results.slice(0,3).map(tv =>(
-                            <Link to={"/Details/?tv&"+tv.id}>
-                                <div className={"search-result"}>
-                                    <img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path}/>
-                                    <div className={"search-title"}>
-                                        <p>{tv.name}</p>
-                                        <p>{tv.first_air_date}</p>
-                                    </div>
+                            <Link to ={"/Details/?tv&" + tv.id}>
+                            <div className={"search-result"}>
+                                <img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path}/>
+                                <div className={"search-title"}>
+                                    <p>{tv.name}</p>
+                                    <p>{tv.first_air_date}</p>
                                 </div>
-                            </Link>
-                            )
+                            </div>
+                            </Link>)
                         );
                 }
 

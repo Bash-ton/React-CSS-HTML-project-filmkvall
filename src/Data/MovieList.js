@@ -1,11 +1,11 @@
 import React from 'react'
+import Observable from "./Observable";
 
-class MovieList extends ObservableModel {
+class MovieList extends Observable {
     constructor(){
         super();
         this._list = [];
     }
-
 
     getFullList() {
         return this._list;
@@ -19,7 +19,7 @@ class MovieList extends ObservableModel {
         this._list.splice(temp,1);
     }
     getAvrageRating(movie){
-       let avrage = (this._list.map(movie => movie.vote_average).reduce((a,b) => a + b))/this._list.length
-        return avrage.toFixed(2);
+       let average = (this._list.map(movie => movie.vote_average).reduce((a,b) => a + b))/this._list.length
+       return average.toFixed(2);
     }
 }

@@ -8,7 +8,8 @@ class UserModel extends Observable {
         firebase.initializeApp(fireconf);
         firebase.analytics();
         firebase.auth();
-        this.user = this.setUser();
+        this.user = null;
+        this.setUser();
     }
 
     setUser(){
@@ -22,21 +23,17 @@ class UserModel extends Observable {
     authListener() {
        firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                if(user.emailVerified){
+                //if(user.emailVerified){
                     this.user = firebase.auth().currentUser;
                     this.notifyObservers();
                 }
-                else{
-                    console.log(user.email);
-                    alert("Email is not verified");
-                    user.sendEmailVerification().then(function() {
-                        // Email sent.
-                        console.log("Email Sent")
-                    }).catch(function(error) {
-                        // An error happened.
-                    });
+                /*else{
+                    user.sendEmailVerification(); //Send email verification
+                    alert("PleaseVerifyYourEmail") //Show success message
                 }
-            } else {
+            }*/
+            else {
+                console.log("Signed Out")
                 this.user = null;
                 this.notifyObservers();
             }
@@ -62,7 +59,14 @@ class UserModel extends Observable {
     }
 
     doCreateUserWithEmailAndPassword(email, password){
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((user)=> {
+                //Login is triggered --> line 4 in app.js
+                user.sendEmailVerification(); //Send email verification
+                alert("Please Verify Your Email"); //Show success message
+                firebase.auth().signOut(); //Logout is triggered --> line 16 in app.js
+            })
+            .catch(function(error) {
             // Handle Errors here.
             let errorCode = error.code;
             if (errorCode === 'auth/weak-password') {
@@ -80,7 +84,13 @@ class UserModel extends Observable {
         })
     }
 
-
+    doResetPassword(email){
+        firebase.auth().sendPasswordResetEmail(email).then(function() {
+            // Email sent.
+        }).catch(function(error) {
+            // An error happened.
+        });
+    }
 
 }
 const userInstance = new UserModel();
