@@ -7,8 +7,34 @@
     min-height: 20px;
     color: red;
     border: none;
-
 }
+
+.search-buttons{
+    margin: auto;
+}
+
+.nav-button {
+    background-color:#780202;
+    border-radius:25px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Trebuchet MS;
+    font-size:17px;
+    padding:10px 30px;
+    text-decoration:none;
+    border: none;
+}
+.nav-button:hover {
+    background-color:#fff305;
+}
+.nav-button:active {
+    position:relative;
+    top:1px;
+}
+
+
+
 .search-field{
     align-self: center;
 }

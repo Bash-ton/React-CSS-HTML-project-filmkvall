@@ -48,10 +48,10 @@ class Searchbar extends Component {
             userState = (
                 <div className={"user-authentication"}>
                     <Link to={"/SignIn"}>
-                        <button>SignIn</button>
+                        <button className={"nav-button"}>SignIn</button>
                     </Link>
                     <Link to={"/SignUp"}>
-                        <button>SignUp</button>
+                        <button className={"nav-button"}>SignUp</button>
                     </Link>
                 </div>
             )
@@ -60,9 +60,9 @@ class Searchbar extends Component {
             userState = (
                 <div className={"user-authentication"}>
                     <Link to={"/MyPage"}>
-                        <button>MyPage</button>
+                        <button className={"nav-button"}>MyPage</button>
                     </Link>
-                    <button onClick={() => this.props.userModel.doSignOutUser()}>SignOut</button>
+                    <button className={"nav-button"} onClick={() => this.props.userModel.doSignOutUser()}>SignOut</button>
                 </div>
                 )
             }
@@ -80,7 +80,7 @@ class Searchbar extends Component {
                     <input className={"search-input"} placeholder={"Search Movie"} onChange={evt => this.updateTitle(evt)}/>
                     <SearchResult title={this.state.title} type={this.state.type}/>
                 </div>
-                <div>
+                <div className={"search-buttons"}>
                     {userState}
                 </div>
             </div>
