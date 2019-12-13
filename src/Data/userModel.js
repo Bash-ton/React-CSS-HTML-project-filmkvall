@@ -30,13 +30,14 @@ class UserModel extends Observable {
                 }
                 else{
                     console.log(user.email);
-                    alert("Email is not verified");
+                    alert("A verification link has been sent to your email. \n Please click the link to verify your email. Without it you wont be able to log in ");
                     user.sendEmailVerification().then(function() {
                         // Email sent.
                         console.log("Email Sent")
                     }).catch(function(error) {
                         // An error happened.
                     });
+                    this.doSignOutUser();
                 }
             } else {
                 this.user = null;
