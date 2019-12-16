@@ -35,7 +35,6 @@ class UserModel extends Observable {
                 }
             }
             else {
-                console.log("Signed Out")
                 this.user = null;
                 this.notifyObservers();
             }

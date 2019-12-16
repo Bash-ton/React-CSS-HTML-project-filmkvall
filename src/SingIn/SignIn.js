@@ -43,12 +43,12 @@ class SignIn extends Component {
                 sessionState =
                     (<div>
                         <div>
-                            <input className={"email-input"} onChange={evt => this.updateEmail(evt)} />
-                            <input className={"password-input"} onChange={evt => this.updatePass(evt)}/>
+                            <input placeholder={"Email..."} className={"email-input"} onChange={evt => this.updateEmail(evt)} />
+                            <input placeholder={"Password..."} className={"password-input"} onChange={evt => this.updatePass(evt)}/>
                             <button onClick={() => this.props.userModel.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass)}> Login</button>
                         </div>
                         <div>
-                            <Link to={"/ResetPassword"}>
+                        <Link to={"/ResetPassword"}>
                                 reset password
                             </Link>
                         </div>

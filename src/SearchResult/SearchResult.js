@@ -21,14 +21,10 @@ class SearchResult extends Component {
         }
     }
 
-    componentDidMount() {
-        this.getPicture();
-    }
-
     getPicture(){
         if(this.props.title !== ""){
             let debounceCall = _.debounce(() => {
-                model.getInfoByTitle(this.props.title,this.props.type).then(mov => {
+                    model.getInfoByTitle(this.props.title,this.props.type).then(mov => {
                     this.setState(
                         {
                             status: "loaded",
@@ -53,6 +49,10 @@ class SearchResult extends Component {
         }
     }
 
+    hideResults(){
+        document.getElementById("search-result-given").style.display = "none";
+    }
+
     render() {
         let searchResults = null;
         switch (this.state.status) {
@@ -67,7 +67,7 @@ class SearchResult extends Component {
                     case "movie":
                         searchResults = this.state.movie.results.slice(0,3).map(movie =>(
                             <Link className={"search-result-link"} to={"/Details/?movie&" + movie.id}>
-                            <div className={"search-result"}>
+                            <div className={"search-result"} onClick={() => this.hideResults()}>
                                 <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}/>
                                 <div className={"search-title"}>
                                     <p>{movie.title}</p>
@@ -79,7 +79,7 @@ class SearchResult extends Component {
                     break;
                     case "tv":
                         searchResults = this.state.movie.results.slice(0,3).map(tv =>(
-                            <Link to ={"/Details/?tv&" + tv.id}>
+                            <Link to ={"/Details/?tv&" + tv.id} onClick={() => this.hideResults()}>
                             <div className={"search-result"}>
                                 <img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path}/>
                                 <div className={"search-title"}>

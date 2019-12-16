@@ -13,6 +13,10 @@
     margin: auto;
 }
 
+#search-result-given{
+    display: none;
+}
+
 .nav-button {
     background-color:#780202;
     border-radius:25px;

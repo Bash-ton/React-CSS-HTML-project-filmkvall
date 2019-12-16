@@ -7,7 +7,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
 
+.email-input{
+  border: none;
+  font-size: 17px;
+  background-color:#780202;
+  display:inline-block;
+  color: white;
 }
 
 .App-link {

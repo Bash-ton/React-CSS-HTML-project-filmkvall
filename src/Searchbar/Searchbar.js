@@ -30,10 +30,20 @@ class Searchbar extends Component {
 
     componentDidMount() {
         this.props.userModel.addObserver(this);
+        document.addEventListener("click", this.handelClick,false)
     }
 
     componentWillUnmount() {
         this.props.userModel.removeObserver(this);
+        document.removeEventListener("click", this.handelClick,false)
+    }
+
+    handelClick = (e)=> {
+        if(this.node.contains(e.target)){
+            document.getElementById("search-result-given").style.display = "block"
+            return;
+        }
+        document.getElementById("search-result-given").style.display = "none";
     }
 
     update(){
@@ -47,7 +57,7 @@ class Searchbar extends Component {
         if(this.state.user === null){
             userState = (
                 <div className={"user-authentication"}>
-                    <Link to={"/SignIn"}>
+                    <Link to={"/SignIn"} >
                         <button className={"nav-button"}>SignIn</button>
                     </Link>
                     <Link to={"/SignUp"}>
@@ -77,8 +87,12 @@ class Searchbar extends Component {
                         <option value={"movie"}>Movie</option>
                         <option value={"tv"}>Tv-Series</option>
                     </select>
-                    <input className={"search-input"} placeholder={"Search Movie"} onChange={evt => this.updateTitle(evt)}/>
-                    <SearchResult title={this.state.title} type={this.state.type}/>
+                    <div ref={node => this.node = node}>
+                        <input className={"search-input"} placeholder={"Search Movie"} onChange={evt => this.updateTitle(evt)}/>
+                        <div id={"search-result-given"}>
+                            <SearchResult title={this.state.title} type={this.state.type}/>
+                        </div>
+                    </div>
                 </div>
                 <div className={"search-buttons"}>
                     {userState}
