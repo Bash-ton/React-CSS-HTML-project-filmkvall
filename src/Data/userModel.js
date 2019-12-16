@@ -23,15 +23,15 @@ class UserModel extends Observable {
     authListener() {
        firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                //if(user.emailVerified){
+                if(user.emailVerified){
                     this.user = firebase.auth().currentUser;
                     this.notifyObservers();
                 }
-                /*else{
+                else{
                     user.sendEmailVerification(); //Send email verification
                     alert("PleaseVerifyYourEmail") //Show success message
                 }
-            }*/
+            }
             else {
                 this.user = null;
                 this.notifyObservers();
@@ -55,13 +55,14 @@ class UserModel extends Observable {
         });
 
         this.authListener();
-    }
+	}
+
 
     doCreateUserWithEmailAndPassword(email, password){
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then((user)=> {
                 //Login is triggered --> line 4 in app.js
-                user.sendEmailVerification(); //Send email verification
+				user.sendEmailVerification(); //Send email verification
                 alert("Please Verify Your Email"); //Show success message
                 firebase.auth().signOut(); //Logout is triggered --> line 16 in app.js
             })

@@ -23,3 +23,13 @@ class MovieList extends Observable {
        return average.toFixed(2);
     }
 }
+
+
+export const watchedMovies = new MovieList();
+export const watchedSeries = new MovieList();
+export const wantMovies = new MovieList();
+export const wantSeries = new MovieList();
+
+
+
+

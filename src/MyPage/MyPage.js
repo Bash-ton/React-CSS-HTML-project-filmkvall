@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./MyPage.css"
 
+import ListContainer  from "../WatchList/listContainer";
+
 class MyPage extends Component {
     constructor(props) {
         super(props);
@@ -54,7 +56,8 @@ class MyPage extends Component {
 
         return(
             <div>
-                {user}
+				{user}
+				<ListContainer/>
             </div>
         );
     }

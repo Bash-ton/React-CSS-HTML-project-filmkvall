@@ -41,7 +41,7 @@ class SignUp extends Component {
                 (<div>
                     <input placeholder={"Email..."} className={"email-input"} onChange={evt => this.updateEmail(evt)} />
                     <input className={"Password..."} className={"password-input"} onChange={evt => this.updatePass(evt)}/>
-                    <button onClick={() => this.props.userModel.doCreateUserWithEmailAndPassword(this.state.email,this.state.pass)}> Submit</button>
+				<button onClick={() => this.props.userModel.doCreateUserWithEmailAndPassword(this.state.email, this.state.pass)}> Submit</button>
                 </div>)
         }
         else{

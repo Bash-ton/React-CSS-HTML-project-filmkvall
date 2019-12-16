@@ -3,6 +3,13 @@ import "./Details.css";
 import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
 
+//import list instances
+import { watchedMovies } from "../Data/MovieList";
+import { watchedSeries } from "../Data/MovieList";
+import { wantMovies } from "../Data/MovieList";
+import { wantSeries } from "../Data/MovieList";
+
+
 class Details extends Component {
 
     constructor(props) {
@@ -55,6 +62,40 @@ class Details extends Component {
     )
 })
 }
+	
+	addToList = (event) => {
+		switch (event.target.id) {
+			case "watch":
+				switch (this.state.type) {
+					case "tv":
+						wantSeries.addToList(this.state.movie);
+						console.log("watch tv");
+						break;
+					default://movie
+						wantMovies.addToList(this.state.movie);
+						console.log("watch movie");
+						//console.log(wantMovies.getFullList());
+						break;
+				}
+				break;
+			case "history":
+				switch (this.state.type) {
+					case "tv":
+						watchedSeries.addToList(this.state.movie);
+						console.log("hist tv");
+						break;
+					default://movie
+						watchedMovies.addToList(this.state.movie);
+						console.log("hist movie");
+						break;
+				}
+				break;
+			default:
+				break;
+
+		}
+
+	}
 
 //todo inforamtion to add: cast, title,poster,synopsis,release_date,rating,similar_movies,original_lang,Budget,runtime,tagline
     render(){
@@ -72,7 +113,9 @@ class Details extends Component {
                 movie = <div><img src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
                 <h1>{name}</h1>
                 <p>{this.state.movie.overview}</p>
-                <p> </p>
+					<p> </p>
+					<button onClick={this.addToList} id={"watch"}>Add to watchList</button>
+					<button onClick={this.addToList} id={"history"}>Add to already watched list</button>
                 </div>;
                 break;
         }
