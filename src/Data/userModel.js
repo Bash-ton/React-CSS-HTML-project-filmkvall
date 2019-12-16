@@ -13,27 +13,25 @@ class UserModel extends Observable {
     }
 
     setUser(){
-        this.user = firebase.auth().currentUser
-        this.notifyObservers()
+        this.authListener();
     }
 
     getUser(){
         return this.user;
-
     }
 
     authListener() {
        firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                if(user.emailVerified){
+                //if(user.emailVerified){
                     this.user = firebase.auth().currentUser;
                     this.notifyObservers();
                 }
-                else{
+                /*else{
                     user.sendEmailVerification(); //Send email verification
                     alert("PleaseVerifyYourEmail") //Show success message
                 }
-            }
+            }*/
             else {
                 this.user = null;
                 this.notifyObservers();

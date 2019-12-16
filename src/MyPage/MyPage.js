@@ -28,25 +28,28 @@ class MyPage extends Component {
         let profileImg = null;
 
 
-        if (this.state.user === null){
-           user = <p>Please login</p>
-        }
-        else{
-
+         switch(this.state.user){
+             case null:
+                user = <p>Please login</p>;
+                break;
+             case undefined:
+                 user = <p>Loading</p>;
+                 break;
+             default:
                 if (this.state.user.photoURL === null) {
                 profileImg = "../Logo_Filmkvall.png"
                     user = <div className={"profilePic"}>
                         <img src={profileImg}/>
                         <p>{this.state.user.email}</p>
                     </div>
-            }
+                }
                 else{
                 profileImg = this.state.user.photoURL
-
-            user = <div className={"profilePic"}>
+                 user = <div className={"profilePic"}>
                 <img src={profileImg}/>
                 <p>{this.state.user.email}</p>
             </div>}
+                break;
         }
 
         return(
@@ -55,8 +58,6 @@ class MyPage extends Component {
             </div>
         );
     }
-
-
 }
 
 export default MyPage;

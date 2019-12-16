@@ -21,6 +21,7 @@ class Details extends Component {
         this.getMovie();
         this.getCredits();
     }
+
     getCredits(){
         model.getCreditsById(this.state.type,this.state.id).then(obj =>{
             console.log(obj);
@@ -29,6 +30,7 @@ class Details extends Component {
                     cast: obj
                 }
             )
+            this.forceUpdate();
         })
     .catch(() => {
     this.setState(
@@ -44,7 +46,8 @@ class Details extends Component {
                     movie: obj,
                     status:"Loaded"
                 }
-            )
+            );
+            this.forceUpdate();
         })
 .catch(() => {
     this.setState(

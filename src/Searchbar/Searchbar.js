@@ -94,6 +94,7 @@ class Searchbar extends Component {
                         </div>
                     </div>
                 </div>
+
                 <div className={"search-buttons"}>
                     {userState}
                 </div>

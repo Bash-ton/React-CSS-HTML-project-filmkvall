@@ -6,7 +6,7 @@ import Discover from "./Discover/Discover";
 import "./App.css";
 import Searchbar from "./Searchbar/Searchbar";
 import SignUp from "./SignUp/SignUp";
-import SignIn from "./SingIn/SignIn";
+import SignIn from "./SignIn/SignIn";
 import MyPage from "./MyPage/MyPage";
 import ResetPassword from "./ResetPassword/ResetPassword";
 import userInstance from "./Data/userModel"

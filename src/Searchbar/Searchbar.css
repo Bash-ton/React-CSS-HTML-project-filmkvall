@@ -47,8 +47,8 @@
     display: grid;
     grid-template-columns: 25% 50% 25%;
 }
-.SignIn{
-    justify-self: center;
+.accountBtn{
+    align-self: center;
     justify-self: right;
 }
 
