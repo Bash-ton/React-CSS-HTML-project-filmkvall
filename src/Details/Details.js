@@ -28,17 +28,18 @@ class Details extends Component {
             let searchId = window.location.href;
             let urlSplit = searchId.split("?");
             let typeAndId = urlSplit[1].split("&");
-            this.setState( {
+            this.setState({
                 url: searchId,
                 status: "Loading",
                 type: typeAndId[0],
                 id: typeAndId[1]
+            },()=>{
+                this.getMovie()
+                this.getCredits()
             });
-            this.getMovie();
-            this.getCredits();
-            this.forceUpdate();
         }
     }
+
 
     getCredits(){
         model.getCreditsById(this.state.type,this.state.id).then(obj =>{

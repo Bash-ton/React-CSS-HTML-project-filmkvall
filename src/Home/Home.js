@@ -56,13 +56,13 @@ class Home extends Component {
                 trendingListSerie = <em>Loading...</em>;
                 break;
             case "Loaded":
-                trendingListMovie = this.state.trendingMovie.results.splice(0,4).map(movie =>(
+                trendingListMovie = this.state.trendingMovie.results.slice(0,4).map(movie =>(
                     <Link to={"/Details/?movie&" + movie.id}>
                         <img className="image" src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}/>
                     </Link>
                     )
                 )
-                trendingListSerie = this.state.trendingSerie.results.splice(0,4).map(serie =>(
+                trendingListSerie = this.state.trendingSerie.results.slice(0,4).map(serie =>(
                         <Link to ={"/Details/?tv&" + serie.id}>
                             <img className="image" src={"https://image.tmdb.org/t/p/w500" + serie.poster_path}/>
                         </Link>
