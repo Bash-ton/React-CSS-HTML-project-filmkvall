@@ -20,7 +20,6 @@ class Details extends Component {
     }
     componentDidMount() {
         this.getMovie();
-        this.getCredits();
     }
 
     componentDidUpdate() {
@@ -35,33 +34,15 @@ class Details extends Component {
                 id: typeAndId[1]
             },()=>{
                 this.getMovie()
-                this.getCredits()
             });
         }
-    }
-
-
-    getCredits(){
-        model.getCreditsById(this.state.type,this.state.id).then(obj =>{
-            this.setState(
-                {
-                    cast: obj
-                }
-            )
-        })
-    .catch(() => {
-    this.setState(
-        {status:"error"}
-    )}
-    )
     }
 
     getMovie(){
         model.getDetailsById(this.state.type,this.state.id).then(obj =>{
             this.setState(
                 {
-                    movie: obj,
-                    status:"Loaded"
+                    movie: obj
                 }
             );
         })
@@ -69,26 +50,48 @@ class Details extends Component {
     this.setState(
         {status:"error"}
     )
-})
+}).then(()=> model.getCreditsById(this.state.type,this.state.id)).then(obj =>{
+            this.setState(
+                {
+                    cast: obj,
+                    status:"Loaded"
+                }
+            )
+        })
+            .catch(() => {
+                this.setState(
+                    {status:"error"}
+                )}
+            )
 }
 
 //todo inforamtion to add: cast, title,poster,synopsis,release_date,rating,similar_movies,original_lang,Budget,runtime,tagline
     render(){
         let name = null;
         let movie = null;
+        let cast = null;
         switch (this.state.status) {
             case("Loading"):
                 movie = <em>Loading...</em>;
             break;
             case("Loaded"):
+                console.log(this.state);
                 if (this.state.type === "tv")
                     name = this.state.movie.name;
                 else
                     name = this.state.movie.title;
-                movie = <div><img src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
-                <h1>{name}</h1>
-                <p>{this.state.movie.overview}</p>
-                <p> </p>
+                cast = this.state.cast.cast.map(actors =>(<li>
+                    {actors.name} : {actors.character}
+                </li>));
+                movie = <div>
+                    <img src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
+                    <h1>{name}</h1>
+                    <p>{this.state.movie.overview}</p>
+                    <p> First released: {this.state.movie.release_date}</p>
+                    <p>original language:{this.state.movie.original_language}</p>
+                    <p>Budget: {this.state.movie.budget}usd</p>
+                    <p>Runtime: {this.state.movie.runtime}min</p>
+                    <p>tagline: {this.state.movie.tagline}</p>
                 </div>;
                 break;
         }
@@ -97,6 +100,7 @@ class Details extends Component {
         return(
             <div>
                 {movie}
+                {cast}
             </div>
         )
     }

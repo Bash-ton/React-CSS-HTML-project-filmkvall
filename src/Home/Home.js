@@ -11,11 +11,10 @@ class Home extends Component {
         };
     }
     componentDidMount() {
-        this.getMov();
-        this.getSer();
+        this.getTrending();
     }
 
-    getMov(){
+    getTrending(){
         model.getTrendingMovie().then(obj => {
             this.setState(
                 {
@@ -27,11 +26,7 @@ class Home extends Component {
                 this.setState(
                     {status:"error"}
                 )
-            })
-    }
-
-    getSer(){
-        model.getTrendingSeries().then(obj => {
+            }).then(()=>model.getTrendingSeries()).then(obj => {
             this.setState(
                 {
                     trendingSerie: obj,
@@ -45,7 +40,6 @@ class Home extends Component {
                 )
             });
     }
-
 
     render() {
         let trendingListMovie = null;
@@ -66,7 +60,6 @@ class Home extends Component {
                         <Link to ={"/Details/?tv&" + serie.id}>
                             <img className="image" src={"https://image.tmdb.org/t/p/w500" + serie.poster_path}/>
                         </Link>
-
                     )
                 )
         }
