@@ -54,6 +54,17 @@ class Details extends Component {
             this.setState(
                 {
                     cast: obj,
+                }
+            )
+        })
+            .catch(() => {
+                this.setState(
+                    {status:"error"}
+                )}
+            ).then(()=> model.getSimilar(this.state.type,this.state.id)).then(obj =>{
+            this.setState(
+                {
+                    similar: obj,
                     status:"Loaded"
                 }
             )
@@ -65,7 +76,7 @@ class Details extends Component {
             )
 }
 
-//todo inforamtion to add: cast, title,poster,synopsis,release_date,rating,similar_movies,original_lang,Budget,runtime,tagline
+//todo inforamtion to add: rating
     render(){
         let name = null;
         let movie = null;
@@ -75,6 +86,7 @@ class Details extends Component {
         let runtime = null;
         let firstrelease = null;
         let language = null;
+        let like = null;
         switch (this.state.status) {
             case("Loading"):
                 movie = <em>Loading...</em>;
@@ -97,7 +109,7 @@ class Details extends Component {
                     if(this.state.movie.tagline === "")
                         tagline = null;
                     else
-                        tagline = this.state.movie.tagline;
+                        tagline = '"' + this.state.movie.tagline + '"';
                     runtime = "Runtime: " + this.state.movie.runtime + "min";
                     firstrelease = "First released: " + this.state.movie.release_date;
                 }
@@ -119,6 +131,10 @@ class Details extends Component {
                         language = "Portuguese";
                         break;
                 }
+                like = this.state.similar.results.slice(0,4).map(movies =>(<Link to={"/Details/?" + this.state.type + "&" + movies.id}>
+                    <img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path}/>
+                    <p>{movies.name}</p>
+                </Link>));
                 movie = <div className={"Details"}>
                     <img  className={"item1"} src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
                     <h1 className={"item2"}>{name}</h1>
@@ -130,6 +146,7 @@ class Details extends Component {
                     <p className={"item8"}>{tagline}</p>
                     <h2 className={"item10"}>Cast</h2>
                     <div className={"item9"}><div>{cast}</div></div>
+                    <div className={"item11"}>{like}</div>
                 </div>;
                 break;
         }

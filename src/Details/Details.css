@@ -1,7 +1,7 @@
 .Details{
     margin-top: 1em;
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 33% 33% 34%;
     grid-template-areas:
     'picture title title'
     'picture syno syno'
@@ -10,6 +10,7 @@
     'picture lang price'
     'cast-title cast-title cast-title'
     'cast cast cast'
+    'similar similar similar'
 }
 .item1 { grid-area: picture; width: 100%}
 .item2 {
@@ -43,6 +44,12 @@
     padding-bottom: 1em;
     border-bottom: solid;
 }
+.item11 {
+    grid-area: similar;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
 
 .item9 > div{ display: grid;grid-template-columns: auto auto;}
 
@@ -54,4 +61,7 @@
 .details-actor{
     color: white;
     text-decoration: none;
+}
+.sim-pic{
+    width: 100%;
 }
