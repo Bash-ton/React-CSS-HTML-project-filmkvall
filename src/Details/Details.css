@@ -1,25 +1,56 @@
 .Details{
+    margin-top: 1em;
     display: grid;
-    grid-template-areas: 'picture title'
-'picture syno'
-'picture release'
-'picture lang'
-'picture price'
-'picture runtime'
-'picture tagline'
-'cast cast';
+    grid-template-areas:
+    'picture title title'
+    'picture syno syno'
+    'picture tagline tagline'
+    'picture release runtime'
+    'picture lang price'
+    'cast-title cast-title cast-title'
+    'cast cast cast'
 }
 .item1 { grid-area: picture; }
-.item2 { grid-area: title; }
-.item3 { grid-area: syno; }
-.item4 { grid-area: release; }
-.item5 { grid-area: lang; }
-.item6 { grid-area: price; }
-.item7 { grid-area: runtime; }
-.item8 { grid-area: tagline; }
-.item9 { grid-area: cast; display: contents; text-align: left; background-color: #09d3ac}
-.castname{
-    margin: 0;
+.item2 {
+    grid-area: title;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     background-color: #464843;
+    margin-bottom: 0;
+    padding-bottom: 0.67em;
+}
+.item3 { grid-area: syno;  background-color: #464843; padding: 1em; margin: 0;}
+.item4 { grid-area: release; background-color: #464843; padding: 1em; margin: 0;}
+.item5 { grid-area: lang; border-bottom-left-radius: 20px; background-color: #464843; padding-top: 1em; margin-top: 0;}
+.item6 { grid-area: price; border-bottom-right-radius: 20px;  background-color: #464843; padding-top: 1em; margin-top: 0;}
+.item7 { grid-area: runtime; background-color: #464843; padding: 1em; margin: 0;}
+.item8 { grid-area: tagline;  background-color: #464843; padding: 1em; margin: 0;}
+.item9 {
+    grid-area: cast;
+    text-align: center;
+    background-color: #464843;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin-bottom: 1em;
+}
+.item10 {
+    grid-area: cast-title;
+    background-color: #464843;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    margin-bottom: 0;
+    padding-bottom: 1em;
+    border-bottom: solid;
 }
 
+.item9 > div{ display: grid;grid-template-columns: auto auto;}
+
+.castname{
+    margin: 0;
+    padding-left: 25%;
+    text-align: left;
+}
+.details-actor{
+    color: white;
+    text-decoration: none;
+}

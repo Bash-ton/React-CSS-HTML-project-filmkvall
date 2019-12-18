@@ -114,7 +114,6 @@ class SearchResult extends Component {
                         );
                         break;
                     case "actor":
-                        debugger
                         searchResults = this.state.result.results.slice(0, 3).map(actor =>
                             (
                                 <Link to={"/Info/?" + actor.id}>

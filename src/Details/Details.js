@@ -79,7 +79,6 @@ class Details extends Component {
                 movie = <em>Loading...</em>;
             break;
             case("Loaded"):
-                console.log(this.state);
                 if (this.state.type === "tv"){
                     name = this.state.movie.name;
                     price = "Seasons: " + this.state.movie.number_of_seasons + " Episodes: " + this.state.movie.number_of_episodes;
@@ -90,13 +89,14 @@ class Details extends Component {
                 else{
                     name = this.state.movie.title;
                     price = "Budget: " + this.state.movie.budget + "usd";
-                    tagline = "tagline: " + this.state.movie.tagline;
+                    tagline = this.state.movie.tagline;
                     runtime = "Runtime: " + this.state.movie.runtime + "min";
                     firstrelease = "First released: " + this.state.movie.release_date;
                 }
-                cast = this.state.cast.cast.map(actors =>(<p className={"castname"}>
-                    {actors.name} : {actors.character}
-                </p>));
+                cast = this.state.cast.cast.map(actors =>(<Link className={"details-actor"} to={"/Info/?" + actors.id} >
+                     <p className={"castname"}>{actors.name} : {actors.character}</p>
+                    </Link>
+                ));
                 movie = <div className={"Details"}>
                     <img  className={"item1"} src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
                     <h1 className={"item2"}>{name}</h1>
@@ -105,8 +105,9 @@ class Details extends Component {
                     <p className={"item5"}>original language: {this.state.movie.original_language}</p>
                     <p className={"item6"}>{price}</p>
                     <p className={"item7"}>{runtime}</p>
-                    <p className={"item8"}>{tagline}</p>
-                    <div className={"item9"}>{cast}</div>
+                    <p className={"item8"}>"{tagline}"</p>
+                    <h2 className={"item10"}>Cast</h2>
+                    <div className={"item9"}><div>{cast}</div></div>
                 </div>;
                 break;
         }
