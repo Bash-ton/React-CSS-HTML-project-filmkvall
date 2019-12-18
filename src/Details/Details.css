@@ -17,5 +17,9 @@
 .item6 { grid-area: price; }
 .item7 { grid-area: runtime; }
 .item8 { grid-area: tagline; }
-.item9 { grid-area: cast; display: contents; text-align: left}
+.item9 { grid-area: cast; display: contents; text-align: left; background-color: #09d3ac}
+.castname{
+    margin: 0;
+    background-color: #464843;
+}
 

@@ -94,9 +94,9 @@ class Details extends Component {
                     runtime = "Runtime: " + this.state.movie.runtime + "min";
                     firstrelease = "First released: " + this.state.movie.release_date;
                 }
-                cast = this.state.cast.cast.map(actors =>(<li>
+                cast = this.state.cast.cast.map(actors =>(<p className={"castname"}>
                     {actors.name} : {actors.character}
-                </li>));
+                </p>));
                 movie = <div className={"Details"}>
                     <img  className={"item1"} src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
                     <h1 className={"item2"}>{name}</h1>
