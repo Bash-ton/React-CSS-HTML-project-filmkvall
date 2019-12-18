@@ -133,7 +133,6 @@ class Details extends Component {
                 }
                 like = this.state.similar.results.slice(0,4).map(movies =>(<Link to={"/Details/?" + this.state.type + "&" + movies.id}>
                     <img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path}/>
-                    <p>{movies.name}</p>
                 </Link>));
                 movie = <div className={"Details"}>
                     <img  className={"item1"} src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
@@ -148,9 +147,8 @@ class Details extends Component {
                     <div className={"item9"}><div>{cast}</div></div>
                     <div className={"item11"}>{like}</div>
                 </div>;
-                break;
+            break;
         }
-
 
         return(
             <div>

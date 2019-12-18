@@ -11,13 +11,18 @@
 
 .search-buttons{
     margin: auto;
+    width: 100%;
 }
 
 #search-result-given{
     display: none;
 }
+.user-authentication{
+    width: 100%;
+}
 
 .nav-button {
+    max-width: 100%;
     background-color:#780202;
     border-radius:25px;
     display:inline-block;

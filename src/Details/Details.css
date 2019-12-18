@@ -65,3 +65,24 @@
 .sim-pic{
     width: 100%;
 }
+@media only screen and (max-width: 600px) {
+    .Details{
+        display: block;
+    }
+    .item8{
+        border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;
+    }
+    .item6{
+        padding: 1em;
+        border-radius: 0;
+        margin: 0;
+    }
+    .item5{
+        padding: 1em;
+        border-radius: 0;
+        margin: 0;
+    }
+.item11{
+    display: block;
+}
+}
