@@ -1,0 +1,21 @@
+.Details{
+    display: grid;
+    grid-template-areas: 'picture title'
+'picture syno'
+'picture release'
+'picture lang'
+'picture price'
+'picture runtime'
+'picture tagline'
+'cast cast';
+}
+.item1 { grid-area: picture; }
+.item2 { grid-area: title; }
+.item3 { grid-area: syno; }
+.item4 { grid-area: release; }
+.item5 { grid-area: lang; }
+.item6 { grid-area: price; }
+.item7 { grid-area: runtime; }
+.item8 { grid-area: tagline; }
+.item9 { grid-area: cast; display: contents; text-align: left}
+

@@ -20,7 +20,6 @@ class Details extends Component {
     }
     componentDidMount() {
         this.getMovie();
-        this.getCredits();
     }
 
     componentDidUpdate() {
@@ -35,33 +34,15 @@ class Details extends Component {
                 id: typeAndId[1]
             },()=>{
                 this.getMovie()
-                this.getCredits()
             });
         }
-    }
-
-
-    getCredits(){
-        model.getCreditsById(this.state.type,this.state.id).then(obj =>{
-            this.setState(
-                {
-                    cast: obj
-                }
-            )
-        })
-    .catch(() => {
-    this.setState(
-        {status:"error"}
-    )}
-    )
     }
 
     getMovie(){
         model.getDetailsById(this.state.type,this.state.id).then(obj =>{
             this.setState(
                 {
-                    movie: obj,
-                    status:"Loaded"
+                    movie: obj
                 }
             );
         })
@@ -69,26 +50,63 @@ class Details extends Component {
     this.setState(
         {status:"error"}
     )
-})
+}).then(()=> model.getCreditsById(this.state.type,this.state.id)).then(obj =>{
+            this.setState(
+                {
+                    cast: obj,
+                    status:"Loaded"
+                }
+            )
+        })
+            .catch(() => {
+                this.setState(
+                    {status:"error"}
+                )}
+            )
 }
 
 //todo inforamtion to add: cast, title,poster,synopsis,release_date,rating,similar_movies,original_lang,Budget,runtime,tagline
     render(){
         let name = null;
         let movie = null;
+        let cast = null;
+        let price = null;
+        let tagline = null;
+        let runtime = null;
+        let firstrelease = null;
         switch (this.state.status) {
             case("Loading"):
                 movie = <em>Loading...</em>;
             break;
             case("Loaded"):
-                if (this.state.type === "tv")
+                console.log(this.state);
+                if (this.state.type === "tv"){
                     name = this.state.movie.name;
-                else
+                    price = "Seasons: " + this.state.movie.number_of_seasons + " Episodes: " + this.state.movie.number_of_episodes;
+                    tagline = null;
+                    runtime = "Episode Runtime: " + this.state.movie.episode_run_time + "min";
+                    firstrelease = "First air date: " + this.state.movie.first_air_date;
+                }
+                else{
                     name = this.state.movie.title;
-                movie = <div><img src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
-                <h1>{name}</h1>
-                <p>{this.state.movie.overview}</p>
-                <p> </p>
+                    price = "Budget: " + this.state.movie.budget + "usd";
+                    tagline = "tagline: " + this.state.movie.tagline;
+                    runtime = "Runtime: " + this.state.movie.runtime + "min";
+                    firstrelease = "First released: " + this.state.movie.release_date;
+                }
+                cast = this.state.cast.cast.map(actors =>(<li>
+                    {actors.name} : {actors.character}
+                </li>));
+                movie = <div className={"Details"}>
+                    <img  className={"item1"} src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
+                    <h1 className={"item2"}>{name}</h1>
+                    <p className={"item3"}>{this.state.movie.overview}</p>
+                    <p className={"item4"}>{firstrelease}</p>
+                    <p className={"item5"}>original language: {this.state.movie.original_language}</p>
+                    <p className={"item6"}>{price}</p>
+                    <p className={"item7"}>{runtime}</p>
+                    <p className={"item8"}>{tagline}</p>
+                    <div className={"item9"}>{cast}</div>
                 </div>;
                 break;
         }
