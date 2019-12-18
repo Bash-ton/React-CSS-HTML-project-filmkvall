@@ -51,6 +51,11 @@ class apifetch {
         return fetch(url).then(this.processResponse);
     }
 
+    getSimilar(type,id){
+        let url = `${BASE_URL}3/${type}/${id}/similar?api_key=${API_KEY}`;
+        return fetch(url).then(this.processResponse);
+    }
+
 }
 const model = new apifetch();
 export default model;
