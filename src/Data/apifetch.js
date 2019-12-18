@@ -46,6 +46,11 @@ class apifetch {
 
     }
 
+    getActorCredits(id) {
+        let url = `${BASE_URL}3/person/${id}/combined_credits?api_key=${API_KEY}`;
+        return fetch(url).then(this.processResponse);
+    }
+
 }
 const model = new apifetch();
 export default model;

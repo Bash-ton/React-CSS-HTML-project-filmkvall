@@ -16,11 +16,12 @@ class SearchResult extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if((this.props.title !== prevProps.title || this.props.type !== prevProps.type) && this.props.type !== "actor" ) {
+        if((this.props.title !== prevProps.title || this.props.type !== prevProps.type)){
+            if(this.props.type === "actor"){
+                this.getActor()
+                return
+            }
             this.getPicture();
-        }
-        else if((this.props.title !== prevProps.title || this.props.type !== prevProps.type) && this.props.type === "actor"){
-            this.getActor();
         }
     }
 
@@ -100,8 +101,8 @@ class SearchResult extends Component {
                         );
                     break;
                     case "tv":
-                        searchResults = this.state.result.results.slice(0,3).map(tv =>(
-                            <Link to ={"/Details/?tv&" + tv.id} onClick={() => this.hideResults()}>
+                        searchResults = this.state.result.results.slice(0,3).map(tv => (
+                            <Link className={"search-result-link"} to ={"/Details/?tv&" + tv.id} onClick={() => this.hideResults()}>
                             <div className={"search-result"}>
                                 <img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path}/>
                                 <div className={"search-title"}>
@@ -111,7 +112,9 @@ class SearchResult extends Component {
                             </div>
                             </Link>)
                         );
+                        break;
                     case "actor":
+                        debugger
                         searchResults = this.state.result.results.slice(0, 3).map(actor =>
                             (
                                 <Link to={"/Info/?" + actor.id}>
