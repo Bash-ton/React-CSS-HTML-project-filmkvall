@@ -74,6 +74,7 @@ class Details extends Component {
         let tagline = null;
         let runtime = null;
         let firstrelease = null;
+        let language = null;
         switch (this.state.status) {
             case("Loading"):
                 movie = <em>Loading...</em>;
@@ -88,8 +89,15 @@ class Details extends Component {
                 }
                 else{
                     name = this.state.movie.title;
-                    price = "Budget: " + this.state.movie.budget + "usd";
-                    tagline = this.state.movie.tagline;
+                    if(this.state.movie.budget !== 0){
+                    price = "Budget: " + this.state.movie.budget + "usd"}
+                    else {
+                        price = "Budget: Unknown/Undisclosed"
+                    }
+                    if(this.state.movie.tagline === "")
+                        tagline = null;
+                    else
+                        tagline = this.state.movie.tagline;
                     runtime = "Runtime: " + this.state.movie.runtime + "min";
                     firstrelease = "First released: " + this.state.movie.release_date;
                 }
@@ -97,15 +105,29 @@ class Details extends Component {
                      <p className={"castname"}>{actors.name} : {actors.character}</p>
                     </Link>
                 ));
+                switch (this.state.movie.original_language) {
+                    case ("fr"):
+                        language = "French";
+                        break;
+                    case ("en"):
+                        language = "English";
+                        break;
+                    case ("es"):
+                        language = "Spanish";
+                        break;
+                    case ("pt"):
+                        language = "Portuguese";
+                        break;
+                }
                 movie = <div className={"Details"}>
                     <img  className={"item1"} src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
                     <h1 className={"item2"}>{name}</h1>
                     <p className={"item3"}>{this.state.movie.overview}</p>
                     <p className={"item4"}>{firstrelease}</p>
-                    <p className={"item5"}>original language: {this.state.movie.original_language}</p>
+                    <p className={"item5"}>original language: {language}</p>
                     <p className={"item6"}>{price}</p>
                     <p className={"item7"}>{runtime}</p>
-                    <p className={"item8"}>"{tagline}"</p>
+                    <p className={"item8"}>{tagline}</p>
                     <h2 className={"item10"}>Cast</h2>
                     <div className={"item9"}><div>{cast}</div></div>
                 </div>;
