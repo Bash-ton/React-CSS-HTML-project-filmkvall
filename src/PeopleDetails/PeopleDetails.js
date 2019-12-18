@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
+import Cinematography from "./Cinematography/Cinematography";
 
 class PeopleDetails extends Component {
 
@@ -16,6 +17,22 @@ class PeopleDetails extends Component {
     }
     componentDidMount() {
         this.getPerson()
+    }
+
+
+    componentDidUpdate() {
+        if (window.location.href !== this.state.url) {
+            let searchId = window.location.href;
+            let urlSplit = searchId.split("?");
+
+            this.setState({
+                url: searchId,
+                status: "Loading",
+                id: urlSplit[1]
+            },()=>{
+                this.getPerson()
+            });
+        }
     }
 
     getPerson(){
@@ -43,14 +60,19 @@ class PeopleDetails extends Component {
                 break;
             case("Loaded"):
                 movie = <div>
-                            <img src={"https://image.tmdb.org/t/p/w500" + this.state.actor.profile_path}/>
-                            <p> {this.state.actor.name} </p>
-                        </div>
+                    <img src={"https://image.tmdb.org/t/p/w500" + this.state.actor.profile_path}/>
+                    <p> {this.state.actor.name}</p>
+                    <p> {this.state.actor.place_of_birth} </p>
+                    <p> {this.state.actor.known_for_department} </p>
+                    <p> {this.state.actor.birthday}</p>
+                    <p> {this.state.actor.biography}</p>
+                </div>
                 break;
         }
                 return(
                     <div>
                         {movie}
+                        <Cinematography id = {this.state.id}/>
                     </div>
                 )
     }
