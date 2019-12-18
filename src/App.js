@@ -12,13 +12,12 @@ import ResetPassword from "./ResetPassword/ResetPassword";
 import userInstance from "./Data/userModel"
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+		};
 
-
+	}
 
   render() {
     return (
@@ -44,7 +43,7 @@ class App extends Component {
             />
             <Route
                 path="/Details"
-                render={() => <Details/>}
+				render={() => <Details userModel={userInstance}/>}
             />
             <Route
                 path={"/Discover"}

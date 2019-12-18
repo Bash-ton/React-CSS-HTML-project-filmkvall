@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 import Observable from "./Observable";
-import {fireconf} from "./apiConfig";
+import { fireconf } from "./apiConfig";
+
 
 class UserModel extends Observable {
     constructor() {
@@ -9,8 +10,18 @@ class UserModel extends Observable {
         firebase.analytics();
         firebase.auth();
         this.user = null;
-        this.setUser();
-    }
+		this.setUser();
+
+
+		//added by seb
+		this.userID = null;
+
+		//this.list1 = null;
+		//this.list2 = null;
+		//this.list3 = null;
+		//this.list4 = null;
+	}
+
 
     setUser(){
         this.authListener();
@@ -18,14 +29,29 @@ class UserModel extends Observable {
 
     getUser(){
         return this.user;
-    }
+	}
+
+	//added by seb
+	getUserID() {
+		return this.userID;
+	}
+	getUserLists() {
+
+
+	}
 
     authListener() {
        firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 if(user.emailVerified){
-                    this.user = firebase.auth().currentUser;
-                    this.notifyObservers();
+					this.user = firebase.auth().currentUser;
+					this.userID = this.user.uid;
+
+					//check if list
+					this.getUserLists();
+
+					this.notifyObservers();
+					console.log(this.userID);
                 }
                 else{
                     user.sendEmailVerification(); //Send email verification
@@ -40,7 +66,8 @@ class UserModel extends Observable {
     }
 
     doSignOutUser(){
-        firebase.auth().signOut().then(function() {
+		firebase.auth().signOut().then(function () {
+
             console.log('Signed Out');
         }, function(error) {
             console.error('Sign Out Error', error);
@@ -53,8 +80,9 @@ class UserModel extends Observable {
             // Handle Errors here.
             // ...
         });
+		console.log("sign in");
+		this.authListener();
 
-        this.authListener();
 	}
 
 
