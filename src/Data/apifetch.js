@@ -39,8 +39,13 @@ class apifetch {
     getCreditsById(type, id) {
         let url = `${BASE_URL}3/${type}/${id}/credits?api_key=${API_KEY}`;
         return fetch(url).then(this.processResponse);
+    }
+    getActorById(id){
+        let url = `${BASE_URL}3/person/${id}?api_key=${API_KEY}`;
+        return fetch(url).then(this.processResponse);
 
     }
+
 }
 const model = new apifetch();
 export default model;

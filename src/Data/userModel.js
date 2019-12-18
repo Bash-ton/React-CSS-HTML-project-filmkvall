@@ -23,15 +23,14 @@ class UserModel extends Observable {
     authListener() {
        firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                //if(user.emailVerified){
+                if (user.emailVerified) {
                     this.user = firebase.auth().currentUser;
                     this.notifyObservers();
-                }
-                /*else{
+                } else {
                     user.sendEmailVerification(); //Send email verification
                     alert("PleaseVerifyYourEmail") //Show success message
                 }
-            }*/
+            }
             else {
                 this.user = null;
                 this.notifyObservers();
@@ -49,11 +48,20 @@ class UserModel extends Observable {
     }
 
     doSignInUserWithEmailAndPassword(email, password) {
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            // ...
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(err) {
+            if (err.code === 'auth/wrong-password') {
+                alert( "The password is incorrect please try again");
+            }
+            else if(err.code === "auth/user-disabled"){
+                alert("Wow i dont know what you did to get your account disabled but im sure you deserved it");
+            }
+            else if(err.code === "auth/user-not-found"){
+                alert("There is no user corresponding to the given email.")
+            }
+            else if(err.code === "auth/invalid-email"){
+                alert("The email address is not valid.")
+            }
         });
-
         this.authListener();
     }
 

@@ -16,9 +16,31 @@ class SearchResult extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(this.props.title !== prevProps.title || this.props.type !== prevProps.type) {
+        if((this.props.title !== prevProps.title || this.props.type !== prevProps.type) && this.props.type !== "actor" ) {
             this.getPicture();
         }
+        else if((this.props.title !== prevProps.title || this.props.type !== prevProps.type) && this.props.type === "actor"){
+            this.getActor();
+        }
+    }
+
+    getActor() {
+        let debounceCall = _.debounce(() => {
+            model.getActorByName(this.props.title).then(act => {
+                this.setState(
+                    {
+                        status: "loaded",
+                        result: act
+                    }
+                )
+            })
+                .catch(() => {
+                    this.setState(
+                        {status: "error"}
+                    )
+                });
+        }, 1000);
+        debounceCall();
     }
 
     getPicture(){
@@ -28,7 +50,7 @@ class SearchResult extends Component {
                     this.setState(
                         {
                             status: "loaded",
-                            movie: mov
+                            result: mov
                         }
                     )
                 })
@@ -65,9 +87,9 @@ class SearchResult extends Component {
             case "loaded":
                 switch (this.props.type) {
                     case "movie":
-                        searchResults = this.state.movie.results.slice(0,3).map(movie =>(
-                            <Link className={"search-result-link"} to={"/Details/?movie&" + movie.id}>
-                            <div className={"search-result"} onClick={() => this.hideResults()}>
+                        searchResults = this.state.result.results.slice(0,3).map(movie =>(
+                            <Link className={"search-result-link"} to={"/Details/?movie&" + movie.id} onClick={() => this.hideResults()}>
+                            <div className={"search-result"}>
                                 <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}/>
                                 <div className={"search-title"}>
                                     <p>{movie.title}</p>
@@ -78,7 +100,7 @@ class SearchResult extends Component {
                         );
                     break;
                     case "tv":
-                        searchResults = this.state.movie.results.slice(0,3).map(tv =>(
+                        searchResults = this.state.result.results.slice(0,3).map(tv =>(
                             <Link to ={"/Details/?tv&" + tv.id} onClick={() => this.hideResults()}>
                             <div className={"search-result"}>
                                 <img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path}/>
@@ -89,6 +111,19 @@ class SearchResult extends Component {
                             </div>
                             </Link>)
                         );
+                    case "actor":
+                        searchResults = this.state.result.results.slice(0, 3).map(actor =>
+                            (
+                                <Link to={"/Info/?" + actor.id}>
+                                    <div>
+                                        <div className={"search-Result"}></div>
+                                        <img src={"https://image.tmdb.org/t/p/w500" + actor.profile_path}/>
+                                        <p> {actor.name} </p>
+                                    </div>
+                                </Link>
+                            )
+                        );
+                        break
                 }
 
         }
