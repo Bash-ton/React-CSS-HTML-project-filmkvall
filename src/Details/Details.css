@@ -1,6 +1,7 @@
 .Details{
     margin-top: 1em;
     display: grid;
+    grid-template-columns: 33% 33% 33%;
     grid-template-areas:
     'picture title title'
     'picture syno syno'
@@ -10,7 +11,7 @@
     'cast-title cast-title cast-title'
     'cast cast cast'
 }
-.item1 { grid-area: picture; }
+.item1 { grid-area: picture; width: 100%}
 .item2 {
     grid-area: title;
     border-top-left-radius: 20px;
