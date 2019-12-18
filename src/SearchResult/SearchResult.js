@@ -114,14 +114,14 @@ class SearchResult extends Component {
                         );
                         break;
                     case "actor":
-                        debugger
                         searchResults = this.state.result.results.slice(0, 3).map(actor =>
                             (
                                 <Link to={"/Info/?" + actor.id}>
-                                    <div>
-                                        <div className={"search-Result"}></div>
+                                    <div className={"search-result"}>
                                         <img src={"https://image.tmdb.org/t/p/w500" + actor.profile_path}/>
-                                        <p> {actor.name} </p>
+                                        <div className={"search-title"}>
+                                            <p> {actor.name} </p>
+                                        </div>
                                     </div>
                                 </Link>
                             )
