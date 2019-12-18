@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import SearchResult from "../SearchResult/SearchResult";
-import SearchResultActor from "../SearchResultActor/SearchResultActor";
 
 class Discover extends Component {
     constructor(props) {
@@ -53,7 +52,6 @@ class Discover extends Component {
                     </select>
                     <div>
                         <input className={"actorName"} onChange={event => this.updateActor(event)}/>
-                        <SearchResultActor actor = {this.state.actor}/>
                     </div>
 
                     <input className={"releaseYear"} onChange={event => this.updateReleaseYear(event)}/>

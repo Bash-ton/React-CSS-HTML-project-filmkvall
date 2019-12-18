@@ -23,6 +23,7 @@ class Searchbar extends Component {
     }
 
     updateType(evt) {
+
         this.setState({
             type : evt.target.value
         });
@@ -39,7 +40,7 @@ class Searchbar extends Component {
     }
 
     handelClick = (e)=> {
-        if(this.node.contains(e.target)){
+        if(this.node === e.target){
             document.getElementById("search-result-given").style.display = "block"
             return;
         }
@@ -50,6 +51,13 @@ class Searchbar extends Component {
         this.setState({
             user: this.props.userModel.getUser()
         })
+    }
+    getType(){
+        if(this.state.type === "movie")
+            return "Movie"
+        else{
+            return "Tv-Series"
+        }
     }
 
     render() {
@@ -83,12 +91,13 @@ class Searchbar extends Component {
                     <img src={"../Logo_2.png"}/>
                 </Link>
                 <div className={"search-field"}>
-                    <select id={"search-select-type"} onChange={evt => this.updateType(evt)}>
+                    <select onChange={evt => this.updateType(evt)}>
                         <option value={"movie"}>Movie</option>
                         <option value={"tv"}>Tv-Series</option>
+                        <option value={"actor"}>Actor</option>
                     </select>
-                    <div ref={node => this.node = node}>
-                        <input className={"search-input"} placeholder={"Search Movie"} onChange={evt => this.updateTitle(evt)}/>
+                    <div>
+                        <input className={"search-input"} placeholder={"Search " + this.getType()} onClick={evt => this.handelClick(evt)} onChange={evt => this.updateTitle(evt)} ref={node => this.node = node}/>
                         <div id={"search-result-given"}>
                             <SearchResult title={this.state.title} type={this.state.type}/>
                         </div>

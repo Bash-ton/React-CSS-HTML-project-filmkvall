@@ -8,6 +8,7 @@ class SignIn extends Component {
         super(props);
         this.state = {
             user: this.props.userModel.getUser(),
+            errorMessage: ""
         };
     }
 
@@ -35,16 +36,20 @@ class SignIn extends Component {
             pass: evt.target.value
         });
     }
+    handleLogin(e){
+    if(e.charCode == 13){
+        this.props.userModel.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass);
+        }
+    }
 
     render(){
-
         let sessionState = "";
         if(this.state.user === null){
                 sessionState =
                     (<div>
                         <div>
-                            <input placeholder={"Email..."} className={"email-input"} onChange={evt => this.updateEmail(evt)} />
-                            <input placeholder={"Password..."} className={"password-input"} onChange={evt => this.updatePass(evt)}/>
+                            <input placeholder={"Email..."} className={"email-input"} onChange={evt => this.updateEmail(evt)} onKeyPress={evt=> this.handleLogin(evt)}/>
+                            <input placeholder={"Password..."} className={"password-input"} onChange={evt => this.updatePass(evt)} onKeyPress={evt=> this.handleLogin(evt)}/>
                             <button onClick={() => this.props.userModel.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass)}> Login</button>
                         </div>
                         <div>

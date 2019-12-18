@@ -9,7 +9,9 @@ import SignUp from "./SignUp/SignUp";
 import SignIn from "./SignIn/SignIn";
 import MyPage from "./MyPage/MyPage";
 import ResetPassword from "./ResetPassword/ResetPassword";
+import PeopleDetails from "./PeopleDetails/PeopleDetails";
 import userInstance from "./Data/userModel"
+
 
 class App extends Component {
     constructor(props) {
@@ -53,6 +55,10 @@ class App extends Component {
             <Route
                 path={"/MyPage"}
                 render={() => <MyPage userModel={userInstance}/>}
+            />
+            <Route
+                path={"/Info"}
+                render={() => <PeopleDetails userModel={userInstance}/>}
             />
         </div>
     );
