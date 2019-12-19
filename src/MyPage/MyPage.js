@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import "./MyPage.css"
 
+import ListContainer from "../ListContainer/ListContainer";
+
+
 class MyPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.userModel.getUser()
-        };
+			user: this.props.userModel.getUser(),
+			userID: this.props.userModel.getUserID()
+		};
+		//console.log(this.props.userModel.getUserID());
+
+	
+
+	
     }
 
     componentDidMount() {
@@ -54,7 +63,8 @@ class MyPage extends Component {
 
         return(
             <div>
-                {user}
+				{user}
+				<ListContainer userID={this.props.userModel.getUserID()} />
             </div>
         );
     }

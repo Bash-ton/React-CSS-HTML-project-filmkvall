@@ -32,3 +32,4 @@ firebase-debug.log
 *.cache
 *.xml
 .idea/workspace.xml
+database.rules.json
