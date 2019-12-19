@@ -1,7 +1,7 @@
 # Project Title - Filmkvall
 This is a site that can be used to find information about movies/tv-series. 
 The user can create watch lists with favourite movies/shows.
-##Getting Started 
+## Getting Started 
 To run the program you will need npm, a firebase web project and an api key from [The Movie Database](https://www.themoviedb.org/)
 
 Run npm install 
@@ -9,13 +9,13 @@ Run npm install
 Setup a file which contains the api keys and firebase config keys.
 
 Run the firebase init command and proceed to mount the site visit [Firebase](https://firebase.google.com/docs/hosting/) for more information
-##Built so far
+## Built so far
 At the current state in the project development we have added the ability to search for movies/tv-series/actor.
 A user can create an account  and after verifying their email address they are allowed to login to the site gaining access some of the sites features.   
 
-##Planned 
+## Planned 
 
-###Features <br/>
+### Features <br/>
 Logged in user should be able to rate each movie and then see the ratings that they have given to a movie.<br>
 When logged the user can add movies/tv-series to their personal lists. 
 Add remove button to list <br/>
@@ -28,10 +28,10 @@ Hide buttons when user is logged out <br/>
 
 Improve rendering of lists in My Pages
 
-###CSS <br/>
+### CSS <br/>
 Improve the design and usability site wide.
 
-##File Structure <br>
+## File Structure <br>
 `public/index.html` this is the static html file it is where some firebase libraries are loaded. <br>
 `src/App.js` - root component containing all the different routes<br>
 `firebase.js` - does nothing and should be removed<br>
@@ -51,7 +51,7 @@ Improve the design and usability site wide.
 `src/SingIn`- Simple Sign in screen that has a link to reset password<br>
 `src/SignUp`- Self Explanatory <br>
 
-##Built With
+## Built With
 [React](https://reactjs.org/) -Framework <br/>
 [Firebase](https://firebase.google.com/docs/hosting/) - Hosting
 
