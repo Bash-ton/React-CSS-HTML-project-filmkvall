@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
+import "./PeopleDetails.css"
 import Cinematography from "./Cinematography/Cinematography";
 
 class PeopleDetails extends Component {
@@ -59,18 +60,20 @@ class PeopleDetails extends Component {
                 movie = <em>Loading...</em>;
                 break;
             case("Loaded"):
-                movie = <div>
+                movie = <div className={"actor-bio"}>
                     <img src={"https://image.tmdb.org/t/p/w500" + this.state.actor.profile_path}/>
+                    <div>
                     <p> {this.state.actor.name}</p>
                     <p> {this.state.actor.place_of_birth} </p>
                     <p> {this.state.actor.known_for_department} </p>
                     <p> {this.state.actor.birthday}</p>
                     <p> {this.state.actor.biography}</p>
-                </div>
+                    </div>
+                    </div>
                 break;
         }
                 return(
-                    <div>
+                    <div className={"actor-info"}>
                         {movie}
                         <Cinematography id = {this.state.id}/>
                     </div>

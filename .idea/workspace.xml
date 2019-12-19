@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28891bac-c9fb-4ded-9037-ab7eccb6c3ef" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/PeopleDetails/PeopleDetails.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PeopleDetails/Cinematography/Cinematography.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PeopleDetails/Cinematography/Cinematography.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SearchResult/SearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SearchResult/SearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PeopleDetails/PeopleDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PeopleDetails/PeopleDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Searchbar/Searchbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Searchbar/Searchbar.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -89,7 +91,7 @@
       <updated>1575292313598</updated>
       <workItem from="1575292315826" duration="3475000" />
       <workItem from="1575296242954" duration="1981000" />
-      <workItem from="1576486811835" duration="28680000" />
+      <workItem from="1576486811835" duration="32678000" />
     </task>
     <servers />
   </component>

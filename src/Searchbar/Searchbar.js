@@ -54,7 +54,10 @@ class Searchbar extends Component {
     }
     getType(){
         if(this.state.type === "movie")
-            return "Movie"
+            return "Movie";
+        else if(this.state.type === "actor"){
+            return "Actor"
+        }
         else{
             return "Tv-Series"
         }
@@ -78,7 +81,7 @@ class Searchbar extends Component {
             userState = (
                 <div className={"user-authentication"}>
                     <Link to={"/MyPage"}>
-                        <button className={"nav-button"}>MyPage</button>
+                        <button className={"nav-button"}><i className="fa fa-home">MyPage</i></button>
                     </Link>
                     <button className={"nav-button"} onClick={() => this.props.userModel.doSignOutUser()}>SignOut</button>
                 </div>
