@@ -90,31 +90,30 @@ class Details extends Component {
         switch (this.state.status) {
             case("Loading"):
                 movie = <em>Loading...</em>;
-            break;
+                break;
             case("Loaded"):
-                if (this.state.type === "tv"){
+                if (this.state.type === "tv") {
                     name = this.state.movie.name;
                     price = "Seasons: " + this.state.movie.number_of_seasons + " Episodes: " + this.state.movie.number_of_episodes;
                     tagline = null;
                     runtime = "Episode Runtime: " + this.state.movie.episode_run_time + "min";
                     firstrelease = "First air date: " + this.state.movie.first_air_date;
-                }
-                else{
+                } else {
                     name = this.state.movie.title;
-                    if(this.state.movie.budget !== 0){
-                    price = "Budget: " + this.state.movie.budget + "usd"}
-                    else {
+                    if (this.state.movie.budget !== 0) {
+                        price = "Budget: " + this.state.movie.budget + "usd"
+                    } else {
                         price = "Budget: Unknown/Undisclosed"
                     }
-                    if(this.state.movie.tagline === "")
+                    if (this.state.movie.tagline === "")
                         tagline = null;
                     else
                         tagline = '"' + this.state.movie.tagline + '"';
                     runtime = "Runtime: " + this.state.movie.runtime + "min";
                     firstrelease = "First released: " + this.state.movie.release_date;
                 }
-                cast = this.state.cast.cast.map(actors =>(<Link className={"details-actor"} to={"/Info/?" + actors.id} >
-                     <p className={"castname"}>{actors.name} : {actors.character}</p>
+                cast = this.state.cast.cast.map(actors => (<Link className={"details-actor"} to={"/Info/?" + actors.id}>
+                        <p className={"castname"}>{actors.name} is {actors.character}</p>
                     </Link>
                 ));
                 switch (this.state.movie.original_language) {
@@ -131,11 +130,12 @@ class Details extends Component {
                         language = "Portuguese";
                         break;
                 }
-                like = this.state.similar.results.slice(0,4).map(movies =>(<Link to={"/Details/?" + this.state.type + "&" + movies.id}>
-                    <img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path}/>
-                </Link>));
+                like = this.state.similar.results.slice(0, 4).map(movies => (
+                    <Link to={"/Details/?" + this.state.type + "&" + movies.id}>
+                        <img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path}/>
+                    </Link>));
                 movie = <div className={"Details"}>
-                    <img  className={"item1"} src = {"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
+                    <img className={"item1"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
                     <h1 className={"item2"}>{name}</h1>
                     <p className={"item3"}>{this.state.movie.overview}</p>
                     <p className={"item4"}>{firstrelease}</p>
@@ -144,12 +144,17 @@ class Details extends Component {
                     <p className={"item7"}>{runtime}</p>
                     <p className={"item8"}>{tagline}</p>
                     <h2 className={"item10"}>Cast</h2>
-                    <div className={"item9"}><div>{cast}</div></div>
+                    <div className={"item9"}>
+                        <div>{cast}</div>
+                    </div>
                     <div className={"item11"}>{like}</div>
                 </div>;
-            break;
+                break;
+            case ("error"):
+                movie = <em>somethig went wrong!
+                    Please reload and try again!</em>;
+                break;
         }
-
         return(
             <div>
                 {movie}

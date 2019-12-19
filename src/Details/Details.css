@@ -1,4 +1,5 @@
 .Details{
+    margin: 1em;
     margin-top: 1em;
     display: grid;
     grid-template-columns: 33% 33% 34%;
@@ -15,16 +16,15 @@
 .item1 { grid-area: picture; width: 100%}
 .item2 {
     grid-area: title;
-    border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: #464843;
-    margin-bottom: 0;
+    margin: 0;
     padding-bottom: 0.67em;
 }
 .item3 { grid-area: syno;  background-color: #464843; padding: 1em; margin: 0;}
 .item4 { grid-area: release; background-color: #464843; padding: 1em; margin: 0;}
-.item5 { grid-area: lang; border-bottom-left-radius: 20px; background-color: #464843; padding-top: 1em; margin-top: 0;}
-.item6 { grid-area: price; border-bottom-right-radius: 20px;  background-color: #464843; padding-top: 1em; margin-top: 0;}
+.item5 { grid-area: lang; background-color: #464843; padding-top: 1em; margin: 0;}
+.item6 { grid-area: price; border-bottom-right-radius: 20px;  background-color: #464843; padding-top: 1em; margin: 0;}
 .item7 { grid-area: runtime; background-color: #464843; padding: 1em; margin: 0;}
 .item8 { grid-area: tagline;  background-color: #464843; padding: 1em; margin: 0;}
 .item9 {
@@ -41,8 +41,8 @@
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     margin-bottom: 0;
-    padding-bottom: 1em;
     border-bottom: solid;
+
 }
 .item11 {
     grid-area: similar;
@@ -82,7 +82,17 @@
         border-radius: 0;
         margin: 0;
     }
-.item11{
-    display: block;
-}
+    .item11{
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    .item2{
+        border-top-left-radius: 20px;
+    }
+    .item9 > div{
+        display: block;
+    }
+    .castname{
+        padding: 5px;
+    }
 }
