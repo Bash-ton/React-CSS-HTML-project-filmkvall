@@ -8,7 +8,7 @@
     'picture syno syno'
     'picture tagline tagline'
     'picture release runtime'
-    'picture lang price'
+    'watchlist lang price'
     'cast-title cast-title cast-title'
     'cast cast cast'
     'similar similar similar'
@@ -23,7 +23,7 @@
 }
 .item3 { grid-area: syno;  background-color: #464843; padding: 1em; margin: 0;}
 .item4 { grid-area: release; background-color: #464843; padding: 1em; margin: 0;}
-.item5 { grid-area: lang; background-color: #464843; padding-top: 1em; margin: 0;}
+.item5 { grid-area: lang; background-color: #464843; padding-top: 1em; margin: 0; padding-bottom: 1em}
 .item6 { grid-area: price; border-bottom-right-radius: 20px;  background-color: #464843; padding-top: 1em; margin: 0;}
 .item7 { grid-area: runtime; background-color: #464843; padding: 1em; margin: 0;}
 .item8 { grid-area: tagline;  background-color: #464843; padding: 1em; margin: 0;}
@@ -49,6 +49,21 @@
     width: 100%;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
+}
+.item12{
+    grid-area: watchlist;
+    width: 100%;
+    height: 100%;
+    background-color: #464843;
+    border-bottom-left-radius: 20px;
+    justify-content: center;
+}
+.item12 > button{
+    background-color: #780202;
+    border-color: #780202;
+    border-width: 0;
+    color: white;
+    justify-self: center;
 }
 
 .item9 > div{ display: grid;grid-template-columns: auto auto;}
@@ -94,5 +109,9 @@
     }
     .castname{
         padding: 5px;
+    }
+    .item12{
+        border-bottom-right-radius: 20px;
+        margin-bottom: 20px;
     }
 }

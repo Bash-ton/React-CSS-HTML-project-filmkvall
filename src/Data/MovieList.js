@@ -54,7 +54,7 @@ class MovieList extends Observable {
     }
 	removeFromList(id) {
 		this.setUser();
-        id = parseInt(id)
+        id = parseInt(id);
         let temp = this._list.findIndex(elem => elem.id === id );
 		this._list.splice(temp, 1);
 

@@ -212,6 +212,10 @@ class Details extends Component {
                     </Link>));
                 movie = <div className={"Details"}>
                     <img className={"item1"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
+                    <div className={"item12"}>
+                        <button  onClick={this.addToList} id={"watch"}>Add to watchList</button>
+                        <button onClick={this.addToList} id={"history"}>Add to already watched list</button>
+                    </div>
                     <h1 className={"item2"}>{name}</h1>
                     <p className={"item3"}>{this.state.movie.overview}</p>
                     <p className={"item4"}>{firstrelease}</p>
@@ -224,8 +228,7 @@ class Details extends Component {
                         <div>{cast}</div>
                     </div>
                     <div className={"item11"}>{like}</div>
-                    <button onClick={this.addToList} id={"watch"}>Add to watchList</button>
-          					<button onClick={this.addToList} id={"history"}>Add to already watched list</button>
+
                 </div>;
                 break;
             case ("error"):
