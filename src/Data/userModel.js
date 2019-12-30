@@ -16,10 +16,6 @@ class UserModel extends Observable {
 		//added by seb
 		this.userID = null;
 
-		//this.list1 = null;
-		//this.list2 = null;
-		//this.list3 = null;
-		//this.list4 = null;
 	}
 
 

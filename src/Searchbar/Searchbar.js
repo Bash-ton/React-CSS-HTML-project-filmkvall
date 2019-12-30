@@ -82,8 +82,10 @@ class Searchbar extends Component {
                 <div className={"user-authentication"}>
                     <Link to={"/MyPage"}>
                         <button className={"nav-button"}><i className="fa fa-home">MyPage</i></button>
-                    </Link>
-                    <button className={"nav-button"} onClick={() => this.props.userModel.doSignOutUser()}>SignOut</button>
+					</Link>
+					<Link to={"/SignIn"}>
+						<button className={"nav-button"} onClick={() => this.props.userModel.doSignOutUser()}>SignOut</button>
+					</Link>
                 </div>
                 )
             }

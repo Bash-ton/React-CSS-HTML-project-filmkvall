@@ -2,11 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\AddShowButton",
     "\\src\\Data",
     "\\src\\Details",
-    "\\src\\ListContainer",
-    "\\src\\MyPage"
+    "\\src\\Discover",
+    "\\src\\Home",
+    "\\src\\List",
+    "\\src\\Searchbar",
+    "\\src\\SearchResult"
   ],
-  "SelectedNode": "\\src\\ListContainer\\ListContainer.js",
+  "SelectedNode": "\\src\\List\\List.css",
   "PreviewInSolutionExplorer": false
 }

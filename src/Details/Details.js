@@ -3,13 +3,10 @@ import "./Details.css";
 import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
 
-//import list instances
-import { watchedMovies } from "../Data/MovieList";
-import { watchedSeries } from "../Data/MovieList";
-import { wantMovies } from "../Data/MovieList";
-import { wantSeries } from "../Data/MovieList";
 
-import * as firebase from 'firebase';
+import { movieList } from "../Data/MovieList";
+
+
 
 
 class Details extends Component {
@@ -21,7 +18,6 @@ class Details extends Component {
         let typeAndId = urlSplit[1].split("&");
         this.state= {
             url: searchId,
-            userID: this.props.userModel.getUserID(),
             status: "Loading",
             type: typeAndId[0],
             id: typeAndId[1]
@@ -91,39 +87,36 @@ class Details extends Component {
 			case "watch":
 				switch (this.state.type) {
 					case "tv":
-						wantSeries.addToList(this.state.movie, "storedList1");
-						console.log("watch tv");
-
-						//add to firebase database
-						this.updateUserTest(wantSeries, wantMovies, watchedSeries, watchedMovies);
+						movieList.setList("storedList1", this.props.userModel.getUserID());
+						setTimeout(() => {
+							movieList.addToList(this.state.movie, this.props.userModel.getUserID());
+						}, 2000);
 						break;
 					default://movie
-						wantMovies.addToList(this.state.movie, "storedList2");
-						console.log("watch movie");
-						console.log(this.state.userID);
 
-						//add to firebase database
-						this.updateUserTest(wantSeries, wantMovies, watchedSeries, watchedMovies);
-
-						//console.log(wantMovies.getFullList());
+						movieList.setList("storedList2", this.props.userModel.getUserID());
+						setTimeout(() => {
+							movieList.addToList(this.state.movie, this.props.userModel.getUserID());
+						}, 2000);
 						break;
 				}
 				break;
 			case "history":
 				switch (this.state.type) {
 					case "tv":
-						watchedSeries.addToList(this.state.movie, "storedList3");
-						console.log("hist tv");
 
-						//add to firebase database
-						this.updateUserTest(wantSeries, wantMovies, watchedSeries, watchedMovies);
+						movieList.setList("storedList3", this.props.userModel.getUserID());
+						setTimeout(() => {
+							movieList.addToList(this.state.movie, this.props.userModel.getUserID());
+						}, 2000);
 						break;
 					default://movie
-						watchedMovies.addToList(this.state.movie, "storedList4");
-						console.log("hist movie");
 
-						//add to firebase database
-						this.updateUserTest(wantSeries, wantMovies, watchedSeries, watchedMovies);
+						movieList.setList("storedList4", this.props.userModel.getUserID());
+						setTimeout(() => {
+							movieList.addToList(this.state.movie, this.props.userModel.getUserID());
+						}, 2000);
+
 						break;
 				}
 				break;
@@ -131,24 +124,7 @@ class Details extends Component {
 				break;
 
 		}
-
 	}
-
-
-	//also creates if it doesnt exist
-	updateUserTest(list1, list2, list3, list4) {
-		firebase.database().ref("userLists/" + this.props.userModel.getUserID()).set({
-			storedList1: list1,
-			storedList2: list2,
-			storedList3: list3,
-			storedList4: list4,
-		});
-
-		//ref.on("value", this.gotData, this.errData);
-
-	}
-
-
 
 
 
@@ -221,11 +197,16 @@ class Details extends Component {
                     <p className={"item8"}>{tagline}</p>
                     <h2 className={"item10"}>Cast</h2>
                     <div className={"item9"}><div>{cast}</div></div>
-                    <div className={"item11"}>{like}</div>
-                    <button onClick={this.addToList} id={"watch"}>Add to watchList</button>
-          					<button onClick={this.addToList} id={"history"}>Add to already watched list</button>
+					<div className={"item11"}>{like}</div>
+
+					<div className={"item12"}>
+						<button className={"item13"} onClick={this.addToList} id={"watch"}>Add to watchList</button>
+						<button className={"item13"} onClick={this.addToList} id={"history"}>Add to already watched list</button>
+					</div>
+
                 </div>;
-            break;
+				break;
+
         }
 
         return(
@@ -237,3 +218,4 @@ class Details extends Component {
 }
 
 export default Details;
+

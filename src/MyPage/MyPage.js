@@ -11,11 +11,6 @@ class MyPage extends Component {
 			user: this.props.userModel.getUser(),
 			userID: this.props.userModel.getUserID()
 		};
-		//console.log(this.props.userModel.getUserID());
-
-	
-
-	
     }
 
     componentDidMount() {
