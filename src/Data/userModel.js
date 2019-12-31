@@ -11,15 +11,8 @@ class UserModel extends Observable {
         firebase.auth();
         this.user = null;
 		this.setUser();
-
-
-		//added by seb
 		this.userID = null;
 
-		//this.list1 = null;
-		//this.list2 = null;
-		//this.list3 = null;
-		//this.list4 = null;
 	}
 
 
