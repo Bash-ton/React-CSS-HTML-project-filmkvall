@@ -49,7 +49,7 @@ class SignIn extends Component {
                     (<div>
                         <div>
                             <input placeholder={"Email..."} className={"email-input"} onChange={evt => this.updateEmail(evt)} onKeyPress={evt=> this.handleLogin(evt)}/>
-                            <input placeholder={"Password..."} className={"password-input"} onChange={evt => this.updatePass(evt)} onKeyPress={evt=> this.handleLogin(evt)}/>
+                            <input placeholder={"Password..."} id={"password"} className={"password-input"} onChange={evt => this.updatePass(evt)} onKeyPress={evt=> this.handleLogin(evt)}/>
                             <button onClick={() => this.props.userModel.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass)}> Login</button>
                         </div>
                         <div>

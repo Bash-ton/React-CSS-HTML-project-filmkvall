@@ -48,14 +48,14 @@ class MyPage extends Component {
                 if (this.state.user.photoURL === null) {
                 profileImg = "../Logo_Filmkvall.png"
                     user = <div className={"profilePic"}>
-                        <img src={profileImg}/>
+                        <img src={profileImg} alt={""}/>
                         <p>{this.state.user.email}</p>
                     </div>
                 }
                 else{
                 profileImg = this.state.user.photoURL
                  user = <div className={"profilePic"}>
-                <img src={profileImg}/>
+                <img src={profileImg} alt={""}/>
                 <p>{this.state.user.email}</p>
             </div>}
                 break;

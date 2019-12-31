@@ -18,3 +18,8 @@
 .gridcontainer1 img:hover{
     transform: scale(1.02);
 }
+@media only screen and (max-width: 600px) {
+    .gridcontainer1{
+        display: block;
+    }
+}
