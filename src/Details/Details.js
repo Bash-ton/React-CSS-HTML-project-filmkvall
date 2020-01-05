@@ -5,7 +5,7 @@ import model from "../Data/apifetch";
 
 
 import { movieList } from "../Data/MovieList";
-
+import swal from "sweetalert";
 
 
 
@@ -83,45 +83,50 @@ class Details extends Component {
 }
 
 	addToList = (event) => {
-		switch (event.target.id) {
-			case "watch":
-				switch (this.state.type) {
-					case "tv":
-						movieList.setList("storedList1", this.props.userModel.getUserID());
-						setTimeout(() => {
-							movieList.addToList(this.state.movie, this.props.userModel.getUserID());
-						}, 2000);
-						break;
-					default://movie
+		if (this.props.userModel.getUser() != null) {
+			switch (event.target.id) {
+				case "watch":
+					switch (this.state.type) {
+						case "tv":
+							movieList.setList("storedList1", this.props.userModel.getUser().uid);
+							setTimeout(() => {
+								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
+							}, 2000);
+							break;
+						default://movie
 
-						movieList.setList("storedList2", this.props.userModel.getUserID());
-						setTimeout(() => {
-							movieList.addToList(this.state.movie, this.props.userModel.getUserID());
-						}, 2000);
-						break;
-				}
-				break;
-			case "history":
-				switch (this.state.type) {
-					case "tv":
+							movieList.setList("storedList2", this.props.userModel.getUser().uid);
+							setTimeout(() => {
+								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
+							}, 2000);
+							break;
+					}
+					break;
+				case "history":
+					switch (this.state.type) {
+						case "tv":
 
-						movieList.setList("storedList3", this.props.userModel.getUserID());
-						setTimeout(() => {
-							movieList.addToList(this.state.movie, this.props.userModel.getUserID());
-						}, 2000);
-						break;
-					default://movie
+							movieList.setList("storedList3", this.props.userModel.getUser().uid);
+							setTimeout(() => {
+								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
+							}, 2000);
+							break;
+						default://movie
 
-						movieList.setList("storedList4", this.props.userModel.getUserID());
-						setTimeout(() => {
-							movieList.addToList(this.state.movie, this.props.userModel.getUserID());
-						}, 2000);
+							movieList.setList("storedList4", this.props.userModel.getUser().uid);
+							setTimeout(() => {
+								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
+							}, 2000);
 
-						break;
-				}
-				break;
-			default:
-				break;
+							break;
+					}
+					break;
+				default:
+					break;
+
+			}
+		} else {
+			swal("You have to log in to manage your lists", "If you don't already have an account, use the 'signUp' button to create one!", "error");
 
 		}
 	}

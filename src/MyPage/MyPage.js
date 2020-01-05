@@ -9,7 +9,6 @@ class MyPage extends Component {
         super(props);
         this.state = {
 			user: this.props.userModel.getUser(),
-			userID: this.props.userModel.getUserID()
 		};
     }
 
@@ -59,7 +58,7 @@ class MyPage extends Component {
         return(
             <div>
 				{user}
-				<ListContainer userID={this.props.userModel.getUserID()} />
+				<ListContainer userID={this.props.userModel.getUser().uid} />
             </div>
         );
     }
