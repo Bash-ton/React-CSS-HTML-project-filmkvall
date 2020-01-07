@@ -13,21 +13,21 @@
     'cast cast cast'
     'similar similar similar'
 }
-.item1 { grid-area: picture; width: 100%}
-.item2 {
+.poster { grid-area: picture; width: 100%}
+.title {
     grid-area: title;
     border-top-right-radius: 20px;
     background-color: #464843;
     margin: 0;
     padding-bottom: 0.67em;
 }
-.item3 { grid-area: syno;  background-color: #464843; padding: 1em; margin: 0;}
-.item4 { grid-area: release; background-color: #464843; padding: 1em; margin: 0;}
-.item5 { grid-area: lang; background-color: #464843; padding-top: 1em; margin: 0; padding-bottom: 1em}
-.item6 { grid-area: price; border-bottom-right-radius: 20px;  background-color: #464843; padding-top: 1em; margin: 0;}
-.item7 { grid-area: runtime; background-color: #464843; padding: 1em; margin: 0;}
-.item8 { grid-area: tagline;  background-color: #464843; padding: 1em; margin: 0;}
-.item9 {
+.synopsis { grid-area: syno;  background-color: #464843; padding: 1em; margin: 0;}
+.releaseDate { grid-area: release; background-color: #464843; padding: 1em; margin: 0;}
+.orgiLang { grid-area: lang; background-color: #464843; padding-top: 1em; margin: 0; padding-bottom: 1em}
+.price { grid-area: price; border-bottom-right-radius: 20px;  background-color: #464843; padding-top: 1em; margin: 0;}
+.time { grid-area: runtime; background-color: #464843; padding: 1em; margin: 0;}
+.tagline { grid-area: tagline;  background-color: #464843; padding: 1em; margin: 0;}
+.cast {
     grid-area: cast;
     text-align: center;
     background-color: #464843;
@@ -35,7 +35,7 @@
     border-bottom-left-radius: 20px;
     margin-bottom: 1em;
 }
-.item10 {
+.castTitle {
     grid-area: cast-title;
     background-color: #464843;
     border-top-right-radius: 20px;
@@ -44,13 +44,14 @@
     border-bottom: solid;
 
 }
-.item11 {
+.similar {
     grid-area: similar;
     width: 100%;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
 }
 .item12{
+    display: flex;
     grid-area: watchlist;
     width: 100%;
     height: 100%;
@@ -66,7 +67,7 @@
     justify-self: center;
 }
 
-.item9 > div{ display: grid;grid-template-columns: auto auto;}
+.cast > div{ display: grid;grid-template-columns: auto auto;}
 
 .castname{
     margin: 0;
@@ -80,31 +81,40 @@
 .sim-pic{
     width: 100%;
 }
+#watch{
+    height: 100%;
+    width: 40%;
+}
+#history{
+    border-left: solid;
+    height: 100%;
+    width: 40%;
+}
 @media only screen and (max-width: 600px) {
     .Details{
         display: block;
     }
-    .item8{
+    .tagline{
         border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;
     }
-    .item6{
+    .price{
         padding: 1em;
         border-radius: 0;
         margin: 0;
     }
-    .item5{
+    .orgiLang{
         padding: 1em;
         border-radius: 0;
         margin: 0;
     }
-    .item11{
+    .similar{
         display: grid;
         grid-template-columns: auto auto;
     }
     .item2{
         border-top-left-radius: 20px;
     }
-    .item9 > div{
+    .cast > div{
         display: block;
     }
     .castname{
@@ -113,5 +123,6 @@
     .item12{
         border-bottom-right-radius: 20px;
         margin-bottom: 20px;
+        height: 50px;
     }
 }

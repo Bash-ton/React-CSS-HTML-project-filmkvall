@@ -211,28 +211,28 @@ class Details extends Component {
                         <img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path}/>
                     </Link>));
                 movie = <div className={"Details"}>
-                    <img className={"item1"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
+                    <img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
                     <div className={"item12"}>
                         <button  onClick={this.addToList} id={"watch"}>Add to watchList</button>
                         <button onClick={this.addToList} id={"history"}>Add to already watched list</button>
                     </div>
-                    <h1 className={"item2"}>{name}</h1>
-                    <p className={"item3"}>{this.state.movie.overview}</p>
-                    <p className={"item4"}>{firstrelease}</p>
-                    <p className={"item5"}>original language: {language}</p>
-                    <p className={"item6"}>{price}</p>
-                    <p className={"item7"}>{runtime}</p>
-                    <p className={"item8"}>{tagline}</p>
-                    <h2 className={"item10"}>Cast</h2>
-                    <div className={"item9"}>
+                    <h1 className={"title"}>{name}</h1>
+                    <p className={"synopsis"}>{this.state.movie.overview}</p>
+                    <p className={"releaseDate"}>{firstrelease}</p>
+                    <p className={"orgiLang"}>original language: {language}</p>
+                    <p className={"price"}>{price}</p>
+                    <p className={"time"}>{runtime}</p>
+                    <p className={"tagline"}>{tagline}</p>
+                    <h2 className={"castTitle"}>Cast</h2>
+                    <div className={"cast"}>
                         <div>{cast}</div>
                     </div>
-                    <div className={"item11"}>{like}</div>
+                    <div className={"similar"}>{like}</div>
 
                 </div>;
                 break;
             case ("error"):
-                movie = <em>somethig went wrong!
+                movie = <em>something went wrong!
                     Please reload and try again!</em>;
                 break;
         }
