@@ -241,7 +241,7 @@ class Details extends Component {
 						{this.state.loading ? null :
 							<button className={"item14"} onClick={this.addToList} id={"watch"}>Add to watchList</button>}
 						{this.state.loading ? null :
-							<button className={"item14"} onClick={this.addToList} id={"history"}>Add to already watched list</button>
+							<button className={"item14"} onClick={this.addToList} id={"historyBtn"}>Add to already watched list</button>
 						}
 						
 					</div>
