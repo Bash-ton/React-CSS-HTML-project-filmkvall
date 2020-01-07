@@ -30,7 +30,14 @@
     background: #403e3f;
     width: 50%;
     z-index: 1;
+    grid-area: result;
 }
 .deleteFromListBtn {
 	flex-direction: column;
+}
+
+@media only screen and (max-width: 600px) {
+    .search-result-body{
+        width: 100%;
+    }
 }

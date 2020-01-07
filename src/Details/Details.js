@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./Details.css";
 import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
-
+import Rating from "../Rating/Rating.js"
 
 import { movieList } from "../Data/MovieList";
 import swal from "sweetalert";
@@ -215,17 +215,20 @@ class Details extends Component {
                         <img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path}/>
                     </Link>));
                 movie = <div className={"Details"}>
-                    <img className={"item1"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
-                    <h1 className={"item2"}>{name}</h1>
-                    <p className={"item3"}>{this.state.movie.overview}</p>
-                    <p className={"item4"}>{firstrelease}</p>
-                    <p className={"item5"}>original language: {language}</p>
-                    <p className={"item6"}>{price}</p>
-                    <p className={"item7"}>{runtime}</p>
-                    <p className={"item8"}>{tagline}</p>
-                    <h2 className={"item10"}>Cast</h2>
-                    <div className={"item9"}><div>{cast}</div></div>
-					<div className={"item11"}>{like}</div>
+
+                    <img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
+                    <h1 className={"title"}>{name}</h1>
+                    <p className={"synopsis"}>{this.state.movie.overview}</p>
+                    <p className={"releaseDate"}>{firstrelease}</p>
+                    <p className={"orgiLang"}>original language: {language}</p>
+                    <p className={"price"}>{price}</p>
+                    <p className={"time"}>{runtime}</p>
+                    <p className={"tagline"}>{tagline}</p>
+                    <h2 className={"castTitle"}>Cast</h2>
+                    <div className={"cast"}>
+                        <div>{cast}</div>
+                    </div>
+                    <div className={"similar"}>{like}</div>
 
 					<div className={"item13"}>
 						<div className="sweet-loading">
@@ -242,7 +245,6 @@ class Details extends Component {
 						}
 						
 					</div>
-
                 </div>;
 				break;
     case ("error"):
@@ -252,6 +254,7 @@ class Details extends Component {
         }
         return(
             <div>
+                <Rating id={this.state.id}/>
                 {movie}
             </div>
         )

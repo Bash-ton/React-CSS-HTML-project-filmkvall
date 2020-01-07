@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 import Observable from "./Observable";
 import { fireconf } from "./apiConfig";
+import userRatingInstance from "./userRating"
 
 
 class UserModel extends Observable {
@@ -28,6 +29,8 @@ class UserModel extends Observable {
             if (user) {
                 if (user.emailVerified) {
                     this.user = firebase.auth().currentUser;
+                    userRatingInstance.setUserID(user.uid);
+                    userRatingInstance.getList();
                     this.notifyObservers();
                 } else {
                     user.sendEmailVerification(); //Send email verification
@@ -35,6 +38,8 @@ class UserModel extends Observable {
                 }
             }
             else {
+                userRatingInstance.setUserID(null);
+                userRatingInstance.clearList();
                 this.user = null;
                 this.notifyObservers();
             }
