@@ -1,9 +1,9 @@
 .profilePic > img{
-    width: 25%;
+    width: 100%;
 }
 .MyPage{
 display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 33% 67%;
 }
 .MyPage > ListConatainer{
     width: 100%;

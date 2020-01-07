@@ -40,7 +40,7 @@ class MyPage extends Component {
                  break;
              default:
                 if (this.state.user.photoURL === null) {
-                profileImg = "../Logo_Filmkvall.png"
+                profileImg = "../Default-avatar.jpg"
                     user = <div className={"profilePic"}>
                         <img src={profileImg} alt={""}/>
                         <p>{this.state.user.email}</p>

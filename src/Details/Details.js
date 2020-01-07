@@ -194,10 +194,6 @@ class Details extends Component {
                 movie = <div className={"Details"}>
 
                     <img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
-                    <div className={"item12"}>
-                        <button  onClick={this.addToList} id={"watch"}>Add to watchList</button>
-                        <button onClick={this.addToList} id={"history"}>Add to already watched list</button>
-                    </div>
                     <h1 className={"title"}>{name}</h1>
                     <p className={"synopsis"}>{this.state.movie.overview}</p>
                     <p className={"releaseDate"}>{firstrelease}</p>
