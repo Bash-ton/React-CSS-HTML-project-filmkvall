@@ -6,7 +6,7 @@ import model from "../Data/apifetch";
 
 import { movieList } from "../Data/MovieList";
 import swal from "sweetalert";
-
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 class Details extends Component {
@@ -20,7 +20,8 @@ class Details extends Component {
             url: searchId,
             status: "Loading",
             type: typeAndId[0],
-            id: typeAndId[1]
+			id: typeAndId[1],
+			loading: false,
         }
 
     }
@@ -83,6 +84,10 @@ class Details extends Component {
 }
 
 	addToList = (event) => {
+		//change to loading
+		this.setState({
+			loading: true
+		});
 		if (this.props.userModel.getUser() != null) {
 			switch (event.target.id) {
 				case "watch":
@@ -91,14 +96,22 @@ class Details extends Component {
 							movieList.setList("storedList1", this.props.userModel.getUser().uid);
 							setTimeout(() => {
 								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
-							}, 2000);
+
+								this.setState({
+									loading: false
+								});
+							}, 1000);
 							break;
 						default://movie
 
 							movieList.setList("storedList2", this.props.userModel.getUser().uid);
 							setTimeout(() => {
 								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
-							}, 2000);
+
+								this.setState({
+									loading: false
+								});
+							}, 1000);
 							break;
 					}
 					break;
@@ -109,14 +122,22 @@ class Details extends Component {
 							movieList.setList("storedList3", this.props.userModel.getUser().uid);
 							setTimeout(() => {
 								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
-							}, 2000);
+
+								this.setState({
+									loading: false
+								});
+							}, 1000);
 							break;
 						default://movie
 
 							movieList.setList("storedList4", this.props.userModel.getUser().uid);
 							setTimeout(() => {
 								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
-							}, 2000);
+
+								this.setState({
+									loading: false
+								});
+							}, 1000);
 
 							break;
 					}
@@ -129,6 +150,8 @@ class Details extends Component {
 			swal("You have to log in to manage your lists", "If you don't already have an account, use the 'signUp' button to create one!", "error");
 
 		}
+		
+		
 	}
 
 
@@ -205,8 +228,19 @@ class Details extends Component {
 					<div className={"item11"}>{like}</div>
 
 					<div className={"item13"}>
-						<button className={"item14"} onClick={this.addToList} id={"watch"}>Add to watchList</button>
-						<button className={"item14"} onClick={this.addToList} id={"history"}>Add to already watched list</button>
+						<div className="sweet-loading">
+							<ClipLoader
+								size={40}
+								color={"red"}
+								loading={this.state.loading}
+							/>
+						</div>
+						{this.state.loading ? null :
+							<button className={"item14"} onClick={this.addToList} id={"watch"}>Add to watchList</button>}
+						{this.state.loading ? null :
+							<button className={"item14"} onClick={this.addToList} id={"history"}>Add to already watched list</button>
+						}
+						
 					</div>
 
                 </div>;
@@ -223,5 +257,7 @@ class Details extends Component {
         )
     }
 }
+
+
 
 export default Details;

@@ -70,9 +70,10 @@
 .item13 {
 	grid-area: addbutton1;
 	width: 100%;
-	background-color: #000000;
-	padding-bottom: 15px;
-
+	background-color: #464843;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	border-bottom-left-radius: 20px;
 }
 .item14 {
 	max-width: 100%;
@@ -136,4 +137,11 @@
         border-bottom-right-radius: 20px;
         margin-bottom: 20px;
     }
+}
+
+/*loading spinner*/
+.sweet-loading {
+	display: block;
+	margin: 0 auto;
+	border-color: red;
 }

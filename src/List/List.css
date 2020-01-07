@@ -1,5 +1,5 @@
 .deleteFromListBtn {
-	max-width: 100%;
+	max-width: 120px;
 	background-color: #780202;
 	border-radius: 25px;
 	display: inline-block;
@@ -12,4 +12,45 @@
 	border: none;
 	
 }
+
+.list-result {
+	display: grid;
+	grid-template-columns: 20% 80%;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.list-title {
+	flex-direction: column;
+}
+
+.list-title > p {
+	font-size: 0.6em;
+	color: #b5b4b8;
+}
+
+.list-img {
+	max-height: 100px;
+	max-width: 100px;
+	min-width: 100px;
+	min-height: 100px
+}
+
+.list-result > p {
+	max-width: 100px;
+	max-height: 100px;
+}
+
+.list-result-link {
+}
+
+.list-result-body {
+	position: absolute;
+	background: #403e3f;
+	width: 50%;
+	z-index: 1;
+}
+
+
 

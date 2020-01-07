@@ -96,16 +96,19 @@ class List extends Component {
 					case "storedList4"://storedList4
 						createdList = movieList.getList().map(movie => (
 							<div key={movie.id}>
-								<Link className={"search-result-link"} to={"/Details/?movie&" + movie.id}>
-									<div className={"search-result"} >
-										<img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} />
-										<div className={"search-title"}>
+								
+									<div className={"list-result"} >
+									<Link className={"list-result-link"} to={"/Details/?movie&" + movie.id}>
+										<img className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} />
+										<div className={"list-title"}>
 											<p>{movie.title}</p>
 											<p>{movie.release_date}</p>
 										</div>
+									</Link>
+										<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={movie.id} value={movie}>Remove</button>
 									</div>
-								</Link>
-								<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={movie.id} value={movie}>Remove</button>
+								
+								
 							</div>
 						));
 						//stop loading
@@ -114,16 +117,19 @@ class List extends Component {
 					case "storedList3"://storedList3
 						createdList = movieList.getList().map(tv => (
 							<div key={tv.id}>
-								<Link to={"/Details/?tv&" + tv.id}>
-									<div className={"search-result"}>
-										<img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path} />
-										<div className={"search-title"}>
+								
+									<div className={"list-result"}>
+									<Link to={"/Details/?tv&" + tv.id}>
+										<img className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + tv.poster_path} />
+										<div className={"list-title"}>
 											<p>{tv.name}</p>
 											<p>{tv.first_air_date}</p>
 										</div>
+									</Link>
+										<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={tv.id} value={tv}>Remove</button>
 									</div>
-								</Link>
-								<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={tv.id} value={tv}>Remove</button>
+								
+								
 							</div>
 						));
 						//stop loading

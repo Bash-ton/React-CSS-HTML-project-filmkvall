@@ -9,18 +9,22 @@ class MyPage extends Component {
         super(props);
         this.state = {
 			user: this.props.userModel.getUser(),
+			
 		};
     }
 
-    componentDidMount() {
+	componentDidMount() {
+		console.log("mounted");
         this.props.userModel.addObserver(this);
     }
 
-    componentWillUnmount() {
+	componentWillUnmount() {
+		console.log("unmounted");
         this.props.userModel.removeObserver(this);
     }
 
-    update(){
+	update() {
+		console.log("update");
         this.setState({
             user: this.props.userModel.getUser()
         })
@@ -54,11 +58,13 @@ class MyPage extends Component {
             </div>}
                 break;
         }
-
+		//
         return(
             <div>
 				{user}
-				<ListContainer userID={this.props.userModel.getUser().uid} />
+				{this.state.user ? 
+					<ListContainer userID={this.props.userModel.getUser().uid} /> : null
+				}
             </div>
         );
     }

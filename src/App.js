@@ -53,7 +53,7 @@ class App extends Component {
             />
             <Route
                 path={"/MyPage"}
-                render={() => <MyPage userModel={userInstance}/>}
+				render={() => <MyPage userModel={userInstance} />}
             />
             <Route
                 path={"/Info"}
