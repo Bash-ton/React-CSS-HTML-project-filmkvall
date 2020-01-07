@@ -56,7 +56,7 @@ class MyPage extends Component {
         }
 
         return(
-            <div>
+            <div className={"MyPage"}>
 				{user}
 				<ListContainer userID={this.props.userModel.getUser().uid} />
             </div>
