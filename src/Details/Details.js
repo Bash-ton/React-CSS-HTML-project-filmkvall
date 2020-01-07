@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./Details.css";
 import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
-
+import Rating from "../Rating/Rating.js"
 
 import { movieList } from "../Data/MovieList";
 import swal from "sweetalert";
@@ -220,6 +220,7 @@ class Details extends Component {
         }
         return(
             <div>
+                <Rating id={this.state.id}/>
                 {movie}
             </div>
         )
