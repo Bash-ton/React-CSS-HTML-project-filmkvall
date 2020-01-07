@@ -35,3 +35,9 @@
 .deleteFromListBtn {
 	flex-direction: column;
 }
+
+@media only screen and (max-width: 600px) {
+    .search-result-body{
+        width: 100%;
+    }
+}

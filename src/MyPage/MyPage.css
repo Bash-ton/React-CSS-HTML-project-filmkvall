@@ -1,5 +1,5 @@
 .profilePic > img{
-    width: 100%;
+    width: 70%;
 }
 .MyPage{
 display: grid;
@@ -10,4 +10,12 @@ display: grid;
 }
 #navbar{
     display: flex;
+}
+@media only screen and (max-width: 600px) {
+    .MyPage{
+        display: block;
+    }
+    .profilePic > img{
+        width: 70%;
+    }
 }

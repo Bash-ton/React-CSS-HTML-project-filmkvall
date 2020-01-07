@@ -60,13 +60,6 @@
     border-bottom-left-radius: 20px;
     justify-content: center;
 }
-.item12 > button{
-    background-color: #780202;
-    border-color: #780202;
-    border-width: 0;
-    color: white;
-    justify-self: center;
-}
 
 .cast > div{ display: grid;grid-template-columns: auto auto;}
 .item13 {
@@ -132,7 +125,7 @@
         display: grid;
         grid-template-columns: auto auto;
     }
-    .item2{
+    .title{
         border-top-left-radius: 20px;
     }
     .cast > div{
@@ -140,10 +133,5 @@
     }
     .castname{
         padding: 5px;
-    }
-    .item12{
-        border-bottom-right-radius: 20px;
-        margin-bottom: 20px;
-        height: 50px;
     }
 }

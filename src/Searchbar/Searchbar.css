@@ -78,3 +78,8 @@ width: 80%;
     border-top-left-radius: 25px;
     height: 30px;
 }
+@media only screen and (max-width: 600px) {
+    .search-body{
+        display: block;
+    }
+}
