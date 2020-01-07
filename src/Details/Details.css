@@ -8,10 +8,11 @@
     'picture syno syno'
     'picture tagline tagline'
     'picture release runtime'
-    'watchlist lang price'
+    'addbutton1 lang price'
     'cast-title cast-title cast-title'
     'cast cast cast'
     'similar similar similar'
+
 }
 .item1 { grid-area: picture; width: 100%}
 .item2 {
@@ -64,6 +65,27 @@
     border-width: 0;
     color: white;
     justify-self: center;
+}
+
+.item13 {
+	grid-area: addbutton1;
+	width: 100%;
+	background-color: #000000;
+	padding-bottom: 15px;
+
+}
+.item14 {
+	max-width: 100%;
+	background-color: #780202;
+	border-radius: 25px;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Trebuchet MS;
+	font-size: 17px;
+	padding: 10px 30px;
+	text-decoration: none;
+	border: none;
 }
 
 .item9 > div{ display: grid;grid-template-columns: auto auto;}

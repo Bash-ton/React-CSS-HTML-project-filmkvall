@@ -3,13 +3,10 @@ import "./Details.css";
 import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
 
-//import list instances
-import { watchedMovies } from "../Data/MovieList";
-import { watchedSeries } from "../Data/MovieList";
-import { wantMovies } from "../Data/MovieList";
-import { wantSeries } from "../Data/MovieList";
 
-import * as firebase from 'firebase';
+import { movieList } from "../Data/MovieList";
+import swal from "sweetalert";
+
 
 
 class Details extends Component {
@@ -21,7 +18,6 @@ class Details extends Component {
         let typeAndId = urlSplit[1].split("&");
         this.state= {
             url: searchId,
-            userID: this.props.userModel.getUserID(),
             status: "Loading",
             type: typeAndId[0],
             id: typeAndId[1]
@@ -87,68 +83,53 @@ class Details extends Component {
 }
 
 	addToList = (event) => {
-		switch (event.target.id) {
-			case "watch":
-				switch (this.state.type) {
-					case "tv":
-						wantSeries.addToList(this.state.movie, "storedList1");
-						console.log("watch tv");
+		if (this.props.userModel.getUser() != null) {
+			switch (event.target.id) {
+				case "watch":
+					switch (this.state.type) {
+						case "tv":
+							movieList.setList("storedList1", this.props.userModel.getUser().uid);
+							setTimeout(() => {
+								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
+							}, 2000);
+							break;
+						default://movie
 
-						//add to firebase database
-						this.updateUserTest(wantSeries, wantMovies, watchedSeries, watchedMovies);
-						break;
-					default://movie
-						wantMovies.addToList(this.state.movie, "storedList2");
-						console.log("watch movie");
-						console.log(this.state.userID);
+							movieList.setList("storedList2", this.props.userModel.getUser().uid);
+							setTimeout(() => {
+								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
+							}, 2000);
+							break;
+					}
+					break;
+				case "history":
+					switch (this.state.type) {
+						case "tv":
 
-						//add to firebase database
-						this.updateUserTest(wantSeries, wantMovies, watchedSeries, watchedMovies);
+							movieList.setList("storedList3", this.props.userModel.getUser().uid);
+							setTimeout(() => {
+								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
+							}, 2000);
+							break;
+						default://movie
 
-						//console.log(wantMovies.getFullList());
-						break;
-				}
-				break;
-			case "history":
-				switch (this.state.type) {
-					case "tv":
-						watchedSeries.addToList(this.state.movie, "storedList3");
-						console.log("hist tv");
+							movieList.setList("storedList4", this.props.userModel.getUser().uid);
+							setTimeout(() => {
+								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
+							}, 2000);
 
-						//add to firebase database
-						this.updateUserTest(wantSeries, wantMovies, watchedSeries, watchedMovies);
-						break;
-					default://movie
-						watchedMovies.addToList(this.state.movie, "storedList4");
-						console.log("hist movie");
+							break;
+					}
+					break;
+				default:
+					break;
 
-						//add to firebase database
-						this.updateUserTest(wantSeries, wantMovies, watchedSeries, watchedMovies);
-						break;
-				}
-				break;
-			default:
-				break;
+			}
+		} else {
+			swal("You have to log in to manage your lists", "If you don't already have an account, use the 'signUp' button to create one!", "error");
 
 		}
-
 	}
-
-
-	//also creates if it doesnt exist
-	updateUserTest(list1, list2, list3, list4) {
-		firebase.database().ref("userLists/" + this.props.userModel.getUserID()).set({
-			storedList1: list1,
-			storedList2: list2,
-			storedList3: list3,
-			storedList4: list4,
-		});
-
-		//ref.on("value", this.gotData, this.errData);
-
-	}
-
-
 
 
 
@@ -212,10 +193,6 @@ class Details extends Component {
                     </Link>));
                 movie = <div className={"Details"}>
                     <img className={"item1"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
-                    <div className={"item12"}>
-                        <button  onClick={this.addToList} id={"watch"}>Add to watchList</button>
-                        <button onClick={this.addToList} id={"history"}>Add to already watched list</button>
-                    </div>
                     <h1 className={"item2"}>{name}</h1>
                     <p className={"item3"}>{this.state.movie.overview}</p>
                     <p className={"item4"}>{firstrelease}</p>
@@ -224,17 +201,20 @@ class Details extends Component {
                     <p className={"item7"}>{runtime}</p>
                     <p className={"item8"}>{tagline}</p>
                     <h2 className={"item10"}>Cast</h2>
-                    <div className={"item9"}>
-                        <div>{cast}</div>
-                    </div>
-                    <div className={"item11"}>{like}</div>
+                    <div className={"item9"}><div>{cast}</div></div>
+					<div className={"item11"}>{like}</div>
+
+					<div className={"item13"}>
+						<button className={"item14"} onClick={this.addToList} id={"watch"}>Add to watchList</button>
+						<button className={"item14"} onClick={this.addToList} id={"history"}>Add to already watched list</button>
+					</div>
 
                 </div>;
-                break;
-            case ("error"):
-                movie = <em>somethig went wrong!
-                    Please reload and try again!</em>;
-                break;
+				break;
+    case ("error"):
+        movie = <em>somethig went wrong!
+            Please reload and try again!</em>;
+        break;
         }
         return(
             <div>
