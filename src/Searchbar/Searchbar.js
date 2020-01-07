@@ -96,16 +96,16 @@ class Searchbar extends Component {
                     <img src={"../Logo_2.png"}/>
                 </Link>
                 <div className={"search-field"}>
-                    <select onChange={evt => this.updateType(evt)}>
+                    <select className={"selectCat"} onChange={evt => this.updateType(evt)}>
                         <option value={"movie"}>Movie</option>
                         <option value={"tv"}>Tv-Series</option>
                         <option value={"actor"}>Actor</option>
                     </select>
                     <div>
                         <input className={"search-input"} placeholder={"Search " + this.getType()} onClick={evt => this.handelClick(evt)} onChange={evt => this.updateTitle(evt)} ref={node => this.node = node}/>
-                        <div id={"search-result-given"}>
-                            <SearchResult title={this.state.title} type={this.state.type}/>
-                        </div>
+                    </div>
+                    <div id={"search-result-given"}>
+                        <SearchResult title={this.state.title} type={this.state.type}/>
                     </div>
                 </div>
 

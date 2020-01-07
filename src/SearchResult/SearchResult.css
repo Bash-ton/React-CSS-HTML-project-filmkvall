@@ -30,6 +30,7 @@
     background: #403e3f;
     width: 50%;
     z-index: 1;
+    grid-area: result;
 }
 .deleteFromListBtn {
 	flex-direction: column;
