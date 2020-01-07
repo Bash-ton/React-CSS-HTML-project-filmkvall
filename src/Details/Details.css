@@ -95,6 +95,10 @@
     padding-left: 25%;
     text-align: left;
 }
+.castname:hover {
+    border : solid 3px red;
+    opacity: 0.5;
+}
 .details-actor{
     color: white;
     text-decoration: none;
