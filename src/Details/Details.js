@@ -115,7 +115,7 @@ class Details extends Component {
 							break;
 					}
 					break;
-				case "history":
+				case "historyBtn":
 					switch (this.state.type) {
 						case "tv":
 
