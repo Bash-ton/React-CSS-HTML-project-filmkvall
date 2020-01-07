@@ -1,38 +1,39 @@
-import React, {Component} from "react";
+
+import React, { Component } from "react";
 //import "./listContainer.css";
 import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
 import "./ListContainer.css";
-
-//import list instances
-import { watchedMovies } from "../Data/MovieList";
-import { watchedSeries } from "../Data/MovieList";
-import { wantMovies } from "../Data/MovieList";
-import { wantSeries } from "../Data/MovieList";
+import List from "../List/List";
 
 class ListContainer extends Component{
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			listType: "watch-movies",
-			listName: wantMovies,
+			listName: "storedList2",
+			mounted: false,
 		};
 
-		console.log(this.props.userID);
+
 
 	}
-	
 	componentDidMount() {
-		console.log("first");
-		
+		//reset the active list when loging out
+		this.setState({
+			mounted: true,
+
+		});
 
 	}
 	componentWillUnmount() {
-		console.log("unmounted");
+		//reset active list when loging out
+		this.setState({
+			mounted: false,
+
+		});
+
 	}
-
-
 
 	chooseList = (event) => {
 		let activeChild = null;
@@ -45,8 +46,7 @@ class ListContainer extends Component{
 				event.target.className = "active";
 
 				this.setState({
-					listType: "watch-movies",
-					listName: wantMovies
+					listName: "storedList2"
 				})
 
 				break;
@@ -56,8 +56,7 @@ class ListContainer extends Component{
 				event.target.className = "active";
 
 				this.setState({
-					listType: "watch-series",
-					listName: wantSeries,
+					listName: "storedList1",
 				})
 
 				break;
@@ -67,8 +66,7 @@ class ListContainer extends Component{
 				event.target.className = "active";
 
 				this.setState({
-					listType: "history-movies",
-					listName: watchedMovies,
+					listName: "storedList4",
 				})
 				break;
 			case "history-series":
@@ -77,8 +75,7 @@ class ListContainer extends Component{
 				event.target.className = "active";
 
 				this.setState({
-					listType: "history-series",
-					listName: watchedSeries,
+					listName: "storedList3",
 				})
 				break;
 			default:
@@ -86,70 +83,21 @@ class ListContainer extends Component{
 
 		}
 		
+		
+		
 	}
-	//add remove button
+
 	render() {
-		let createdList = null;
 
-		createdList = (
-			<div class={"EmptyList"}>
-				<br />
-				This list is empty...
-				<br />
-				<br />
-				<br />
-				<br />
-			</div>
-		)
-		
-		if (this.state.listName.getFullList(this.state.listType) != null) {
-
-			
-
-			switch (this.state.listType) {
-				case "watch-movies":
-				case "history-movies":
-					createdList = this.state.listName.getFullList(this.state.listType).map(movie => (
-						<Link className={"search-result-link"} to={"/Details/?movie&" + movie.id}>
-							<div className={"search-result"} >
-								<img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} />
-								<div className={"search-title"}>
-									<p>{movie.title}</p>
-									<p>{movie.release_date}</p>
-								</div>
-							</div>
-						</Link>
-					));					
-					break;
-				case "watch-series":
-				case "history-series":
-					createdList = this.state.listName.getFullList(this.state.listType).map(tv => (
-						<Link to={"/Details/?tv&" + tv.id}>
-							<div className={"search-result"}>
-								<img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path} />
-								<div className={"search-title"}>
-									<p>{tv.name}</p>
-									<p>{tv.first_air_date}</p>
-								</div>
-							</div>
-						</Link>
-					));
-					break;
-				default:
-					break;
-
-			}
-		}
-		
 		return (
-			<div class={"MyList"}>
-				<div id="navbar" class="hvr-shadow">
-					<div onClick={this.chooseList} id={"watch-movies"} class="active" >Watch List Movies</div>
+			<div className={"MyList"}>
+				<div id="navbar" className="hvr-shadow">
+					<div onClick={this.chooseList} id={"watch-movies"} className="active">Watch List Movies</div>
 					<div onClick={this.chooseList} id={"watch-series"}>Watch List Series</div>
 					<div onClick={this.chooseList} id={"history-movies"}>Already Seen Movies</div>
 					<div onClick={this.chooseList} id={"history-series"}>Already Seen Series</div>
 				</div>
-				<div class={"createdlistTV"}>{createdList}</div>
+				<List name={this.state.listName} userID={this.props.userID} resetList={this.state.mounted}/>
 
 			</div>
 			

@@ -9,13 +9,7 @@ class MyPage extends Component {
         super(props);
         this.state = {
 			user: this.props.userModel.getUser(),
-			userID: this.props.userModel.getUserID()
 		};
-		//console.log(this.props.userModel.getUserID());
-
-	
-
-	
     }
 
     componentDidMount() {
@@ -64,7 +58,7 @@ class MyPage extends Component {
         return(
             <div className={"MyPage"}>
 				{user}
-				<ListContainer userID={this.props.userModel.getUserID()} />
+				<ListContainer userID={this.props.userModel.getUser().uid} />
             </div>
         );
     }

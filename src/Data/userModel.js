@@ -12,14 +12,6 @@ class UserModel extends Observable {
         this.user = null;
 		this.setUser();
 
-
-		//added by seb
-		this.userID = null;
-
-		//this.list1 = null;
-		//this.list2 = null;
-		//this.list3 = null;
-		//this.list4 = null;
 	}
 
 
@@ -31,23 +23,11 @@ class UserModel extends Observable {
         return this.user;
 	}
 
-	//added by seb
-	getUserID() {
-		return this.userID;
-	}
-	getUserLists() {
-
-
-	}
-
     authListener() {
        firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 if (user.emailVerified) {
                     this.user = firebase.auth().currentUser;
-                    this.userID = this.user.uid;
-
-                    this.getUserLists();
                     this.notifyObservers();
                 } else {
                     user.sendEmailVerification(); //Send email verification
@@ -63,11 +43,11 @@ class UserModel extends Observable {
 
     doSignOutUser(){
 		firebase.auth().signOut().then(function () {
-
             console.log('Signed Out');
         }, function(error) {
             console.error('Sign Out Error', error);
-        });
+			});
+
         this.authListener();
     }
 

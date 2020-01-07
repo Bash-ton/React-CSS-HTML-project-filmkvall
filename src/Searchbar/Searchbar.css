@@ -1,4 +1,5 @@
 .search-input {
+    grid-area: input;
     text-align: center;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -45,8 +46,11 @@
 }
 
 .search-field{
-    display: flex;
+    display: grid;
     align-self: center;
+    grid-template-columns: 20% 100%;
+    grid-template-areas: 'select input'
+'result result';
 }
 .search-body{
     margin-top: 0px;
@@ -66,8 +70,10 @@
     display: flex;
 width: 80%;
 }
-.search-field > select{
+.selectCat {
+    grid-area: select;
     border-bottom-left-radius: 25px;
     border-top-left-radius: 25px;
     height: 30px;
 }
+

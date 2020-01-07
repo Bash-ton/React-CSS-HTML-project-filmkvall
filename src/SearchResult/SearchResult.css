@@ -31,3 +31,6 @@
     width: 50%;
     z-index: 1;
 }
+.deleteFromListBtn {
+	flex-direction: column;
+}

@@ -3,19 +3,19 @@
 	background-color: #333;
 	width: 100%;
 	background-color: #780202;
-
+	cursor: pointer;
 }
 /* Navbar links */
-	#navbar div {
-		float: left;
-		display: block;
-		color: #f2f2f2;
-		padding: 15px;
+#navbar div {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	padding: 15px;
 		
-	}
-	#navbar div:hover {
-		background-color: black;
-	}
+}
+#navbar div:hover {
+	background-color: black;
+}
 
 .active  {
 	background-color: black;
@@ -23,11 +23,11 @@
 
 
 
-	.sticky {
-		position: fixed;
-		top: 0;
-		width: 100%;
-	}
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .content {

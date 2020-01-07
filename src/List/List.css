@@ -1,0 +1,15 @@
+.deleteFromListBtn {
+	max-width: 100%;
+	background-color: #780202;
+	border-radius: 25px;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Trebuchet MS;
+	font-size: 17px;
+	padding: 10px 30px;
+	text-decoration: none;
+	border: none;
+	
+}
+
