@@ -90,7 +90,7 @@ class Details extends Component {
 		});
 		if (this.props.userModel.getUser() != null) {
 			switch (event.target.id) {
-				case "watch":
+				case "watchBtn":
 					switch (this.state.type) {
 						case "tv":
 							movieList.setList("storedList1", this.props.userModel.getUser().uid);
@@ -239,9 +239,9 @@ class Details extends Component {
 							/>
 						</div>
 						{this.state.loading ? null :
-							<button className={"item14"} onClick={this.addToList} id={"watch"}>Add to watchList</button>}
+							<button className={"item14"} onClick={this.addToList} id={"watchBtn"}>Add to watchList</button>}
 						{this.state.loading ? null :
-							<button className={"item14"} onClick={this.addToList} id={"historyBtn"}>Add to already watched list</button>
+							<button className={"item15"} onClick={this.addToList} id={"historyBtn"}>Add to already watched list</button>
 						}
 						
 					</div>
