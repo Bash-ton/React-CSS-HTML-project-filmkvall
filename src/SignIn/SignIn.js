@@ -1,6 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
+import "./SingIn.css"
 
 
 class SignIn extends Component {
@@ -47,15 +48,17 @@ class SignIn extends Component {
         if(this.state.user === null){
                 sessionState =
                     (<div>
-                        <div>
+                        <div className={"login-fields"}>
                             <input placeholder={"Email..."} className={"email-input"} onChange={evt => this.updateEmail(evt)} onKeyPress={evt=> this.handleLogin(evt)}/>
-                            <input placeholder={"Password..."} id={"password"} className={"password-input"} onChange={evt => this.updatePass(evt)} onKeyPress={evt=> this.handleLogin(evt)}/>
-                            <button onClick={() => this.props.userModel.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass)}> Login</button>
+                            <input placeholder={"Password..."} id={"password"} className={"password-input"} type={"password"} onChange={evt => this.updatePass(evt)} onKeyPress={evt=> this.handleLogin(evt)}/>
+                            <button className={"login-btn"} onClick={() => this.props.userModel.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass)}> Login</button>
                         </div>
                         <div>
                         <Link to={"/ResetPassword"}>
-                                reset password
-                            </Link>
+                            <button className={"password-reset-btn"}>
+                                Reset Password
+                            </button>
+                        </Link>
                         </div>
                     </div>);
         }

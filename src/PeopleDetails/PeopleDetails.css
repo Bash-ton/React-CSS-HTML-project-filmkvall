@@ -1,0 +1,10 @@
+.actor-bio{
+    margin-bottom: 50px;
+}
+.actor-bio > img{
+    float: left;
+}
+.actor-info{
+    display: flex;
+    flex-direction: column;
+}

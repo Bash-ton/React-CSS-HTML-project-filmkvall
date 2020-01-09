@@ -8,7 +8,7 @@
     max-height: 30px;
     min-width: 100%;
     min-height: 30px;
-    color: red;
+    color: white;
     border: none;
 }
 
@@ -38,7 +38,7 @@
     border: none;
 }
 .nav-button:hover {
-    background-color:#fff305;
+    background-color:#d40303;
 }
 .nav-button:active {
     position:relative;
