@@ -14,17 +14,14 @@ class MyPage extends Component {
     }
 
 	componentDidMount() {
-		console.log("mounted");
         this.props.userModel.addObserver(this);
     }
 
 	componentWillUnmount() {
-		console.log("unmounted");
         this.props.userModel.removeObserver(this);
     }
 
 	update() {
-		console.log("update");
         this.setState({
             user: this.props.userModel.getUser()
         })

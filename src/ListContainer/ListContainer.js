@@ -1,8 +1,8 @@
 
 import React, { Component } from "react";
 //import "./listContainer.css";
-import {Link} from "react-router-dom";
-import model from "../Data/apifetch";
+//import {Link} from "react-router-dom";
+//import model from "../Data/apifetch";
 import "./ListContainer.css";
 import List from "../List/List";
 

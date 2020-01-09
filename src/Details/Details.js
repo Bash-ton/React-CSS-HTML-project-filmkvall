@@ -148,10 +148,12 @@ class Details extends Component {
 			}
 		} else {
 			swal("You have to log in to manage your lists", "If you don't already have an account, use the 'signUp' button to create one!", "error");
+			this.setState({
+				loading: false
+			});
 
 		}
-		
-		
+
 	}
 
 
@@ -192,8 +194,8 @@ class Details extends Component {
                     runtime = "Runtime: " + this.state.movie.runtime + "min";
                     firstrelease = "First released: " + this.state.movie.release_date;
                 }
-                cast = this.state.cast.cast.map(actors => (<Link className={"details-actor"} to={"/Info/?" + actors.id}>
-                        <p className={"castname"}>{actors.name} is {actors.character}</p>
+				cast = this.state.cast.cast.map(actors => (<Link  className={"details-actor"} to={"/Info/?" + actors.id}>
+					<p className={"castname"}>{actors.name} is {actors.character}</p>
                     </Link>
                 ));
                 switch (this.state.movie.original_language) {
@@ -208,15 +210,17 @@ class Details extends Component {
                         break;
                     case ("pt"):
                         language = "Portuguese";
-                        break;
+						break;
+					default:
+						break;
                 }
                 like = this.state.similar.results.slice(0, 4).map(movies => (
                     <Link to={"/Details/?" + this.state.type + "&" + movies.id}>
-                        <img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path}/>
+						<img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path} alt={""}/>
                     </Link>));
                 movie = <div className={"Details"}>
 
-                    <img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
+					<img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path} alt={""}/>
                     <h1 className={"title"}>{name}</h1>
                     <p className={"synopsis"}>{this.state.movie.overview}</p>
                     <p className={"releaseDate"}>{firstrelease}</p>
@@ -247,10 +251,12 @@ class Details extends Component {
 					</div>
                 </div>;
 				break;
-    case ("error"):
-        movie = <em>somethig went wrong!
-            Please reload and try again!</em>;
-        break;
+			case ("error"):
+				movie = <em>somethig went wrong!
+					Please reload and try again!</em>;
+				break;
+			default:
+				break;
         }
         return(
             <div>

@@ -37,7 +37,7 @@ class SignIn extends Component {
         });
     }
     handleLogin(e){
-    if(e.charCode == 13){
+    if(e.charCode === 13){
         this.props.userModel.doSignInUserWithEmailAndPassword(this.state.email,this.state.pass);
         }
     }
@@ -61,7 +61,7 @@ class SignIn extends Component {
         }
         else{
             sessionState = (<p>You are logged in</p>);
-            console.log(this.state.user);
+   
         }
         return(<div>
                     {sessionState}

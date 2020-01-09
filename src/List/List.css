@@ -30,8 +30,7 @@
 	max-height: 100px;
 }
 
-.list-result-link {
-}
+
 
 .list-result-body {
 	position: absolute;
@@ -54,6 +53,28 @@
 	text-decoration: none;
 	border: none;
 	overflow: hidden;
+}
+
+
+.list-background {
+	background-color: black;
+}
+
+@media only screen and (max-width: 1000px) {
+	.deleteFromListBtn {
+
+		display: inline-block;
+	}
+
+	.list-result-link {
+		grid-column-start: 2;
+		grid-column-end: 3;
+	}
+	.deleteBtnParent {
+		text-align: center;
+		grid-column-start: 2;
+		grid-column-end: 3;
+	}
 }
 
 

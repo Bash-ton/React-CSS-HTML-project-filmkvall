@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
-import model from "../Data/apifetch";
+//import model from "../Data/apifetch";
 
 import "./List.css";
 import { movieList } from "../Data/MovieList";
@@ -97,7 +97,7 @@ class List extends Component {
 					<div className={"EmptyList"}>
 						<br />
 						This list is empty...
-					<br />
+						<br />
 						<br />
 						<br />
 						<br />
@@ -114,11 +114,11 @@ class List extends Component {
 					case "storedList2":
 					case "storedList4":
 						createdList = movieList.getList().map(movie => (
-							<div key={movie.id}>
+							<div className={"list-background"} key={movie.id}>
 								
 									<div className={"list-result"} >
 									<Link className={"list-result-link"} to={"/Details/?movie&" + movie.id}>
-										<img className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} />
+										<img alt={""} className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} />
 										<div className={"list-title"}>
 											<p>{movie.title}</p>
 											<p>{movie.release_date}</p>
@@ -132,10 +132,12 @@ class List extends Component {
 											/>
 										</div>
 									{this.state.loading ? null :
-										<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={movie.id} value={movie}>Remove</button>
+										<div className={"deleteBtnParent"}>
+											<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={movie.id} value={movie}>Remove</button>
+										</div>
 									}
 									</div>
-								
+									<br />
 								
 							</div>
 						));
@@ -144,11 +146,11 @@ class List extends Component {
 					case "storedList1":
 					case "storedList3":
 						createdList = movieList.getList().map(tv => (
-							<div key={tv.id}>
+							<div className={"list-background"} key={tv.id}>
 								
 									<div className={"list-result"}>
-									<Link to={"/Details/?tv&" + tv.id}>
-										<img className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + tv.poster_path} />
+									<Link className={"list-result-link"} to={"/Details/?tv&" + tv.id}>
+										<img alt={""} className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + tv.poster_path} />
 										<div className={"list-title"}>
 											<p>{tv.name}</p>
 											<p>{tv.first_air_date}</p>
@@ -162,9 +164,13 @@ class List extends Component {
 										/>
 									</div>
 									{this.state.loading ? null :
-										<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={tv.id} value={tv}>Remove</button>
+										<div className={"deleteBtnParent"}>
+											<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={tv.id} value={tv}>Remove</button>
+										</div>
 									}
-									</div>
+								</div>
+								<br  />
+
 								
 								
 							</div>

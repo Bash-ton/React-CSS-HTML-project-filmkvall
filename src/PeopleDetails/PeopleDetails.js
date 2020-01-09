@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+//import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
 import "./PeopleDetails.css"
 import Cinematography from "./Cinematography/Cinematography";
@@ -70,7 +70,9 @@ class PeopleDetails extends Component {
                     <p> {this.state.actor.biography}</p>
                     </div>
                     </div>
-                break;
+				break;
+			default:
+				break;
         }
                 return(
                     <div className={"actor-info"}>

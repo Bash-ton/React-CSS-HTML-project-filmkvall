@@ -45,5 +45,10 @@
 	background-color: black;
 
 }
+@media only screen and (max-width: 360px) {
+	.hvr-shadow {
+		font-size: 80%;
+	}
+}
 
 
