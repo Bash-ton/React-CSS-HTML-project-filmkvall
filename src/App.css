@@ -11,9 +11,18 @@
 
 .email-input{
   border: none;
-  font-size: 17px;
-  background-color:#780202;
-  display:inline-block;
+  font-size: 22px;
+  background-color: #464843;
+  display: inline-block;
+  color: white;
+
+}
+.password-input {
+  color: white;
+  border: none;
+  font-size: 22px;
+  background-color: #464843;
+  display: inline-block;
   color: white;
 }
 

@@ -20,8 +20,8 @@ class ResetPassword extends Component {
                 <p>
                     Please provide the email linked to the account
                 </p>
-                    <input className={"releaseYear"} onChange={evt => this.updateEmail(evt)} />
-                    <button onClick={() => this.props.userModel.doResetPassword(this.state.email)}>Send Link</button>
+                    <input placeholder={"Email..."} className={"email-input"} onChange={evt => this.updateEmail(evt)} />
+                    <button className={"nav-button"} onClick={() => this.props.userModel.doResetPassword(this.state.email)}>Send Link</button>
                 </div>
         );
     }
