@@ -12,12 +12,21 @@ class Cinematography extends Component {
             cinematography: "hidden" ,
         }
 
+        this._isMounted = false;
+
     }
     componentDidMount() {
+        this._isMounted = true;
         this.getCinematography()
     }
     componentDidUpdate() {
-        this.getCinematography()
+        if (this._isMounted) {
+            this.getCinematography();
+        }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     getCinematography(){

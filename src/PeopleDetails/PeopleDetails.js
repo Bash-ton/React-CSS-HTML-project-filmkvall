@@ -14,26 +14,35 @@ class PeopleDetails extends Component {
             status: "Loading",
             id: urlSplit[1]
         }
+        this._isMounted = false;
 
     }
     componentDidMount() {
+        this._isMounted = true;
         this.getPerson()
     }
 
+    componentWillUnmount() {
+        this._isMounted = false;
+
+    }
 
     componentDidUpdate() {
-        if (window.location.href !== this.state.url) {
-            let searchId = window.location.href;
-            let urlSplit = searchId.split("?");
+        if (this._isMounted) {
+            if (window.location.href !== this.state.url) {
+                let searchId = window.location.href;
+                let urlSplit = searchId.split("?");
 
-            this.setState({
-                url: searchId,
-                status: "Loading",
-                id: urlSplit[1]
-            },()=>{
-                this.getPerson()
-            });
+                this.setState({
+                    url: searchId,
+                    status: "Loading",
+                    id: urlSplit[1]
+                },()=>{
+                    this.getPerson()
+                });
+            }
         }
+
     }
 
     getPerson(){
