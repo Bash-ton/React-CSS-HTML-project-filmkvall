@@ -201,7 +201,7 @@ class Details extends Component {
                     runtime = "Runtime: " + this.state.movie.runtime + "min";
                     firstrelease = "First released: " + this.state.movie.release_date;
                 }
-				cast = this.state.cast.cast.map(actors => (<Link  className={"details-actor"} to={"/Info/?" + actors.id}>
+				cast = this.state.cast.cast.map(actors => (<Link key={actors.id} className={"details-actor"} to={"/Info/?" + actors.id}>
 					<p className={"castname"}>{actors.name} is {actors.character}</p>
                     </Link>
                 ));
@@ -222,7 +222,7 @@ class Details extends Component {
 						break;
                 }
                 like = this.state.similar.results.slice(0, 4).map(movies => (
-                    <Link to={"/Details/?" + this.state.type + "&" + movies.id}>
+					<Link key={movies.id} to={"/Details/?" + this.state.type + "&" + movies.id}>
 						<img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path} alt={""} onError={this.addDefaultSrc}/>
                     </Link>));
                 movie = <div className={"Details"}>

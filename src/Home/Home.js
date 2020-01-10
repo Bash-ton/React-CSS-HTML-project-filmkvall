@@ -51,15 +51,15 @@ class Home extends Component {
                 break;
             case "Loaded":
                 trendingListMovie = this.state.trendingMovie.results.slice(0,4).map(movie =>(
-                    <Link to={"/Details/?movie&" + movie.id}>
-                        <img className="image" src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={""}/>
+					<Link key={movie.id} to={"/Details/?movie&" + movie.id}>
+						<img className="image" src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={""}/>
                     </Link>
                     )
                 )
                 trendingListSerie = this.state.trendingSerie.results.slice(0,4).map(serie =>(
-                        <Link to ={"/Details/?tv&" + serie.id}>
-                            <img className="image" src={"https://image.tmdb.org/t/p/w500" + serie.poster_path} alt={""}/>
-                        </Link>
+					<Link key={serie.id} to ={"/Details/?tv&" + serie.id}>
+						<img className="image" src={"https://image.tmdb.org/t/p/w500" + serie.poster_path} alt={""}/>
+                    </Link>
                     )
                 )
                 break;
