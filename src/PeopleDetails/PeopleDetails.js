@@ -74,7 +74,7 @@ class PeopleDetails extends Component {
                 break;
             case("Loaded"):
                 movie = <div className={"actor-bio"}>
-                    <img alt={"No image available"}
+                    <img alt={""}
                          src={"https://image.tmdb.org/t/p/w500" + this.state.actor.profile_path}
                          onError={this.addDefaultSrc} />
                     <div>
