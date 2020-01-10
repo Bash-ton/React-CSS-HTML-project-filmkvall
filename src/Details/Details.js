@@ -227,20 +227,7 @@ class Details extends Component {
                     </Link>));
                 movie = <div className={"Details"}>
 
-					<img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path} alt={""} onError={this.addDefaultSrc}/>
-                    <h1 className={"title"}>{name}</h1>
-                    <p className={"synopsis"}>{this.state.movie.overview}</p>
-                    <p className={"releaseDate"}>{firstrelease}</p>
-                    <p className={"orgiLang"}>original language: {language}</p>
-                    <p className={"price"}>{price}</p>
-                    <p className={"time"}>{runtime}</p>
-                    <p className={"tagline"}>{tagline}</p>
-                    <h2 className={"castTitle"}>Cast</h2>
-                    <div className={"cast"}>
-                        <div>{cast}</div>
-                    </div>
-                    <div className={"similar"}>{like}</div>
-
+					<img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path} alt={""} onError={this.addDefaultSrc} />
 					<div className={"item13"}>
 						<div className="sweet-loading">
 							<ClipLoader
@@ -254,8 +241,23 @@ class Details extends Component {
 						{this.state.loading ? null :
 							<button className={"item15"} onClick={this.addToList} id={"historyBtn"}>Add to already watched list</button>
 						}
-						
+						<br />
+
 					</div>
+                    <h1 className={"title"}>{name}</h1>
+                    <p className={"synopsis"}>{this.state.movie.overview}</p>
+                    <p className={"releaseDate"}>{firstrelease}</p>
+                    <p className={"orgiLang"}>original language: {language}</p>
+                    <p className={"price"}>{price}</p>
+                    <p className={"time"}>{runtime}</p>
+                    <p className={"tagline"}>{tagline}</p>
+                    <h2 className={"castTitle"}>Cast</h2>
+                    <div className={"cast"}>
+                        <div>{cast}</div>
+                    </div>
+                    <div className={"similar"}>{like}</div>
+
+
                 </div>;
 				break;
 			case ("error"):
