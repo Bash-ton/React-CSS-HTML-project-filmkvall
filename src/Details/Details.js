@@ -23,10 +23,15 @@ class Details extends Component {
 			id: typeAndId[1],
 			loading: false,
         }
-
+        this._isMounted = false;
     }
+
     componentDidMount() {
         this.getMovie();
+        this._isMounted = true;
+    }
+    componentWillMount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate() {

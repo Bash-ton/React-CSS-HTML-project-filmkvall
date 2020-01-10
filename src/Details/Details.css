@@ -20,14 +20,13 @@
     border-top-right-radius: 20px;
     background-color: #464843;
     margin: 0;
-    padding-bottom: 0.67em;
 }
-.synopsis { grid-area: syno;  background-color: #464843; padding: 1em; margin: 0;}
-.releaseDate { grid-area: release; background-color: #464843; padding: 1em; margin: 0;}
-.orgiLang { grid-area: lang; background-color: #464843; padding-top: 1em; margin: 0; padding-bottom: 1em}
-.price { grid-area: price; border-bottom-right-radius: 20px;  background-color: #464843; padding-top: 1em; margin: 0;}
-.time { grid-area: runtime; background-color: #464843; padding: 1em; margin: 0;}
-.tagline { grid-area: tagline;  background-color: #464843; padding: 1em; margin: 0;}
+.synopsis { grid-area: syno;  background-color: #464843; margin: 0;}
+.releaseDate { grid-area: release; background-color: #464843; margin: 0;}
+.orgiLang { grid-area: lang; background-color: #464843; margin: 0}
+.price { grid-area: price; border-bottom-right-radius: 20px;  background-color: #464843; margin: 0;}
+.time { grid-area: runtime; background-color: #464843; margin: 0;}
+.tagline { grid-area: tagline;  background-color: #464843; margin: 0;}
 .cast {
     grid-area: cast;
     text-align: center;
