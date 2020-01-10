@@ -85,49 +85,54 @@ class SearchResult extends Component {
             case "no search":
                 searchResults = <div></div>;
                 break;
-            case "loaded":
-                switch (this.props.type) {
-                    case "movie":
-                        searchResults = this.state.result.results.slice(0,3).map(movie =>(
-                            <Link className={"search-result-link"} to={"/Details/?movie&" + movie.id} onClick={() => this.hideResults()}>
-                            <div className={"search-result"}>
-                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}/>
-                                <div className={"search-title"}>
-                                    <p>{movie.title}</p>
-                                    <p>{movie.release_date}</p>
-                                </div>
-                            </div>
-                            </Link>)
-                        );
-                    break;
-                    case "tv":
-                        searchResults = this.state.result.results.slice(0,3).map(tv => (
-                            <Link className={"search-result-link"} to ={"/Details/?tv&" + tv.id} onClick={() => this.hideResults()}>
-                            <div className={"search-result"}>
-                                <img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path}/>
-                                <div className={"search-title"}>
-                                    <p>{tv.name}</p>
-                                    <p>{tv.first_air_date}</p>
-                                </div>
-                            </div>
-                            </Link>)
-                        );
-                        break;
-                    case "actor":
-                        searchResults = this.state.result.results.slice(0, 3).map(actor =>
-                            (
-                                <Link to={"/Info/?" + actor.id}>
-                                    <div className={"search-result"}>
-                                        <img src={"https://image.tmdb.org/t/p/w500" + actor.profile_path}/>
-                                        <div className={"search-title"}>
-                                            <p> {actor.name} </p>
-                                        </div>
-                                    </div>
-                                </Link>
-                            )
-                        );
-                        break
-                }
+			case "loaded":
+				switch (this.props.type) {
+					case "movie":
+						searchResults = this.state.result.results.slice(0, 3).map(movie => (
+							<Link className={"search-result-link"} to={"/Details/?movie&" + movie.id} onClick={() => this.hideResults()}>
+								<div className={"search-result"}>
+									<img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} />
+									<div className={"search-title"}>
+										<p>{movie.title}</p>
+										<p>{movie.release_date}</p>
+									</div>
+								</div>
+							</Link>)
+						);
+						break;
+					case "tv":
+						searchResults = this.state.result.results.slice(0, 3).map(tv => (
+							<Link className={"search-result-link"} to={"/Details/?tv&" + tv.id} onClick={() => this.hideResults()}>
+								<div className={"search-result"}>
+									<img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path} />
+									<div className={"search-title"}>
+										<p>{tv.name}</p>
+										<p>{tv.first_air_date}</p>
+									</div>
+								</div>
+							</Link>)
+						);
+						break;
+					case "actor":
+						searchResults = this.state.result.results.slice(0, 3).map(actor =>
+							(
+								<Link to={"/Info/?" + actor.id}>
+									<div className={"search-result"}>
+										<img src={"https://image.tmdb.org/t/p/w500" + actor.profile_path} />
+										<div className={"search-title"}>
+											<p> {actor.name} </p>
+										</div>
+									</div>
+								</Link>
+							)
+						);
+						break
+					default:
+						break;
+				}
+				break;
+			default:
+				break;
 
         }
 

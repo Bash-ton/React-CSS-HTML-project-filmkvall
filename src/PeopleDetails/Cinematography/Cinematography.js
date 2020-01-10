@@ -74,36 +74,40 @@ class Cinematography extends Component {
             case("Loading"):
                 credits = <em>Loading...</em>;
                 break;
-            case("Loaded"):
-                switch (this.state.cinematography) {
-                    case "hidden":
-                        credits = this.state.credits.slice(0,4).map(credit => (
-                            <div >
-                                <Link className={"movie-link"} to={"/Details/?" + credit.media_type + "&" + credit.id }>
-                                    <img src={"https://image.tmdb.org/t/p/w500" + credit.poster_path}/>
-                                    <p>{credit.title}</p>
-                                </Link>
-                            </div>
-                            )
-                        );
-                        button = <button className={"nav-button"} onClick={() => this.setState({cinematography: "show"})}>Show full cinematography</button>;
-                        break;
+			case ("Loaded"):
+				switch (this.state.cinematography) {
+					case "hidden":
+						credits = this.state.credits.slice(0, 4).map(credit => (
+							<div >
+								<Link className={"movie-link"} to={"/Details/?" + credit.media_type + "&" + credit.id}>
+									<img src={"https://image.tmdb.org/t/p/w500" + credit.poster_path} />
+									<p>{credit.title}</p>
+								</Link>
+							</div>
+						)
+						);
+						button = <button className={"nav-button"} onClick={() => this.setState({ cinematography: "show" })}>Show full cinematography</button>;
+						break;
 
-                    case "show" :
-                        credits = this.state.credits.map(credit => (
-                                <div >
-                                    <Link className={"movie-link"} to={"/Details/?" + credit.media_type + "&" + credit.id }>
-                                        <img src={"https://image.tmdb.org/t/p/w500" + credit.poster_path}/>
-                                        <p>{credit.title}</p>
-                                    </Link>
-                                </div>
-                            )
-                        );
-                        button = <button className={"nav-button"} onClick={() => this.setState({cinematography: "hidden"})}>Hide cinematography</button>
-                        break;
+					case "show":
+						credits = this.state.credits.map(credit => (
+							<div >
+								<Link className={"movie-link"} to={"/Details/?" + credit.media_type + "&" + credit.id}>
+									<img src={"https://image.tmdb.org/t/p/w500" + credit.poster_path} />
+									<p>{credit.title}</p>
+								</Link>
+							</div>
+						)
+						);
+						button = <button className={"nav-button"} onClick={() => this.setState({ cinematography: "hidden" })}>Hide cinematography</button>
+						break;
+					default:
+						break;
 
-                }
-                break;
+				}
+				break;
+			default:
+				break;
         }
         return(
             <div>
