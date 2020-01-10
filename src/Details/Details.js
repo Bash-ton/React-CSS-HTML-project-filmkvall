@@ -3,11 +3,10 @@ import "./Details.css";
 import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
 import Rating from "../Rating/Rating.js"
-
 import { movieList } from "../Data/MovieList";
 import swal from "sweetalert";
 import ClipLoader from "react-spinners/ClipLoader";
-
+import ISO6391 from 'iso-639-1';
 
 class Details extends Component {
 
@@ -51,42 +50,16 @@ class Details extends Component {
     }
 
     getMovie(){
-        model.getDetailsById(this.state.type,this.state.id).then(obj =>{
-            this.setState(
-                {
-                    movie: obj
-                }
-            );
-        })
-.catch(() => {
-    this.setState(
-        {status:"error"}
-    )
-}).then(()=> model.getCreditsById(this.state.type,this.state.id)).then(obj =>{
-            this.setState(
-                {
-                    cast: obj,
-                }
-            )
-        })
-            .catch(() => {
-                this.setState(
-                    {status:"error"}
-                )}
-            ).then(()=> model.getSimilar(this.state.type,this.state.id)).then(obj =>{
-            this.setState(
-                {
-                    similar: obj,
-                    status:"Loaded"
-                }
-            )
-        })
-            .catch(() => {
-                this.setState(
-                    {status:"error"}
-                )}
-            )
-}
+        model.getDetailsById(this.state.type,this.state.id)
+            .then(obj =>{this.setState({movie: obj});})
+            .catch(() => {this.setState({status:"error"})})
+            .then(() => model.getCreditsById(this.state.type,this.state.id))
+            .then(obj =>{this.setState({cast: obj,})})
+            .catch(() => {this.setState({status:"error"})})
+            .then(()=> model.getSimilar(this.state.type,this.state.id))
+            .then(obj =>{this.setState({similar: obj, status:"Loaded"})})
+            .catch(() => {this.setState({status:"error"})})
+    }
 
 	addToList = (event) => {
 		//change to loading
@@ -205,22 +178,7 @@ class Details extends Component {
 					<p className={"castname"}>{actors.name} is {actors.character}</p>
                     </Link>
                 ));
-                switch (this.state.movie.original_language) {
-                    case ("fr"):
-                        language = "French";
-                        break;
-                    case ("en"):
-                        language = "English";
-                        break;
-                    case ("es"):
-                        language = "Spanish";
-                        break;
-                    case ("pt"):
-                        language = "Portuguese";
-						break;
-					default:
-						break;
-                }
+                language = ISO6391.getName(this.state.movie.original_language);
                 like = this.state.similar.results.slice(0, 4).map(movies => (
                     <Link to={"/Details/?" + this.state.type + "&" + movies.id}>
 						<img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path} alt={""} onError={this.addDefaultSrc}/>
@@ -273,7 +231,5 @@ class Details extends Component {
         )
     }
 }
-
-
 
 export default Details;
