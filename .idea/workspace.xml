@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28891bac-c9fb-4ded-9037-ab7eccb6c3ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Rating/Rating.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/userModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/userModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/userRating.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/userRating.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Details/Details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Details/Details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PeopleDetails/Cinematography/Cinematography.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PeopleDetails/Cinematography/Cinematography.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PeopleDetails/PeopleDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PeopleDetails/PeopleDetails.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -113,34 +111,20 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="166" key="FileChooserDialogImpl" timestamp="1575379227679">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1575379227679" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1575540682967">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575540682967" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1575540682966">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575540682966" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1575540682966">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575540682966" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1575540682966">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575540682966" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1575379044206">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1575379044206" />
-    <state x="491" y="323" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1575495566850">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="491" y="323" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1536.824@0.0.1536.824" timestamp="1575495566850" />
+    <state x="549" y="166" key="FileChooserDialogImpl" />
+    <state x="549" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" />
+    <state x="491" y="323" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" />
+    <state x="491" y="323" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1536.824@0.0.1536.824" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -152,7 +136,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Data/userRating.js</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

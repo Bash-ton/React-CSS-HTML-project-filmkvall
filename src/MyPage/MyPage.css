@@ -5,13 +5,14 @@
 display: grid;
     grid-template-columns: 33% 67%;
 }
-.MyPage > ListConatainer{
-    width: 100%;
-}
+	.MyPage > ListConatainer {
+		width: 100%;
+		
+	}
 #navbar{
     display: flex;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .MyPage{
         display: block;
     }

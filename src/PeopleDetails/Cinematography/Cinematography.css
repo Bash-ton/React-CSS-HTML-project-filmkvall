@@ -1,0 +1,10 @@
+.movie-link{
+    text-decoration: none;
+    color: white;
+}
+.actor-movie-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

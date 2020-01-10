@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import model from "../../Data/apifetch";
+import "./Cinematography.css"
 
 class Cinematography extends Component {
 
@@ -11,12 +12,21 @@ class Cinematography extends Component {
             cinematography: "hidden" ,
         }
 
+        this._isMounted = false;
+
     }
     componentDidMount() {
+        this._isMounted = true;
         this.getCinematography()
     }
     componentDidUpdate() {
-        this.getCinematography()
+        if (this._isMounted) {
+            this.getCinematography();
+        }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     getCinematography(){
@@ -68,24 +78,28 @@ class Cinematography extends Component {
                 switch (this.state.cinematography) {
                     case "hidden":
                         credits = this.state.credits.slice(0,4).map(credit => (
-                                <Link to={"/Details/?" + credit.media_type + "&" + credit.id }>
+                            <div >
+                                <Link className={"movie-link"} to={"/Details/?" + credit.media_type + "&" + credit.id }>
                                     <img src={"https://image.tmdb.org/t/p/w500" + credit.poster_path}/>
                                     <p>{credit.title}</p>
                                 </Link>
+                            </div>
                             )
                         );
-                        button = <button onClick={() => this.setState({cinematography: "show"})}>Show full cinematography</button>;
+                        button = <button className={"nav-button"} onClick={() => this.setState({cinematography: "show"})}>Show full cinematography</button>;
                         break;
 
                     case "show" :
                         credits = this.state.credits.map(credit => (
-                                <Link to={"/Details/?" + credit.media_type + "&" + credit.id }>
-                                    <img src={"https://image.tmdb.org/t/p/w500" + credit.poster_path}/>
-                                    <p>{credit.title}</p>
-                                </Link>
+                                <div >
+                                    <Link className={"movie-link"} to={"/Details/?" + credit.media_type + "&" + credit.id }>
+                                        <img src={"https://image.tmdb.org/t/p/w500" + credit.poster_path}/>
+                                        <p>{credit.title}</p>
+                                    </Link>
+                                </div>
                             )
                         );
-                        button = <button onClick={() => this.setState({cinematography: "hidden"})}>Hide cinematography</button>
+                        button = <button className={"nav-button"} onClick={() => this.setState({cinematography: "hidden"})}>Hide cinematography</button>
                         break;
 
                 }
@@ -93,7 +107,9 @@ class Cinematography extends Component {
         }
         return(
             <div>
-                {credits}
+                <div className={"actor-movie-list"}>
+                    {credits}
+                </div>
                 {button}
             </div>
         )

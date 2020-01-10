@@ -1,11 +1,11 @@
-import React from 'react'
+//import React from 'react'
 import Observable from "./Observable";
 
 import * as firebase from 'firebase';
-import { fireconf } from "./apiConfig";
+//import { fireconf } from "./apiConfig";
 
 //add import
-import userInstance from "./userModel"
+//import userInstance from "./userModel"
 import swal from "sweetalert";
 
 class MovieList extends Observable {

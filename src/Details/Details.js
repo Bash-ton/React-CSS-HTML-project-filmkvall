@@ -6,7 +6,7 @@ import Rating from "../Rating/Rating.js"
 
 import { movieList } from "../Data/MovieList";
 import swal from "sweetalert";
-
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 class Details extends Component {
@@ -20,7 +20,8 @@ class Details extends Component {
             url: searchId,
             status: "Loading",
             type: typeAndId[0],
-            id: typeAndId[1]
+			id: typeAndId[1],
+			loading: false,
         }
 
     }
@@ -83,40 +84,60 @@ class Details extends Component {
 }
 
 	addToList = (event) => {
+		//change to loading
+		this.setState({
+			loading: true
+		});
 		if (this.props.userModel.getUser() != null) {
 			switch (event.target.id) {
-				case "watch":
+				case "watchBtn":
 					switch (this.state.type) {
 						case "tv":
 							movieList.setList("storedList1", this.props.userModel.getUser().uid);
 							setTimeout(() => {
 								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
-							}, 2000);
+
+								this.setState({
+									loading: false
+								});
+							}, 1000);
 							break;
 						default://movie
 
 							movieList.setList("storedList2", this.props.userModel.getUser().uid);
 							setTimeout(() => {
 								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
-							}, 2000);
+
+								this.setState({
+									loading: false
+								});
+							}, 1000);
 							break;
 					}
 					break;
-				case "history":
+				case "historyBtn":
 					switch (this.state.type) {
 						case "tv":
 
 							movieList.setList("storedList3", this.props.userModel.getUser().uid);
 							setTimeout(() => {
 								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
-							}, 2000);
+
+								this.setState({
+									loading: false
+								});
+							}, 1000);
 							break;
 						default://movie
 
 							movieList.setList("storedList4", this.props.userModel.getUser().uid);
 							setTimeout(() => {
 								movieList.addToList(this.state.movie, this.props.userModel.getUser().uid);
-							}, 2000);
+
+								this.setState({
+									loading: false
+								});
+							}, 1000);
 
 							break;
 					}
@@ -127,8 +148,12 @@ class Details extends Component {
 			}
 		} else {
 			swal("You have to log in to manage your lists", "If you don't already have an account, use the 'signUp' button to create one!", "error");
+			this.setState({
+				loading: false
+			});
 
 		}
+
 	}
 
 
@@ -169,8 +194,8 @@ class Details extends Component {
                     runtime = "Runtime: " + this.state.movie.runtime + "min";
                     firstrelease = "First released: " + this.state.movie.release_date;
                 }
-                cast = this.state.cast.cast.map(actors => (<Link className={"details-actor"} to={"/Info/?" + actors.id}>
-                        <p className={"castname"}>{actors.name} is {actors.character}</p>
+				cast = this.state.cast.cast.map(actors => (<Link  className={"details-actor"} to={"/Info/?" + actors.id}>
+					<p className={"castname"}>{actors.name} is {actors.character}</p>
                     </Link>
                 ));
                 switch (this.state.movie.original_language) {
@@ -185,15 +210,17 @@ class Details extends Component {
                         break;
                     case ("pt"):
                         language = "Portuguese";
-                        break;
+						break;
+					default:
+						break;
                 }
                 like = this.state.similar.results.slice(0, 4).map(movies => (
                     <Link to={"/Details/?" + this.state.type + "&" + movies.id}>
-                        <img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path}/>
+						<img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path} alt={""}/>
                     </Link>));
                 movie = <div className={"Details"}>
 
-                    <img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
+					<img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path} alt={""}/>
                     <h1 className={"title"}>{name}</h1>
                     <p className={"synopsis"}>{this.state.movie.overview}</p>
                     <p className={"releaseDate"}>{firstrelease}</p>
@@ -208,15 +235,28 @@ class Details extends Component {
                     <div className={"similar"}>{like}</div>
 
 					<div className={"item13"}>
-						<button className={"item14"} onClick={this.addToList} id={"watch"}>Add to watchList</button>
-						<button className={"item14"} onClick={this.addToList} id={"history"}>Add to already watched list</button>
+						<div className="sweet-loading">
+							<ClipLoader
+								size={40}
+								color={"red"}
+								loading={this.state.loading}
+							/>
+						</div>
+						{this.state.loading ? null :
+							<button className={"item14"} onClick={this.addToList} id={"watchBtn"}>Add to watchList</button>}
+						{this.state.loading ? null :
+							<button className={"item15"} onClick={this.addToList} id={"historyBtn"}>Add to already watched list</button>
+						}
+						
 					</div>
                 </div>;
 				break;
-    case ("error"):
-        movie = <em>somethig went wrong!
-            Please reload and try again!</em>;
-        break;
+			case ("error"):
+				movie = <em>somethig went wrong!
+					Please reload and try again!</em>;
+				break;
+			default:
+				break;
         }
         return(
             <div>
@@ -226,5 +266,7 @@ class Details extends Component {
         )
     }
 }
+
+
 
 export default Details;

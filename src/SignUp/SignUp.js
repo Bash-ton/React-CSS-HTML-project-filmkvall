@@ -1,5 +1,6 @@
 import React from "react";
 import { Component } from "react";
+import "./SignUp.css"
 
 class SignUp extends Component {
     constructor(props) {
@@ -38,10 +39,10 @@ class SignUp extends Component {
         let session = null;
         if(this.state.user === null){
             session =
-                (<div>
+                (<div className={"sign-up-fields"}>
                     <input placeholder={"Email..."} className={"email-input"} onChange={evt => this.updateEmail(evt)} />
-                    <input className={"Password..."} className={"password-input"} onChange={evt => this.updatePass(evt)}/>
-				<button onClick={() => this.props.userModel.doCreateUserWithEmailAndPassword(this.state.email, this.state.pass)}> Submit</button>
+                    <input type={"password"} placeholder={"Password..."} className={"Password..."} className={"password-input"} onChange={evt => this.updatePass(evt)}/>
+				<button className={"nav-button"} onClick={() => this.props.userModel.doCreateUserWithEmailAndPassword(this.state.email, this.state.pass)}> Submit</button>
                 </div>)
         }
         else{

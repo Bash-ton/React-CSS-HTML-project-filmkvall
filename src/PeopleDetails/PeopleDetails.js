@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+//import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
 import "./PeopleDetails.css"
 import Cinematography from "./Cinematography/Cinematography";
@@ -14,26 +14,35 @@ class PeopleDetails extends Component {
             status: "Loading",
             id: urlSplit[1]
         }
+        this._isMounted = false;
 
     }
     componentDidMount() {
+        this._isMounted = true;
         this.getPerson()
     }
 
+    componentWillUnmount() {
+        this._isMounted = false;
+
+    }
 
     componentDidUpdate() {
-        if (window.location.href !== this.state.url) {
-            let searchId = window.location.href;
-            let urlSplit = searchId.split("?");
+        if (this._isMounted) {
+            if (window.location.href !== this.state.url) {
+                let searchId = window.location.href;
+                let urlSplit = searchId.split("?");
 
-            this.setState({
-                url: searchId,
-                status: "Loading",
-                id: urlSplit[1]
-            },()=>{
-                this.getPerson()
-            });
+                this.setState({
+                    url: searchId,
+                    status: "Loading",
+                    id: urlSplit[1]
+                },()=>{
+                    this.getPerson()
+                });
+            }
         }
+
     }
 
     getPerson(){
@@ -70,7 +79,9 @@ class PeopleDetails extends Component {
                     <p> {this.state.actor.biography}</p>
                     </div>
                     </div>
-                break;
+				break;
+			default:
+				break;
         }
                 return(
                     <div className={"actor-info"}>

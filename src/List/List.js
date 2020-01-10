@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
-import model from "../Data/apifetch";
+//import model from "../Data/apifetch";
 
 import "./List.css";
 import { movieList } from "../Data/MovieList";
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 
@@ -14,6 +15,7 @@ class List extends Component {
 		super(props);
 		this.state = {
 			activeList: null,
+			loading: false,
 
 		}
 		//prevents memory leak when unmounting
@@ -34,7 +36,6 @@ class List extends Component {
 	
 	
 	componentDidUpdate() {
-
 		//prevents memory leak when unmounting
 		if (this._isMounted) {
 			movieList.setList(this.props.name, this.props.userID);
@@ -54,6 +55,11 @@ class List extends Component {
 
 	//removes item from list
 	removeFromList = (event) => {
+		//start loading
+		this.setState({
+			loading: true
+		});
+
 		//prevents memory leak when unmounting
 		if (this._isMounted) {
 
@@ -62,68 +68,111 @@ class List extends Component {
 
 			setTimeout(() => {
 				movieList.removeFromList(movieID, this.props.userID);
+				//stop loading
+				this.setState({
+					loading: false
+				});
 			}, 1000);
 		}
+
+		
 	}
 
 	//fetch the active list from DB
 	fetchActiveList() {
 		let createdList = null;
 
-		//resets the old userlist if new user logs in
+	
 	
 		//'_isMounted' prevents memory leak when unmounting
 		//'resetList' prevents new user to see old user's list
 		if (this._isMounted && this.props.resetList) {
+			
+		
+
 
 			//Empty list text
-			createdList = (
-				<div className={"EmptyList"}>
-					<br />
-					This list is empty...
-					<br />
-					<br />
-					<br />
-					<br />
-				</div>
-			);
+			if (movieList.getList() === null) {
+				createdList = (
+					<div className={"EmptyList"}>
+						<br />
+						This list is empty...
+						<br />
+						<br />
+						<br />
+						<br />
+					</div>
+				);
+
+			
+			}
 
 
 			if (movieList.getList() != null) {
-				//start loading
+				
 				switch (this.props.name) {
-					case "storedList2"://storedList2
-					case "storedList4"://storedList4
+					case "storedList2":
+					case "storedList4":
 						createdList = movieList.getList().map(movie => (
-							<div key={movie.id}>
-								<Link className={"search-result-link"} to={"/Details/?movie&" + movie.id}>
-									<div className={"search-result"} >
-										<img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} />
-										<div className={"search-title"}>
+							<div className={"list-background"} key={movie.id}>
+								
+									<div className={"list-result"} >
+									<Link className={"list-result-link"} to={"/Details/?movie&" + movie.id}>
+										<img alt={""} className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} />
+										<div className={"list-title"}>
 											<p>{movie.title}</p>
 											<p>{movie.release_date}</p>
 										</div>
+									</Link>
+										<div className="sweet-loading">
+											<ClipLoader
+												size={40}
+												color={"red"}
+												loading={this.state.loading}
+											/>
+										</div>
+									{this.state.loading ? null :
+										<div className={"deleteBtnParent"}>
+											<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={movie.id} value={movie}>Remove</button>
+										</div>
+									}
 									</div>
-								</Link>
-								<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={movie.id} value={movie}>Remove</button>
+									<br />
+								
 							</div>
 						));
-						//stop loading
+				
 						break;
-					case "storedList1"://storedList1
-					case "storedList3"://storedList3
+					case "storedList1":
+					case "storedList3":
 						createdList = movieList.getList().map(tv => (
-							<div key={tv.id}>
-								<Link to={"/Details/?tv&" + tv.id}>
-									<div className={"search-result"}>
-										<img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path} />
-										<div className={"search-title"}>
+							<div className={"list-background"} key={tv.id}>
+								
+									<div className={"list-result"}>
+									<Link className={"list-result-link"} to={"/Details/?tv&" + tv.id}>
+										<img alt={""} className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + tv.poster_path} />
+										<div className={"list-title"}>
 											<p>{tv.name}</p>
 											<p>{tv.first_air_date}</p>
 										</div>
+									</Link>
+									<div className="sweet-loading">
+										<ClipLoader
+											size={40}
+											color={"red"}
+											loading={this.state.loading}
+										/>
 									</div>
-								</Link>
-								<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={tv.id} value={tv}>Remove</button>
+									{this.state.loading ? null :
+										<div className={"deleteBtnParent"}>
+											<button className={"deleteFromListBtn"} onClick={this.removeFromList} id={tv.id} value={tv}>Remove</button>
+										</div>
+									}
+								</div>
+								<br  />
+
+								
+								
 							</div>
 						));
 						//stop loading
@@ -134,6 +183,9 @@ class List extends Component {
 
 
 				}
+				//stop loader
+			
+
 			}
 			this.setState({
 				activeList: createdList,
@@ -145,7 +197,9 @@ class List extends Component {
 
 	render() {
 		return (
+
 			<div className={"ActiveList"}>{this.state.activeList}</div>
+		
 			);
 
 	}

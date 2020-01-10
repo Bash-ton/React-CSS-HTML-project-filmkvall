@@ -1,5 +1,47 @@
+
+
+.list-result {
+	display: grid;
+
+	grid-template-columns: 20% 60% 20%;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.list-title {
+	flex-direction: column;
+}
+
+.list-title > p {
+	font-size: 0.6em;
+	color: #b5b4b8;
+}
+
+.list-img {
+	max-height: 100px;
+	max-width: 100px;
+	min-width: 100px;
+	min-height: 100px
+}
+
+.list-result > p {
+	max-width: 100px;
+	max-height: 100px;
+}
+
+
+
+.list-result-body {
+	position: absolute;
+	background: #403e3f;
+	width: 50%;
+	z-index: 1;
+}
 .deleteFromListBtn {
-	max-width: 100%;
+	grid-column-start: 3;
+	grid-column-end: 4;
+	max-width: 120px;
 	background-color: #780202;
 	border-radius: 25px;
 	display: inline-block;
@@ -10,6 +52,30 @@
 	padding: 10px 30px;
 	text-decoration: none;
 	border: none;
-	
+	overflow: hidden;
 }
+
+
+.list-background {
+	background-color: black;
+}
+
+@media only screen and (max-width: 1000px) {
+	.deleteFromListBtn {
+
+		display: inline-block;
+	}
+
+	.list-result-link {
+		grid-column-start: 2;
+		grid-column-end: 3;
+	}
+	.deleteBtnParent {
+		text-align: center;
+		grid-column-start: 2;
+		grid-column-end: 3;
+	}
+}
+
+
 
