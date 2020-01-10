@@ -1,3 +1,6 @@
-.sign-up-fields{
-    margin: 100px;
+
+@media only screen and (max-width: 700px) {
+    .sign-up-fields{
+        margin: 0px;
+    }
 }
