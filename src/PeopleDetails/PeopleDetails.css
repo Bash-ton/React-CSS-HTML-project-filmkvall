@@ -3,6 +3,7 @@
 }
 .actor-bio > img{
     float: left;
+    width: -webkit-fill-available;
 }
 .actor-info{
     display: flex;

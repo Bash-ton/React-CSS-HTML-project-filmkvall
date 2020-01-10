@@ -80,7 +80,7 @@ class Cinematography extends Component {
                         credits = this.state.credits.slice(0,4).map(credit => (
                             <div >
                                 <Link className={"movie-link"} to={"/Details/?" + credit.media_type + "&" + credit.id }>
-                                    <img src={"https://image.tmdb.org/t/p/w500" + credit.poster_path}/>
+                                    <img className={"cinemaImg"} src={"https://image.tmdb.org/t/p/w500" + credit.poster_path}/>
                                     <p>{credit.title}</p>
                                 </Link>
                             </div>
