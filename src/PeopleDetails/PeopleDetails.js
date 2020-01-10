@@ -61,6 +61,10 @@ class PeopleDetails extends Component {
             )
     }
 
+    addDefaultSrc(ev){
+        ev.target.src = "../movie_reel.png"
+    }
+
 //todo inforamtion to add: cast, title,poster,synopsis,release_date,rating,similar_movies,original_lang,Budget,runtime,tagline
     render(){
         let movie = null;
@@ -70,7 +74,9 @@ class PeopleDetails extends Component {
                 break;
             case("Loaded"):
                 movie = <div className={"actor-bio"}>
-                    <img src={"https://image.tmdb.org/t/p/w500" + this.state.actor.profile_path}/>
+                    <img alt={"No image available"}
+                         src={"https://image.tmdb.org/t/p/w500" + this.state.actor.profile_path}
+                         onError={this.addDefaultSrc} />
                     <div>
                     <p> {this.state.actor.name}</p>
                     <p> {this.state.actor.place_of_birth} </p>
@@ -78,7 +84,7 @@ class PeopleDetails extends Component {
                     <p> {this.state.actor.birthday}</p>
                     <p> {this.state.actor.biography}</p>
                     </div>
-                    </div>
+                    </div>;
 				break;
 			default:
 				break;

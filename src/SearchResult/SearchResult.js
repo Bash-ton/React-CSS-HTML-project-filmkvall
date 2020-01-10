@@ -75,6 +75,10 @@ class SearchResult extends Component {
     hideResults(){
         document.getElementById("search-result-given").style.display = "none";
     }
+    addDefaultSrc(ev){
+        ev.target.src = "../movie_reel.png"
+    }
+
 
     render() {
         let searchResults = null;
@@ -91,7 +95,7 @@ class SearchResult extends Component {
                         searchResults = this.state.result.results.slice(0,3).map(movie =>(
                             <Link className={"search-result-link"} to={"/Details/?movie&" + movie.id} onClick={() => this.hideResults()}>
                             <div className={"search-result"}>
-                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}/>
+                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} onError={this.addDefaultSrc}/>
                                 <div className={"search-title"}>
                                     <p>{movie.title}</p>
                                     <p>{movie.release_date}</p>
@@ -104,7 +108,7 @@ class SearchResult extends Component {
                         searchResults = this.state.result.results.slice(0,3).map(tv => (
                             <Link className={"search-result-link"} to ={"/Details/?tv&" + tv.id} onClick={() => this.hideResults()}>
                             <div className={"search-result"}>
-                                <img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path}/>
+                                <img src={"https://image.tmdb.org/t/p/w500" + tv.poster_path} onError={this.addDefaultSrc}/>
                                 <div className={"search-title"}>
                                     <p>{tv.name}</p>
                                     <p>{tv.first_air_date}</p>
@@ -118,7 +122,7 @@ class SearchResult extends Component {
                             (
                                 <Link to={"/Info/?" + actor.id}>
                                     <div className={"search-result"}>
-                                        <img src={"https://image.tmdb.org/t/p/w500" + actor.profile_path}/>
+                                        <img src={"https://image.tmdb.org/t/p/w500" + actor.profile_path} onError={this.addDefaultSrc}/>
                                         <div className={"search-title"}>
                                             <p> {actor.name} </p>
                                         </div>

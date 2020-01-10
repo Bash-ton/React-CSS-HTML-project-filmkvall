@@ -156,7 +156,9 @@ class Details extends Component {
 
 	}
 
-
+    addDefaultSrc(ev){
+        ev.target.src = "../movie_reel.png"
+    }
 
 //todo inforamtion to add: rating
     render(){
@@ -216,11 +218,11 @@ class Details extends Component {
                 }
                 like = this.state.similar.results.slice(0, 4).map(movies => (
                     <Link to={"/Details/?" + this.state.type + "&" + movies.id}>
-						<img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path} alt={""}/>
+						<img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path} alt={""} onError={this.addDefaultSrc}/>
                     </Link>));
                 movie = <div className={"Details"}>
 
-					<img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path} alt={""}/>
+					<img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path} alt={""} onError={this.addDefaultSrc}/>
                     <h1 className={"title"}>{name}</h1>
                     <p className={"synopsis"}>{this.state.movie.overview}</p>
                     <p className={"releaseDate"}>{firstrelease}</p>

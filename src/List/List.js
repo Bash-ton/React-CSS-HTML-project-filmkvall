@@ -52,6 +52,9 @@ class List extends Component {
 		this._isMounted = false;
 	}
 
+	addDefaultSrc(ev){
+		ev.target.src = "../movie_reel.png";
+	}
 
 	//removes item from list
 	removeFromList = (event) => {
@@ -75,7 +78,7 @@ class List extends Component {
 			}, 1000);
 		}
 
-		
+
 	}
 
 	//fetch the active list from DB
@@ -118,7 +121,7 @@ class List extends Component {
 								
 									<div className={"list-result"} >
 									<Link className={"list-result-link"} to={"/Details/?movie&" + movie.id}>
-										<img alt={""} className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} />
+										<img alt={""} className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} onError={this.addDefaultSrc}/>
 										<div className={"list-title"}>
 											<p>{movie.title}</p>
 											<p>{movie.release_date}</p>
@@ -150,7 +153,7 @@ class List extends Component {
 								
 									<div className={"list-result"}>
 									<Link className={"list-result-link"} to={"/Details/?tv&" + tv.id}>
-										<img alt={""} className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + tv.poster_path} />
+										<img alt={""} className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + tv.poster_path} onError={this.addDefaultSrc}/>
 										<div className={"list-title"}>
 											<p>{tv.name}</p>
 											<p>{tv.first_air_date}</p>
