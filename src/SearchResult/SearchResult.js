@@ -93,7 +93,7 @@ class SearchResult extends Component {
 				switch (this.props.type) {
 					case "movie":
 						searchResults = this.state.result.results.slice(0, 3).map(movie => (
-							<Link className={"search-result-link"} to={"/Details/?movie&" + movie.id} onClick={() => this.hideResults()}>
+							<Link key={movie.id} className={"search-result-link"} to={"/Details/?movie&" + movie.id} onClick={() => this.hideResults()}>
 								<div className={"search-result"}>
 									<img alt={""} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} onError={this.addDefaultSrc} />
 									<div className={"search-title"}>
