@@ -41,7 +41,7 @@ class SignUp extends Component {
             session =
                 (<div className={"sign-up-fields"}>
                     <input placeholder={"Email..."} className={"email-input"} onChange={evt => this.updateEmail(evt)} />
-                    <input type={"password"} placeholder={"Password..."} className={"Password..."} className={"password-input"} onChange={evt => this.updatePass(evt)}/>
+                    <input type={"password"} placeholder={"Password..."} className={"password-input"} onChange={evt => this.updatePass(evt)}/>
 				<button className={"nav-button"} onClick={() => this.props.userModel.doCreateUserWithEmailAndPassword(this.state.email, this.state.pass)}> Submit</button>
                 </div>)
         }

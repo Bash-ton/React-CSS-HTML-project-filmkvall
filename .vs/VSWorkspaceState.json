@@ -7,10 +7,10 @@
     "\\src\\Details",
     "\\src\\Discover",
     "\\src\\Home",
-    "\\src\\List",
-    "\\src\\ListContainer",
-    "\\src\\MyPage"
+    "\\src\\PeopleDetails",
+    "\\src\\PeopleDetails\\Cinematography",
+    "\\src\\SignUp"
   ],
-  "SelectedNode": "\\src\\Details\\Details.js",
+  "SelectedNode": "\\src\\PeopleDetails\\Cinematography\\Cinematography.css",
   "PreviewInSolutionExplorer": false
 }
