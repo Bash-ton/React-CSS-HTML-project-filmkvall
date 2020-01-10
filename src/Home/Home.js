@@ -55,13 +55,13 @@ class Home extends Component {
 						<img className="image" src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={""}/>
                     </Link>
                     )
-                )
+                );
                 trendingListSerie = this.state.trendingSerie.results.slice(0,4).map(serie =>(
 					<Link key={serie.id} to ={"/Details/?tv&" + serie.id}>
 						<img className="image" src={"https://image.tmdb.org/t/p/w500" + serie.poster_path} alt={""}/>
                     </Link>
                     )
-                )
+                );
                 break;
             default:
 
