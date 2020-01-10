@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import userRatingInstance from "../Data/userRating"
 import PeopleDetails from "../PeopleDetails/PeopleDetails";
+import StarRating from 'react-svg-star-rating'
 
 class Rating extends Component {
 
@@ -9,6 +10,7 @@ class Rating extends Component {
         super(props);
         this.state= {
             id :this.props.id,
+            theRate : <StarRating/>
         };
     }
 
@@ -17,15 +19,16 @@ class Rating extends Component {
     let temp = null;
     let rating = userRatingInstance.getRating(this.state.id);
         if(rating !== null){
-            temp = rating.Rating;
+            this.state.theRate = rating.Rating;
         }
         else{
              temp = 0;
         }
-        return(<div>
-            <p>{temp}</p>
-            <button onClick={() => userRatingInstance.addRating(3,this.state.id)}>Send Link</button>
-            </div>)
+        return(
+        <div>
+        <div>{temp}</div>
+          <p>Rating : </p><span><StarRating isHalfRating = {true} handleOnClick = {(rating)=>{userRatingInstance.addRating(rating,this.state.id)}}/></span>
+           </div>)
     }
 
 }

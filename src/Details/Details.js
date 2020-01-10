@@ -3,6 +3,10 @@ import "./Details.css";
 import {Link} from "react-router-dom";
 import model from "../Data/apifetch";
 import Rating from "../Rating/Rating.js"
+import StarRating from 'react-svg-star-rating'
+import userRatingInstance from "../Data/userRating"
+
+
 
 import { movieList } from "../Data/MovieList";
 import swal from "sweetalert";
@@ -189,11 +193,11 @@ class Details extends Component {
                 }
                 like = this.state.similar.results.slice(0, 4).map(movies => (
                     <Link to={"/Details/?" + this.state.type + "&" + movies.id}>
-                        <img className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path}/>
+                            <img StarRating = {"5"} className={"sim-pic"} src={"https://image.tmdb.org/t/p/w500" + movies.poster_path}/>
+                        
                     </Link>));
                 movie = <div className={"Details"}>
-
-                    <img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path}/>
+                        <img className={"poster"} src={"https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path} />
                     <div className={"item12"}>
                         <button  onClick={this.addToList} id={"watch"}>Add to watchList</button>
                         <button onClick={this.addToList} id={"history"}>Add to already watched list</button>
@@ -207,7 +211,7 @@ class Details extends Component {
                     <p className={"tagline"}>{tagline}</p>
                     <h2 className={"castTitle"}>Cast</h2>
                     <div className={"cast"}>
-                        <div>{cast}</div>
+                        <div> {cast}</div> 
                     </div>
                     <div className={"similar"}>{like}</div>
 

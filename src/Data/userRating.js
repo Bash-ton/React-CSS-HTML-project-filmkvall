@@ -28,11 +28,12 @@ class UserRating extends Observable {
         this.userID = id
     }
     getRating(MovieID){
-        if(this._list < 0){
+        if(this._list > 0){
             return this.list[this._list.findIndex(elem => elem.id === MovieID)];
         }
         return null;
     }
+    
     removeRating(MovieID){
         let temp = this._list.findIndex(elem => elem.id === MovieID);
         this._list.splice(temp, 1);

@@ -10,6 +10,7 @@
     "react-dom": "^16.12.0",
     "react-native-animate-loading-button": "^1.0.3",
     "react-scripts": "3.2.0",
+    "react-svg-star-rating": "^1.0.3",
     "redux": "^4.0.4",
     "sweetalert": "^2.1.2"
   },
