@@ -93,7 +93,7 @@ class Searchbar extends Component {
         return (
             <div className={"search-body"}>
                 <Link to={"/"}>
-                    <img src={"../Logo_2.png"}/>
+                    <img alt={""} src={"../Logo_2.png"}/>
                 </Link>
                 <div className={"search-field"}>
                     <select className={"selectCat"} onChange={evt => this.updateType(evt)}>
