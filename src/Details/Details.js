@@ -29,7 +29,7 @@ class Details extends Component {
         this.getMovie();
         this._isMounted = true;
     }
-    componentWillMount() {
+	componentWillUnmount() {
         this._isMounted = false;
     }
 

@@ -80,7 +80,7 @@ class Cinematography extends Component {
                 switch (this.state.cinematography) {
                     case "hidden":
                         credits = this.state.credits.slice(0,4).map(credit => (
-                            <div >
+							<div key={credit.id}>
                                 <Link className={"movie-link"} to={"/Details/?" + credit.media_type + "&" + credit.id }>
 									<img alt={""} className={"cinemaImg"} src={"https://image.tmdb.org/t/p/w500" + credit.poster_path} onError={this.addDefaultSrc}/>
                                     <p>{credit.title}</p>
@@ -95,7 +95,7 @@ class Cinematography extends Component {
 
 					case "show":
 						credits = this.state.credits.map(credit => (
-							<div >
+							<div key={credit.id}>
 								<Link className={"movie-link"} to={"/Details/?" + credit.media_type + "&" + credit.id}>
 									<img alt={""} src={"https://image.tmdb.org/t/p/w500" + credit.poster_path} />
 									<p>{credit.title}</p>
