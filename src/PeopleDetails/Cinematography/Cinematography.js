@@ -61,10 +61,10 @@ class Cinematography extends Component {
         return credits.cast.sort((a, b) => (a.release_date < b.release_date) ? 1 : (a.release_date === b.release_date) ? ((a.name > b.name) ? 1 : -1) : -1 )
 
     }
-
-    showCinematography(){
-
+    addDefaultSrc(ev){
+        ev.target.src = "../movie_reel.png"
     }
+
 
 //todo inforamtion to add: cast, title,poster,synopsis,release_date,rating,similar_movies,original_lang,Budget,runtime,tagline
     render(){
@@ -82,7 +82,7 @@ class Cinematography extends Component {
                         credits = this.state.credits.slice(0,4).map(credit => (
                             <div >
                                 <Link className={"movie-link"} to={"/Details/?" + credit.media_type + "&" + credit.id }>
-                                    <img className={"cinemaImg"} src={"https://image.tmdb.org/t/p/w500" + credit.poster_path}/>
+                                    <img className={"cinemaImg"} src={"https://image.tmdb.org/t/p/w500" + credit.poster_path} onError={this.addDefaultSrc}/>
                                     <p>{credit.title}</p>
                                 </Link>
                             </div>
@@ -90,6 +90,7 @@ class Cinematography extends Component {
                         );
                         button = <button className={"nav-button"} onClick={() => this.setState({cinematography: "show"})}>Show full cinematography</button>;
                         break;
+
 
 
 					case "show":

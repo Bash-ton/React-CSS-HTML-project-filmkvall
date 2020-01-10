@@ -3,11 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="28891bac-c9fb-4ded-9037-ab7eccb6c3ef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Details/Details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Details/Details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/List.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PeopleDetails/Cinematography/Cinematography.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PeopleDetails/Cinematography/Cinematography.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PeopleDetails/Cinematography/Cinematography.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PeopleDetails/Cinematography/Cinematography.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PeopleDetails/PeopleDetails.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PeopleDetails/PeopleDetails.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SignIn/SingIn.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/SignIn/SingIn.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SignUp/SignUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/SignUp/SignUp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PeopleDetails/PeopleDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PeopleDetails/PeopleDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SearchResult/SearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SearchResult/SearchResult.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
