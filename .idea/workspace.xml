@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28891bac-c9fb-4ded-9037-ab7eccb6c3ef" name="Default Changelist" comment="" />
+    <list default="true" id="28891bac-c9fb-4ded-9037-ab7eccb6c3ef" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Details/Details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Details/Details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Discover/Discover.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/List.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +38,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/My Documents" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -87,6 +95,9 @@
       <workItem from="1575296242954" duration="1981000" />
       <workItem from="1576486811835" duration="32678000" />
       <workItem from="1576752548320" duration="5590000" />
+      <workItem from="1579680544769" duration="586000" />
+      <workItem from="1579850607237" duration="580000" />
+      <workItem from="1579851595783" duration="1012000" />
     </task>
     <servers />
   </component>

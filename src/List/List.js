@@ -118,7 +118,6 @@ class List extends Component {
 					case "storedList4":
 						createdList = movieList.getList().map(movie => (
 							<div className={"list-background"} key={movie.id}>
-								
 									<div className={"list-result"} >
 									<Link className={"list-result-link"} to={"/Details/?movie&" + movie.id}>
 										<img alt={""} className={"list-img"} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} onError={this.addDefaultSrc}/>

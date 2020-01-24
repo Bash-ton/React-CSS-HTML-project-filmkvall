@@ -21,7 +21,7 @@ class Details extends Component {
             type: typeAndId[0],
 			id: typeAndId[1],
 			loading: false,
-        }
+        };
         this._isMounted = false;
     }
 
@@ -132,7 +132,7 @@ class Details extends Component {
 
 		}
 
-	}
+	};
 
     addDefaultSrc(ev){
         ev.target.src = "../movie_reel.png"
@@ -227,7 +227,6 @@ class Details extends Component {
         }
         return(
             <div>
-                <Rating id={this.state.id}/>
                 {movie}
             </div>
         )
